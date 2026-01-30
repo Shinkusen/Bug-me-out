@@ -1,29 +1,33 @@
 extends CharacterBody2D
 
+var climbing: bool = false
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
-# Pega a gravidade padrão das configurações do projeto
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@onready var sprite = $AnimatedSprite2D
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("climb"):
+		climbing = !climbing
+		if not climbing: sprite.rotation = 0
 
 func _physics_process(delta):
-	# 1. Aplica Gravidade (se não estiver no chão)
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	# 2. Pulo (apenas se estiver no chão)
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# 3. Movimento Horizontal
-	# Substitua "ui_left" e "ui_right" pelos seus inputs configurados no Project Settings
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-		# Opcional: Virar o sprite para o lado certo
-		# $AnimatedSprite2D.flip_h = direction < 0
+	var input_direction = Input.get_vector("left", "right", "up", "down")
+	
+	if climbing:
+		if input_direction:
+			velocity = input_direction * SPEED
+		else:
+			velocity = velocity.move_toward(Vector2.ZERO, SPEED)
+		
+		if input_direction != Vector2.ZERO:
+			sprite.rotation = input_direction.angle() + PI / 2
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	# 4. Aplica o movimento
+		if not is_on_floor():
+			velocity.y += gravity * delta
+		
+		if input_direction.x:
+			velocity.x = input_direction.x * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			
 	move_and_slide()

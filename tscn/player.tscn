@@ -18,10 +18,24 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3c7ea"]
+size = Vector2(58, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4c7w"]
+size = Vector2(58, 63)
+
 [node name="Player" type="CharacterBody2D" unique_id=2115506010]
 script = ExtResource("1_7j80i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=264484940]
 sprite_frames = SubResource("SpriteFrames_6sl1v")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1610152575]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156716506]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_3c7ea")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1446066537]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=608045568]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_u4c7w")

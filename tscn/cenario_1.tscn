@@ -2,9 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://cljk0xq12son8" path="res://tscn/player.tscn" id="1_uppvb"]
 [ext_resource type="Texture2D" uid="uid://8w028iqqm21r" path="res://sprites/tronco.png" id="2_640eb"]
+[ext_resource type="Texture2D" uid="uid://bya41xu5mbooo" path="res://sprites/rede.png" id="3_rnlh3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_640eb"]
 size = Vector2(126.90001, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnlh3"]
+size = Vector2(97, 127.5)
 
 [node name="Cenario_1" type="Node2D" unique_id=2106832681]
 
@@ -16,8 +20,19 @@ position = Vector2(794, 724)
 scale = Vector2(10, 1)
 texture = ExtResource("2_640eb")
 
-[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=615162138]
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D" unique_id=171275124]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1497726956]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D" unique_id=1497726956]
 position = Vector2(-0.44999695, 3)
 shape = SubResource("RectangleShape2D_640eb")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1625187329]
+position = Vector2(1012, 577)
+scale = Vector2(2, 2)
+texture = ExtResource("3_rnlh3")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D2" unique_id=1219768017]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/Area2D" unique_id=1123390131]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_rnlh3")

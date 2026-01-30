@@ -1,10 +1,27 @@
 [gd_scene format=3 uid="uid://cljk0xq12son8"]
 
 [ext_resource type="Script" uid="uid://byqj3aoc0w4il" path="res://scripts/player.gd" id="1_7j80i"]
+[ext_resource type="Texture2D" uid="uid://cawyw4g0jdj6l" path="res://sprites/character_1.png" id="2_3c7ea"]
+[ext_resource type="Texture2D" uid="uid://rhjrdb8o0181" path="res://sprites/character_2.png" id="3_u4c7w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6sl1v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3c7ea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_u4c7w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=2115506010]
 script = ExtResource("1_7j80i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=264484940]
+sprite_frames = SubResource("SpriteFrames_6sl1v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1610152575]

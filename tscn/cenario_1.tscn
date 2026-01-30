@@ -1,3 +1,23 @@
 [gd_scene format=3 uid="uid://bi3o4ag70hkf1"]
 
+[ext_resource type="PackedScene" uid="uid://cljk0xq12son8" path="res://tscn/player.tscn" id="1_uppvb"]
+[ext_resource type="Texture2D" uid="uid://8w028iqqm21r" path="res://sprites/tronco.png" id="2_640eb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_640eb"]
+size = Vector2(126.90001, 40)
+
 [node name="Cenario_1" type="Node2D" unique_id=2106832681]
+
+[node name="Player" parent="." unique_id=2115506010 instance=ExtResource("1_uppvb")]
+position = Vector2(687, 250)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2117998303]
+position = Vector2(794, 724)
+scale = Vector2(10, 1)
+texture = ExtResource("2_640eb")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=615162138]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1497726956]
+position = Vector2(-0.44999695, 3)
+shape = SubResource("RectangleShape2D_640eb")

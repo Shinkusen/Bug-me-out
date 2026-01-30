@@ -1,3 +1,29 @@
 [gd_scene format=3 uid="uid://culthsd2xo0ex"]
 
+[ext_resource type="Texture2D" uid="uid://ct3y651ehxbg5" path="res://sprites/Black.png" id="1_lm0dq"]
+[ext_resource type="Script" uid="uid://dqe31iawldfam" path="res://scripts/transicao_up.gd" id="2_tnkw5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_so2o8"]
+size = Vector2(1200, 4)
+
 [node name="Cenario_3" type="Node2D" unique_id=659214951]
+
+[node name="Black_Screen_Up" type="Sprite2D" parent="." unique_id=2042709844]
+position = Vector2(600, -450)
+texture = ExtResource("1_lm0dq")
+
+[node name="Black_Screen_Down" type="Sprite2D" parent="." unique_id=1096268543]
+position = Vector2(600, 1350)
+texture = ExtResource("1_lm0dq")
+
+[node name="Area_Transition_Black" type="Area2D" parent="." unique_id=1376486703]
+script = ExtResource("2_tnkw5")
+
+[node name="Transicao_Up" type="CollisionShape2D" parent="Area_Transition_Black" unique_id=244724554]
+position = Vector2(600, 2)
+shape = SubResource("RectangleShape2D_so2o8")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1584913155]
+position = Vector2(600, 450)
+
+[connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]

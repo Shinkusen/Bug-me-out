@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="GGJ-2026-Bug-me-out"
+run/main_scene="uid://bi3o4ag70hkf1"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
 
 [physics]
 

@@ -34,6 +34,7 @@ project/assembly_name="GGJ-2026-Bug-me-out"
 player=""
 edible=""
 layer_grade=""
+hazards=""
 
 [input]
 

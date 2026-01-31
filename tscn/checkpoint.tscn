@@ -1,14 +1,11 @@
 [gd_scene format=3 uid="uid://b2rsc10sv6eji"]
 
-[ext_resource type="Script" uid="uid://cd8ubtw1sc3pm" path="res://scripts/checkpoint_enter.gd" id="1_61ms1"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0l1sk"]
 size = Vector2(92, 56)
 
 [node name="Node2D" type="Node2D" unique_id=1702022954]
 
 [node name="Deathzone" type="Area2D" parent="." unique_id=1749947976]
-script = ExtResource("1_61ms1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Deathzone" unique_id=1355201143]
 position = Vector2(46, 27)

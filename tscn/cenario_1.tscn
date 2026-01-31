@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dxir6k7kamspi" path="res://tscn/eatable.tscn" id="11_evkta"]
 [ext_resource type="Script" uid="uid://b474ki2chey17" path="res://scripts/deathzone.gd" id="11_meivc"]
 [ext_resource type="PackedScene" uid="uid://b5lmx3d88ae8s" path="res://tscn/hazard.tscn" id="12_evkta"]
+[ext_resource type="PackedScene" uid="uid://0kmek7shcteb" path="res://tscn/security_camera.tscn" id="15_blvl7"]
 [ext_resource type="Texture2D" uid="uid://dhnaupkt1vshf" path="res://sprites/TileSet/ChaoEsquerda.png" id="15_tjqbj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gjsy"]
@@ -223,7 +224,7 @@ tile_map_data = PackedByteArray("AAATAA4AAAAAAAAAAAASAA4AAAAAAAAAAAARAA4AAAAAAAA
 tile_set = SubResource("TileSet_meivc")
 
 [node name="Grade" type="TileMapLayer" parent="." unique_id=641706925 groups=["layer_grade"]]
-tile_map_data = PackedByteArray("AAAQAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAQAAkAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAATAAsAAAAAAAAAAAATAAoAAAAAAAAAAAATAAkAAAAAAAAAAAATAAgAAAAAAAAAAAATAAcAAAAAAAAAAAATAAYAAAAAAAAAAAATAAUAAAAAAAAAAAATAAQAAAAAAAAAAAATAAMAAAAAAAAAAAATAAIAAAAAAAAAAAATAAEAAAAAAAAAAAATAAAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_qg7ph")
 
 [node name="Faiscas" type="GPUParticles2D" parent="." unique_id=294531443]
@@ -258,6 +259,10 @@ process_material = SubResource("ParticleProcessMaterial_qg7ph")
 
 [node name="Player" parent="." unique_id=2115506010 groups=["player"] instance=ExtResource("1_uppvb")]
 position = Vector2(632, 470)
+
+[node name="SecurityCamera" parent="." unique_id=1006889508 instance=ExtResource("15_blvl7")]
+position = Vector2(1173, 60)
+target_point = Vector2(-470, 700)
 
 [connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]

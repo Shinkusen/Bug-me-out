@@ -8,11 +8,20 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l8h6f"]
 size = Vector2(1200, 4)
 
+[sub_resource type="TileSet" id="TileSet_l8h6f"]
+tile_size = Vector2i(60, 60)
+physics_layer_0/collision_layer = 1
+
+[sub_resource type="TileSet" id="TileSet_lqb22"]
+tile_size = Vector2i(60, 60)
+physics_layer_0/collision_layer = 1
+
+[sub_resource type="TileSet" id="TileSet_6qlw0"]
+tile_size = Vector2i(60, 60)
+physics_layer_0/collision_layer = 1
+
 [node name="Cenario_2" type="Node2D" unique_id=2096978835]
 script = ExtResource("1_posyo")
-
-[node name="Player" parent="." unique_id=2115506010 instance=ExtResource("4_l8h6f")]
-position = Vector2(655, 621)
 
 [node name="Black_Screen_Up" type="Sprite2D" parent="." unique_id=130046481]
 position = Vector2(600, -450)
@@ -31,5 +40,17 @@ shape = SubResource("RectangleShape2D_l8h6f")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=137992105]
 position = Vector2(600, 1350)
+
+[node name="ChaoCentral" type="TileMapLayer" parent="." unique_id=1892779125]
+tile_set = SubResource("TileSet_l8h6f")
+
+[node name="ChaoEsquerda" type="TileMapLayer" parent="." unique_id=994474000]
+tile_set = SubResource("TileSet_lqb22")
+
+[node name="ChaoDireita" type="TileMapLayer" parent="." unique_id=450191483]
+tile_set = SubResource("TileSet_6qlw0")
+
+[node name="Player" parent="." unique_id=2115506010 instance=ExtResource("4_l8h6f")]
+position = Vector2(655, 621)
 
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]

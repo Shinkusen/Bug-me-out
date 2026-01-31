@@ -29,8 +29,8 @@ var current_web_state = WebState.IDLE
 
 const MAX_WEB_LENGTH = 300.0
 const MIN_WEB_LENGTH = 80.0 # Se passar disso, quebra
-const JOINT_STIFFNESS = 50.0
-const JOINT_DAMPING = 8.0
+const JOINT_STIFFNESS = 64.0
+const JOINT_DAMPING = 16.0
 const WINCH_SPEED = 400.0 # Velocidade de aumentar/diminuir linha
 const WEB_SPEED = 400.0 
 
@@ -80,22 +80,12 @@ func _physics_process(delta):
 		WebState.IDLE:
 			physics_movement_logic(delta)
 			web_line.visible = false
-			
 		WebState.SHOOTING:
 			process_web_shooting(delta)
-			velocity = Vector2.ZERO
-			move_and_slide()
-			
 		WebState.RETRACTING:
 			process_web_retracting(delta)
-			velocity = Vector2.ZERO
-			move_and_slide()
-			
 		WebState.PULLING_BLOCK:
 			process_pulling_block(delta)
-			velocity = Vector2.ZERO
-			move_and_slide()
-			
 		WebState.CARRYING:
 			physics_movement_logic(delta) # Player se move
 			process_carrying_logic() # Verifica quebra de linha e visual
@@ -196,6 +186,7 @@ func process_web_shooting(delta):
 
 func process_web_retracting(delta):
 	current_web_length -= WEB_SPEED * delta
+	
 	if current_web_length <= 0:
 		current_web_length = 0
 		current_web_state = WebState.IDLE
@@ -207,7 +198,7 @@ func process_pulling_block(delta):
 	if hooked_object == null:
 		current_web_state = WebState.IDLE
 		return
-
+	
 	# Puxa visualmente até chegar na distancia de carregar
 	var direction_to_player = global_position - hooked_object.global_position
 	var distance = direction_to_player.length()

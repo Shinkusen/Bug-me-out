@@ -52,3 +52,5 @@ default_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
 disable_collision = false
 length = 120.0
 rest_length = 120.0
+stiffness = 64.0
+damping = 16.0

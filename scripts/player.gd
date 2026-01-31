@@ -42,6 +42,8 @@ var hooked_object: RigidBody2D = null
 var wind_direction: Vector2 = Vector2.ZERO
 var wind_source_position: Vector2 = Vector2.ZERO
 
+var insect_level: int = 1
+
 func _init() -> void:
 	GameController.player = self
 
@@ -62,6 +64,10 @@ func _process(delta):
 		elif current_web_state == WebState.CARRYING:
 			drop_block()
 	
+	if Input.is_action_just_pressed("upar"):
+		evoluir_inseto()
+		update_animations()
+	
 	# CONTROLE DE AUMENTAR/DIMINUIR LINHA (Só funciona carregando)
 	if current_web_state == WebState.CARRYING:
 		if Input.is_action_pressed("aumentar_linha"):
@@ -81,6 +87,8 @@ func _physics_process(delta):
 		pass
 	if GameController.in_transition_fade: return
 	
+	check_grade_logic()
+	
 	match current_web_state:
 		WebState.IDLE:
 			physics_movement_logic(delta)
@@ -95,7 +103,6 @@ func _physics_process(delta):
 			physics_movement_logic(delta) # Player se move
 			process_carrying_logic() # Verifica quebra de linha e visual
 	
-	# --- NOVA CHAMADA DE ANIMAÇÃO ---
 	update_animations()
 	
 	push_rigid_bodies()
@@ -216,24 +223,52 @@ func physics_movement_logic(delta):
 # NOVA FUNÇÃO DE ANIMAÇÃO
 # ==========================================================
 func update_animations():
-	# As animações 'Idle', 'Walk' e 'String' são exclusivas da Grade (climbing)
+	# Montamos o prefixo baseado no nível atual. Ex: "Inseto_1_"
+	var prefix = "Inseto_" + str(insect_level) + "_"
+	
 	if climbing:
-		# Prioridade 1: Segurando bloco (String)
-		if current_web_state == WebState.CARRYING:
-			sprite.play("String")
-		
-		# Prioridade 2: Se movendo (Walk)
-		# Verificamos se a velocidade é maior que um valor pequeno para evitar flickers
-		elif velocity.length() > 10.0:
-			sprite.play("Walk")
-		
-		# Prioridade 3: Parado (Idle)
-		else:
-			sprite.play("Idle")
+		if current_web_state == WebState.CARRYING: # Prioridade 1: Segurando bloco (String)
+			sprite.play(prefix + "String")
+		elif velocity.length() > 10.0: # Prioridade 2: Se movendo (Walk)
+			sprite.play(prefix + "Walk")
+		else: # Prioridade 3: Parado (Idle)
+			sprite.play(prefix + "Idle")
 	else:
-		# Lógica futura para animações fora da grade (pulo, corrida, etc)
-		# Por enquanto não faz nada ou pode parar a animação
-		pass
+		# TEMPORARIO
+		if current_web_state == WebState.CARRYING:
+			sprite.play(prefix + "String")
+		elif velocity.length() > 10.0:
+			sprite.play(prefix + "Walk")
+		else:
+			sprite.play(prefix + "Idle")
+
+# ==========================================================
+# NOVA LÓGICA DA GRADE (TILEMAP)
+# ==========================================================
+func check_grade_logic():
+	# 1. Encontra o TileMap da Grade pelo grupo
+	var grade_map = get_tree().get_first_node_in_group("layer_grade")
+	
+	if grade_map:
+		# 2. Converte a posição global do Player para a coordenada do Mapa (Grid)
+		# Usamos global_position para pegar o centro/pé do player
+		var map_pos = grade_map.local_to_map(grade_map.to_local(global_position))
+		
+		# 3. Pega os dados do azulejo (Tile) nessa coordenada
+		var tile_data = grade_map.get_cell_tile_data(map_pos)
+		
+		# 4. Verifica se o azulejo existe E se tem a etiqueta 'can_climb' verdadeira
+		if tile_data and tile_data.get_custom_data("can_climb"):
+			GameController.can_climb = true
+		else:
+			# Se NÃO estiver no azulejo, desativa (igual ao on_body_exited antigo)
+			if not GameController.in_transition_fade:
+				GameController.can_climb = false
+				
+				# Se estava escalando e saiu da grade, para de escalar
+				if climbing:
+					climbing = false
+					sprite.rotation = 0
 
 # ==========================================================
 # FUNÇÕES DA TEIA
@@ -328,3 +363,8 @@ func push_rigid_bodies():
 		if collider is RigidBody2D:
 			var push_direction = -collision.get_normal()
 			collider.apply_central_impulse(push_direction * 100.0)
+
+func evoluir_inseto():
+	insect_level += 1
+	if insect_level > 4:
+		insect_level = 1

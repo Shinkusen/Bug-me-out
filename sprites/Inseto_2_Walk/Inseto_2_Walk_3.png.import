@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1suqwsskth4e"
-path="res://.godot/imported/Background.png-89490077f3b9c58cd6bced21d0c5d53e.ctex"
+uid="uid://wf0txofmeg3o"
+path="res://.godot/imported/Inseto_2_Walk_3.png-f9a62fb285cf6068c5000d4e9d606dba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Background/Background.png"
-dest_files=["res://.godot/imported/Background.png-89490077f3b9c58cd6bced21d0c5d53e.ctex"]
+source_file="res://sprites/Inseto_2_Walk/Inseto_2_Walk_3.png"
+dest_files=["res://.godot/imported/Inseto_2_Walk_3.png-f9a62fb285cf6068c5000d4e9d606dba.ctex"]
 
 [params]
 

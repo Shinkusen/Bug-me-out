@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1suqwsskth4e"
-path="res://.godot/imported/Background.png-89490077f3b9c58cd6bced21d0c5d53e.ctex"
+uid="uid://yjh075npvd1p"
+path="res://.godot/imported/Inseto_4_Idle.png-d7393d6d0b46a3f4ae9bfc4c7309caf4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Background/Background.png"
-dest_files=["res://.godot/imported/Background.png-89490077f3b9c58cd6bced21d0c5d53e.ctex"]
+source_file="res://sprites/Inseto_4_Idle/Inseto_4_Idle.png"
+dest_files=["res://.godot/imported/Inseto_4_Idle.png-d7393d6d0b46a3f4ae9bfc4c7309caf4.ctex"]
 
 [params]
 

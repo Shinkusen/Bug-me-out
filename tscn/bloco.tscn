@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://csstd0twl0uiq"]
+
+[ext_resource type="Texture2D" uid="uid://bvgnjnywh80sk" path="res://sprites/sombra-quadrada.png" id="1_ifawr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifawr"]
+size = Vector2(64, 64)
+
+[node name="Bloco" type="RigidBody2D" unique_id=130143305]
+lock_rotation = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=234945262]
+texture = ExtResource("1_ifawr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1748454161]
+shape = SubResource("RectangleShape2D_ifawr")

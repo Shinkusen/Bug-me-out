@@ -1,9 +1,12 @@
 extends Node
 
+var player: CharacterBody2D
+
 var camera_atual_cenario: Camera2D
 var _global_fade_rect: ColorRect
 var in_transition_fade: bool = false
 var proxima_cena_path: String = ""
+var can_climb: bool = false
 
 func _ready() -> void:
 	_criar_tela_preta_global()

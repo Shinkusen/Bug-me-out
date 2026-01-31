@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bya41xu5mbooo" path="res://sprites/rede.png" id="3_rnlh3"]
 [ext_resource type="Texture2D" uid="uid://ct3y651ehxbg5" path="res://sprites/Black.png" id="4_a4twe"]
 [ext_resource type="Script" uid="uid://dqe31iawldfam" path="res://scripts/transicao_up.gd" id="5_lhw36"]
+[ext_resource type="Script" uid="uid://bg18koecqqjm0" path="res://scripts/grade.gd" id="5_nkgjo"]
 [ext_resource type="Script" uid="uid://c4se11iu7jggi" path="res://scripts/edible_object.gd" id="7_ag815"]
 [ext_resource type="Texture2D" uid="uid://dgqeo3m2op52p" path="res://icon.svg" id="7_vybtd"]
+[ext_resource type="PackedScene" uid="uid://csstd0twl0uiq" path="res://tscn/bloco.tscn" id="10_pxtd2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_640eb"]
 size = Vector2(126.90001, 40)
@@ -41,14 +43,59 @@ texture = ExtResource("2_640eb")
 position = Vector2(-0.44999695, 3)
 shape = SubResource("RectangleShape2D_640eb")
 
-[node name="Grade" type="Sprite2D" parent="." unique_id=1625187329]
+[node name="Grade_1" type="Sprite2D" parent="." unique_id=1625187329]
 position = Vector2(1012, 577)
 scale = Vector2(2, 2)
 texture = ExtResource("3_rnlh3")
 
-[node name="Area2D" type="Area2D" parent="Grade" unique_id=1219768017]
+[node name="Area" type="Area2D" parent="Grade_1" unique_id=1219768017]
+script = ExtResource("5_nkgjo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Grade/Area2D" unique_id=1123390131]
+[node name="Collision" type="CollisionShape2D" parent="Grade_1/Area" unique_id=1123390131]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_rnlh3")
+
+[node name="Grade_2" type="Sprite2D" parent="." unique_id=1861302714]
+position = Vector2(795, 398)
+texture = ExtResource("3_rnlh3")
+
+[node name="Area" type="Area2D" parent="Grade_2" unique_id=2087887517]
+script = ExtResource("5_nkgjo")
+
+[node name="Collision" type="CollisionShape2D" parent="Grade_2/Area" unique_id=1482799900]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_rnlh3")
+
+[node name="Grade_3" type="Sprite2D" parent="." unique_id=1914731137]
+position = Vector2(632, 286)
+texture = ExtResource("3_rnlh3")
+
+[node name="Area" type="Area2D" parent="Grade_3" unique_id=2061583359]
+script = ExtResource("5_nkgjo")
+
+[node name="Collision" type="CollisionShape2D" parent="Grade_3/Area" unique_id=633712980]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_rnlh3")
+
+[node name="Grade_4" type="Sprite2D" parent="." unique_id=2099054804]
+position = Vector2(456, 178)
+texture = ExtResource("3_rnlh3")
+
+[node name="Area" type="Area2D" parent="Grade_4" unique_id=950071121]
+script = ExtResource("5_nkgjo")
+
+[node name="Collision" type="CollisionShape2D" parent="Grade_4/Area" unique_id=1234141135]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_rnlh3")
+
+[node name="Grade_5" type="Sprite2D" parent="." unique_id=1554880999]
+position = Vector2(282, 68)
+texture = ExtResource("3_rnlh3")
+
+[node name="Area" type="Area2D" parent="Grade_5" unique_id=1662915015]
+script = ExtResource("5_nkgjo")
+
+[node name="Collision" type="CollisionShape2D" parent="Grade_5/Area" unique_id=1810316606]
 position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_rnlh3")
 
@@ -85,4 +132,17 @@ texture = ExtResource("7_vybtd")
 position = Vector2(692, 663.5)
 shape = SubResource("RectangleShape2D_vybtd")
 
+[node name="Bloco" parent="." unique_id=130143305 instance=ExtResource("10_pxtd2")]
+position = Vector2(347, 635)
+
+[connection signal="body_entered" from="Grade_1/Area" to="Grade_1/Area" method="_on_body_entered"]
+[connection signal="body_exited" from="Grade_1/Area" to="Grade_1/Area" method="_on_body_exited"]
+[connection signal="body_entered" from="Grade_2/Area" to="Grade_2/Area" method="_on_body_entered"]
+[connection signal="body_exited" from="Grade_2/Area" to="Grade_2/Area" method="_on_body_exited"]
+[connection signal="body_entered" from="Grade_3/Area" to="Grade_3/Area" method="_on_body_entered"]
+[connection signal="body_exited" from="Grade_3/Area" to="Grade_3/Area" method="_on_body_exited"]
+[connection signal="body_entered" from="Grade_4/Area" to="Grade_4/Area" method="_on_body_entered"]
+[connection signal="body_exited" from="Grade_4/Area" to="Grade_4/Area" method="_on_body_exited"]
+[connection signal="body_entered" from="Grade_5/Area" to="Grade_5/Area" method="_on_body_entered"]
+[connection signal="body_exited" from="Grade_5/Area" to="Grade_5/Area" method="_on_body_exited"]
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]

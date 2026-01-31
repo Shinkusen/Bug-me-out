@@ -17,17 +17,23 @@ var facing = 1
 
 var edibles = 0
 
+func _init() -> void:
+	GameController.player = self
+
 func add_edible():
 	edibles += 1
 	print("Edibles eaten:", edibles)
 
 func _process(_delta):
-	if Input.is_action_just_pressed("climb"):
+	if GameController.can_climb and Input.is_action_just_pressed("climb"):
 		climbing = !climbing
 		if not climbing:
 			sprite.rotation = 0
 
 func _physics_process(delta):
+	if GameController.in_transition_fade:
+		return
+	
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 
 	if input_direction.x > 0:
@@ -98,3 +104,15 @@ func _physics_process(delta):
 		return
 	
 	move_and_slide()
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		
+		if collider is RigidBody2D:
+			# Calcula a direção do empurrão (inverso da normal da colisão)
+			var push_direction = -collision.get_normal()
+			
+			# Aplica uma força de empurrão (Ajuste o 100.0 conforme necessário)
+			# Usamos apply_central_impulse para um "tranco" físico
+			collider.apply_central_impulse(push_direction * 100.0)

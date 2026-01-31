@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://c4se11iu7jggi" path="res://scripts/edible_object.gd" id="7_ag815"]
 [ext_resource type="Texture2D" uid="uid://dgqeo3m2op52p" path="res://icon.svg" id="7_vybtd"]
 [ext_resource type="PackedScene" uid="uid://csstd0twl0uiq" path="res://tscn/bloco.tscn" id="10_pxtd2"]
+[ext_resource type="PackedScene" uid="uid://bu3lavvyof164" path="res://tscn/ventilador.tscn" id="11_2xfxx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_640eb"]
 size = Vector2(126.90001, 40)
@@ -30,7 +31,7 @@ size = Vector2(214, 111)
 script = ExtResource("1_5yugu")
 
 [node name="Player" parent="." unique_id=2115506010 groups=["player"] instance=ExtResource("1_uppvb")]
-position = Vector2(687, 250)
+position = Vector2(953, 649)
 
 [node name="Tronco" type="Sprite2D" parent="." unique_id=2117998303]
 position = Vector2(794, 724)
@@ -114,6 +115,7 @@ shape = SubResource("RectangleShape2D_a4twe")
 position = Vector2(600, 450)
 
 [node name="EdibleObject" type="StaticBody2D" parent="." unique_id=1011176961 groups=["edible"]]
+position = Vector2(-420, -30)
 script = ExtResource("7_ag815")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EdibleObject" unique_id=641497080]
@@ -132,11 +134,18 @@ texture = ExtResource("7_vybtd")
 position = Vector2(692, 663.5)
 shape = SubResource("RectangleShape2D_vybtd")
 
-[node name="Bloco" parent="." unique_id=130143305 instance=ExtResource("10_pxtd2")]
-position = Vector2(789, 657)
+[node name="Bloco_1" parent="." unique_id=130143305 instance=ExtResource("10_pxtd2")]
+position = Vector2(560, 638)
 
-[node name="Bloco2" parent="." unique_id=503634058 instance=ExtResource("10_pxtd2")]
-position = Vector2(898, 654)
+[node name="Bloco_2" parent="." unique_id=503634058 instance=ExtResource("10_pxtd2")]
+position = Vector2(1197, 656)
+
+[node name="Ventilador_1" parent="." unique_id=638374821 instance=ExtResource("11_2xfxx")]
+position = Vector2(432, 653)
+
+[node name="Ventilador_2" parent="." unique_id=1894964831 instance=ExtResource("11_2xfxx")]
+position = Vector2(881, 678)
+rotation = -1.5707964
 
 [connection signal="body_entered" from="Grade_1/Area" to="Grade_1/Area" method="_on_body_entered"]
 [connection signal="body_exited" from="Grade_1/Area" to="Grade_1/Area" method="_on_body_exited"]

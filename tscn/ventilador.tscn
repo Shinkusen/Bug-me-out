@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bu3lavvyof164"]
+
+[ext_resource type="Script" uid="uid://mo47tiumw1cm" path="res://scripts/ventilador.gd" id="1_im8bh"]
+[ext_resource type="Texture2D" uid="uid://bacygkewam30i" path="res://sprites/ventilador.png" id="1_l3vub"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3vub"]
+size = Vector2(300, 64)
+
+[node name="Ventilador" type="Node2D" unique_id=638374821]
+script = ExtResource("1_im8bh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=982458154]
+texture = ExtResource("1_l3vub")
+
+[node name="AreaVento" type="Area2D" parent="." unique_id=1745555943]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaVento" unique_id=2026183163]
+position = Vector2(182, 0)
+shape = SubResource("RectangleShape2D_l3vub")
+
+[connection signal="body_entered" from="AreaVento" to="." method="_on_area_vento_body_entered"]
+[connection signal="body_exited" from="AreaVento" to="." method="_on_area_vento_body_exited"]

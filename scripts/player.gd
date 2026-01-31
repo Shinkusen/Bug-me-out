@@ -38,6 +38,9 @@ var current_web_length = 0.0
 var target_rope_length = 120.0 # Controle do tamanho da corda
 var hooked_object: RigidBody2D = null
 
+var wind_direction: Vector2 = Vector2.ZERO
+var wind_source_position: Vector2 = Vector2.ZERO
+
 func _init() -> void:
 	GameController.player = self
 
@@ -100,7 +103,7 @@ func physics_movement_logic(delta):
 	if input_direction.x > 0: facing = 1
 	elif input_direction.x < 0: facing = -1
 
-	# ---- CLIMBING (ESCALADA) ----
+	# ---- CLIMBING ----
 	if climbing:
 		if input_direction != Vector2.ZERO:
 			velocity = input_direction * speed
@@ -108,19 +111,69 @@ func physics_movement_logic(delta):
 		else:
 			velocity = velocity.move_toward(Vector2.ZERO, speed)
 		
-		# CORREÇÃO AQUI: Chamamos o movimento antes de sair
+		# Se quiser vento na grade, insira lógica simples aqui
 		move_and_slide()
-		return # Agora podemos sair, pois já nos movemos
+		return 
 
-	# ---- MOVIMENTO NORMAL (Gravidade + Andar) ----
+	# ---- CÁLCULO DO VENTO REALISTA (ATENUAÇÃO) ----
+	var final_wind_velocity = Vector2.ZERO
+	
+	if wind_direction != Vector2.ZERO:
+		# 1. Calcular Distância
+		# Usamos distance_to para saber quão longe estamos do ventilador
+		var dist = global_position.distance_to(wind_source_position)
+		
+		# Clamp para segurança (evita divisão por zero ou força infinita se encostar no ventilador)
+		# Mínimo 50px, Máximo 300px (alcance do Area2D)
+		dist = clamp(dist, 50.0, 300.0)
+		
+		# 2. Calcular Força de Levitação (Eixo Y)
+		# Matemática: Queremos que em 150px a força seja igual a Gravidade (~16.3 per frame)
+		# Constante K = Força_Desejada * Distancia = 16.3 * 150 = 2445
+		var levitation_force = 2445.0 / dist
+		
+		# Aplicamos essa força na direção Y
+		# Se estiver segurando bloco, reduzimos a força pela metade (fica mais pesado)
+		if current_web_state == WebState.CARRYING:
+			levitation_force *= 0.5
+			
+		final_wind_velocity.y = wind_direction.y * levitation_force
+
+		# 3. Calcular Empurrão Horizontal (Eixo X)
+		# Também usamos a distância: mais perto = empurrão mais forte
+		var push_force_x = 0.0
+		if wind_direction.x != 0:
+			# Fórmula empírica: Perto (50px) = 400 speed, Longe (300px) = 66 speed
+			push_force_x = 20000.0 / dist 
+			
+			# Regra de Jogabilidade: Se estiver no chão, o atrito segura um pouco
+			if is_on_floor() or current_web_state == WebState.CARRYING:
+				push_force_x = clamp(push_force_x, 0, 100.0) # Teto máximo de 100 no chão
+			else:
+				push_force_x = clamp(push_force_x, 0, 400.0) # Teto máximo de 400 no ar
+		
+		final_wind_velocity.x = wind_direction.x * push_force_x
+
+	# ---- MOVIMENTO FÍSICO ----
+	
+	# 1. Gravidade
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
+	# 2. Input Horizontal + Vento Horizontal
+	var target_velocity_x = 0.0
 	if input_direction.x != 0:
-		velocity.x = input_direction.x * speed
+		target_velocity_x = input_direction.x * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-			
+		# Desacelera a inércia do player, mas mantém o vento empurrando
+		target_velocity_x = move_toward(velocity.x - final_wind_velocity.x, 0, speed)
+	
+	velocity.x = target_velocity_x + final_wind_velocity.x
+	
+	# 3. Vertical + Vento Vertical
+	# O vento vertical age como aceleração (soma-se frame a frame)
+	velocity.y += final_wind_velocity.y
+
 	# ---- Charge & Dash ----
 	if Input.is_action_just_pressed("fly") and not dashing and not climbing:
 		charging = true
@@ -133,13 +186,12 @@ func physics_movement_logic(delta):
 
 	if charging and not dashing:
 		charge_timer += delta
-		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.x = move_toward(velocity.x, 0, speed) + final_wind_velocity.x
 		if not climbing and not is_on_floor(): velocity.y += gravity * delta
 		if charge_timer >= CHARGE_TIME:
 			charging = false
 			dashing = true
-		
-		move_and_slide() # Importante ter aqui também para a gravidade funcionar no charge
+		move_and_slide()
 		return 
 
 	if Input.is_action_just_released("fly") and dashing: dashing = false
@@ -156,7 +208,6 @@ func physics_movement_logic(delta):
 				break
 		return 
 	
-	# Movimento padrão (Andar/Pular)
 	move_and_slide()
 
 # ==========================================================

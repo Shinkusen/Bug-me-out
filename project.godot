@@ -24,6 +24,15 @@ GameController="*uid://d2jwwjhmye0nt"
 window/size/viewport_width=1200
 window/size/viewport_height=900
 
+[dotnet]
+
+project/assembly_name="GGJ-2026-Bug-me-out"
+
+[global_group]
+
+player=""
+edible=""
+
 [input]
 
 left={

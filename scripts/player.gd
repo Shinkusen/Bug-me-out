@@ -15,6 +15,12 @@ var dashing = false
 var dash_dir = 1 # 1 right -1 left
 var facing = 1 
 
+var edibles = 0
+
+func add_edible():
+	edibles += 1
+	print("Edibles eaten:", edibles)
+
 func _process(_delta):
 	if Input.is_action_just_pressed("climb"):
 		climbing = !climbing

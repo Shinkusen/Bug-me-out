@@ -54,6 +54,10 @@ func _init() -> void:
 
 func add_eatable():
 	edibles += 1
+	
+func die():
+	dead = false  # evita rodar várias vezes
+	CheckpointManager.reload_scene()
 
 func _process(delta):
 	# --- TRAVA DE CUTSCENE ---
@@ -93,7 +97,8 @@ func _process(delta):
 		web_joint.length = target_rope_length
 
 func _physics_process(delta):
-	if dead: pass
+	if dead:
+		die()
 	if GameController.in_transition_fade: return
 	
 	# --- TRAVA DE CUTSCENE ---

@@ -16,6 +16,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		comer()
 
 func comer():
-	print("comeu")
 	player_ref.add_edible()
 	queue_free()

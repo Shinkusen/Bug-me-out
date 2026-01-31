@@ -2,9 +2,30 @@
 
 [ext_resource type="Script" uid="uid://mo47tiumw1cm" path="res://scripts/ventilador.gd" id="1_im8bh"]
 [ext_resource type="Texture2D" uid="uid://bacygkewam30i" path="res://sprites/ventilador.png" id="1_l3vub"]
+[ext_resource type="Texture2D" uid="uid://ciosp87y62ofp" path="res://resources/risco_vento.tres" id="3_au78i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3vub"]
 size = Vector2(300, 64)
+
+[sub_resource type="Gradient" id="Gradient_bbypo"]
+offsets = PackedFloat32Array(0, 0.50842696, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_00so2"]
+gradient = SubResource("Gradient_bbypo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_im8bh"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(-100, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 24, 1)
+spread = 5.0
+initial_velocity_min = 300.0
+initial_velocity_max = 350.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.29999998
+scale_max = 0.9
+color_ramp = SubResource("GradientTexture1D_00so2")
 
 [node name="Ventilador" type="Node2D" unique_id=638374821]
 script = ExtResource("1_im8bh")
@@ -17,6 +38,12 @@ texture = ExtResource("1_l3vub")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaVento" unique_id=2026183163]
 position = Vector2(182, 0)
 shape = SubResource("RectangleShape2D_l3vub")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1830354059]
+position = Vector2(132, 0)
+amount = 14
+texture = ExtResource("3_au78i")
+process_material = SubResource("ParticleProcessMaterial_im8bh")
 
 [connection signal="body_entered" from="AreaVento" to="." method="_on_area_vento_body_entered"]
 [connection signal="body_exited" from="AreaVento" to="." method="_on_area_vento_body_exited"]

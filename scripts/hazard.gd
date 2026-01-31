@@ -19,7 +19,7 @@ func _ready():
 	gravity_scale = 1
 	is_falling = true # Agora ele pode ser destruído
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	# Se quiser que suma ao bater em QUALQUER coisa:
 	if is_falling: # Essa checagem evita que ele suma se encostar no teto antes de cair
 		queue_free()

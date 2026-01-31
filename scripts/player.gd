@@ -117,7 +117,7 @@ func physics_movement_logic(delta):
 		# Se quiser vento na grade, insira lógica simples aqui
 		move_and_slide()
 		return 
-
+	
 	# ---- CÁLCULO DO VENTO REALISTA (ATENUAÇÃO) ----
 	var final_wind_velocity = Vector2.ZERO
 	

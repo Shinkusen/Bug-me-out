@@ -8,6 +8,7 @@ extends CharacterBody2D
 
 # --- VARIÁVEIS ORIGINAIS ---
 var climbing = false
+var dead = false
 var speed = 200.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -77,6 +78,8 @@ func _process(delta):
 		web_joint.length = target_rope_length
 
 func _physics_process(delta):
+	if dead: #implementar a logica de morte
+		pass
 	if GameController.in_transition_fade: return
 	
 	match current_web_state:

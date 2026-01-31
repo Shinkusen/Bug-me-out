@@ -1,16 +1,62 @@
 [gd_scene format=3 uid="uid://cljk0xq12son8"]
 
 [ext_resource type="Script" uid="uid://byqj3aoc0w4il" path="res://scripts/player.gd" id="1_7j80i"]
-[ext_resource type="Texture2D" uid="uid://cq4hi8tb4b6qs" path="res://sprites/Inseto_1.png" id="2_7omxl"]
+[ext_resource type="Texture2D" uid="uid://mtosgkxfka60" path="res://sprites/Inseto_3_Walk/Inseto_3_Walk_1.png" id="2_6sl1v"]
+[ext_resource type="Texture2D" uid="uid://cf5ruml8ieba" path="res://sprites/Inseto_3_Idle/Inseto_3_Idle.png" id="2_hsluc"]
+[ext_resource type="Texture2D" uid="uid://drlpmknqvlev1" path="res://sprites/Inseto_3_Walk/Inseto_3_Walk_2.png" id="3_hsluc"]
+[ext_resource type="Texture2D" uid="uid://cd56pkf3ofb1x" path="res://sprites/Inseto_3_String/Inseto_3_String_1.png" id="3_nhqjh"]
+[ext_resource type="Texture2D" uid="uid://dg4kgv2mtp41v" path="res://sprites/Inseto_3_Walk/Inseto_3_Walk_3.png" id="4_1q7bi"]
+[ext_resource type="Texture2D" uid="uid://bici0i7k0dvuo" path="res://sprites/Inseto_3_String/Inseto_3_String_2.png" id="4_udxxx"]
+[ext_resource type="Texture2D" uid="uid://cu6caye2jm1rn" path="res://sprites/Inseto_3_Walk/Inseto_3_Walk_4.png" id="5_ne3il"]
+[ext_resource type="Texture2D" uid="uid://bynqhqfwuupcs" path="res://sprites/Inseto_3_String/Inseto_3_String_3.png" id="5_t3r7j"]
+[ext_resource type="Texture2D" uid="uid://c5gtk766tyfpn" path="res://sprites/Inseto_3_String/Inseto_3_String_4.png" id="6_h6470"]
+[ext_resource type="Texture2D" uid="uid://5va2h8nuuv2y" path="res://sprites/Inseto_3_String/Inseto_3_String_5.png" id="7_88mv1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6sl1v"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_7omxl")
+"texture": ExtResource("2_hsluc")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nhqjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_udxxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t3r7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h6470")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_88mv1")
+}],
+"loop": true,
+"name": &"String",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6sl1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hsluc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1q7bi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ne3il")
+}],
+"loop": true,
+"name": &"Walk",
 "speed": 5.0
 }]
 
@@ -26,6 +72,8 @@ script = ExtResource("1_7j80i")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=264484940]
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_6sl1v")
+animation = &"Idle"
+autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156716506]
 position = Vector2(0, 0.5)

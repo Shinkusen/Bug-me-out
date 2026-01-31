@@ -2,47 +2,71 @@
 
 [ext_resource type="Script" uid="uid://dnk0afltvpddg" path="res://scripts/cenario_1.gd" id="1_5yugu"]
 [ext_resource type="PackedScene" uid="uid://cljk0xq12son8" path="res://tscn/player.tscn" id="1_uppvb"]
-[ext_resource type="Texture2D" uid="uid://bl0r23tt3rkxq" path="res://sprites/BugMeOut_Tiles_UpCenter.png" id="3_evkta"]
-[ext_resource type="Texture2D" uid="uid://co1mvqatpn0dh" path="res://sprites/BugMeOut_Tiles_UpLeft.png" id="3_meivc"]
+[ext_resource type="Texture2D" uid="uid://bl0r23tt3rkxq" path="res://sprites/TileSet/ChaoCentral.png" id="3_evkta"]
 [ext_resource type="Texture2D" uid="uid://ct3y651ehxbg5" path="res://sprites/Black.png" id="4_a4twe"]
-[ext_resource type="Texture2D" uid="uid://citja4o1x26h5" path="res://sprites/BugMeOut_Tiles_UpRight.png" id="4_meivc"]
+[ext_resource type="Texture2D" uid="uid://bbfjy8im7gknk" path="res://sprites/TileSet/ChaoDireita.png" id="4_meivc"]
+[ext_resource type="Texture2D" uid="uid://bblqhtfx8g44s" path="res://sprites/TileSet/ChaoBaixo.png" id="5_0gjsy"]
 [ext_resource type="Script" uid="uid://dqe31iawldfam" path="res://scripts/transicao_up.gd" id="5_lhw36"]
+[ext_resource type="Texture2D" uid="uid://3yrefv8fg0q5" path="res://sprites/Grade/Grade.png" id="7_blvl7"]
 [ext_resource type="PackedScene" uid="uid://d3awba1a681ue" path="res://tscn/grade.tscn" id="10_2xfxx"]
 [ext_resource type="PackedScene" uid="uid://csstd0twl0uiq" path="res://tscn/bloco.tscn" id="10_pxtd2"]
 [ext_resource type="PackedScene" uid="uid://bu3lavvyof164" path="res://tscn/ventilador.tscn" id="11_2xfxx"]
 [ext_resource type="PackedScene" uid="uid://dxir6k7kamspi" path="res://tscn/eatable.tscn" id="11_evkta"]
 [ext_resource type="Script" uid="uid://b474ki2chey17" path="res://scripts/deathzone.gd" id="11_meivc"]
 [ext_resource type="PackedScene" uid="uid://b5lmx3d88ae8s" path="res://tscn/hazard.tscn" id="12_evkta"]
+[ext_resource type="Texture2D" uid="uid://cl0iq55i21jew" path="res://sprites/Background/Background.png" id="15_blvl7"]
+[ext_resource type="Texture2D" uid="uid://dhnaupkt1vshf" path="res://sprites/TileSet/ChaoEsquerda.png" id="15_tjqbj"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0gjsy"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2xfxx"]
 texture = ExtResource("3_evkta")
 texture_region_size = Vector2i(60, 60)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, -30, 30, -30, 30, 30, -30, 30)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tjqbj"]
-texture = ExtResource("3_meivc")
+[sub_resource type="TileSet" id="TileSet_pxtd2"]
+tile_size = Vector2i(60, 60)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_2xfxx")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qg7ph"]
+texture = ExtResource("15_tjqbj")
 texture_region_size = Vector2i(60, 60)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, -30, 30, -30, 30, 30, -30, 30)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_blvl7"]
-texture = ExtResource("4_meivc")
-texture_region_size = Vector2i(60, 60)
+[sub_resource type="TileSet" id="TileSet_i5n5q"]
+tile_size = Vector2i(60, 60)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_qg7ph")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a2yow"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5n5q"]
 texture = ExtResource("4_meivc")
 texture_region_size = Vector2i(60, 60)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, -30, 30, -30, 30, 30, -30, 30)
 
 [sub_resource type="TileSet" id="TileSet_tjqbj"]
 tile_size = Vector2i(60, 60)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_0gjsy")
-sources/1 = SubResource("TileSetAtlasSource_tjqbj")
-sources/2 = SubResource("TileSetAtlasSource_blvl7")
-sources/3 = SubResource("TileSetAtlasSource_a2yow")
+sources/0 = SubResource("TileSetAtlasSource_i5n5q")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tjqbj"]
+texture = ExtResource("5_0gjsy")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_meivc"]
+tile_size = Vector2i(60, 60)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_tjqbj")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a2yow"]
+texture = ExtResource("7_blvl7")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qg7ph"]
+tile_size = Vector2i(60, 60)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_a2yow")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4twe"]
 size = Vector2(1200, 4)
@@ -53,12 +77,30 @@ size = Vector2(143, 48)
 [node name="Cenario_1" type="Node2D" unique_id=2106832681]
 script = ExtResource("1_5yugu")
 
-[node name="Tiles" type="TileMapLayer" parent="." unique_id=776028152]
-tile_map_data = PackedByteArray("AAAAAA4AAQAAAAAAAAABAA4AAAAAAAAAAAACAA4AAAAAAAAAAAADAA4AAAAAAAAAAAAEAA4AAAAAAAAAAAAFAA4AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAA4AAAAAAAAAAAALAA4AAAAAAAAAAAAMAA4AAAAAAAAAAAANAA4AAAAAAAAAAAAOAA4AAAAAAAAAAAAPAA4AAAAAAAAAAAAQAA4AAAAAAAAAAAARAA4AAAAAAAAAAAASAA4AAAAAAAAAAAATAA4AAwAAAAAAAAA=")
+[node name="Background" type="TextureRect" parent="." unique_id=521637942]
+offset_right = 1200.0
+offset_bottom = 900.0
+texture = ExtResource("15_blvl7")
+
+[node name="ChaoCentral" type="TileMapLayer" parent="." unique_id=98307650]
+tile_map_data = PackedByteArray("AAABAA0AAAAAAAAAAAACAA0AAAAAAAAAAAADAA0AAAAAAAAAAAAEAA0AAAAAAAAAAAAFAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAHAA0AAAAAAAAAAAAIAA0AAAAAAAAAAAAJAA0AAAAAAAAAAAAKAA0AAAAAAAAAAAALAA0AAAAAAAAAAAAMAA0AAAAAAAAAAAANAA0AAAAAAAAAAAAOAA0AAAAAAAAAAAAPAA0AAAAAAAAAAAAQAA0AAAAAAAAAAAARAA0AAAAAAAAAAAASAA0AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_pxtd2")
+
+[node name="ChaoEsquerda" type="TileMapLayer" parent="." unique_id=850737117]
+tile_map_data = PackedByteArray("AAAAAA0AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_i5n5q")
+
+[node name="ChaoDireita" type="TileMapLayer" parent="." unique_id=363165283]
+tile_map_data = PackedByteArray("AAATAA0AAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_tjqbj")
 
-[node name="Player" parent="." unique_id=2115506010 groups=["player"] instance=ExtResource("1_uppvb")]
-position = Vector2(953, 649)
+[node name="ChaoBaixo" type="TileMapLayer" parent="." unique_id=1794183060]
+tile_map_data = PackedByteArray("AAAAAA4AAAAAAAAAAAABAA4AAAAAAAAAAAACAA4AAAAAAAAAAAADAA4AAAAAAAAAAAAEAA4AAAAAAAAAAAAFAA4AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAA4AAAAAAAAAAAALAA4AAAAAAAAAAAAMAA4AAAAAAAAAAAANAA4AAAAAAAAAAAAOAA4AAAAAAAAAAAAPAA4AAAAAAAAAAAAQAA4AAAAAAAAAAAARAA4AAAAAAAAAAAASAA4AAAAAAAAAAAATAA4AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_meivc")
+
+[node name="Grade" type="TileMapLayer" parent="." unique_id=641706925]
+tile_map_data = PackedByteArray("AAAQAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAQAAkAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_qg7ph")
 
 [node name="Black_Screen_Up" type="Sprite2D" parent="." unique_id=1465490665]
 position = Vector2(600, -450)
@@ -75,37 +117,40 @@ shape = SubResource("RectangleShape2D_a4twe")
 position = Vector2(600, 450)
 
 [node name="Bloco_1" parent="." unique_id=130143305 instance=ExtResource("10_pxtd2")]
-position = Vector2(1101, 796)
+position = Vector2(966, 745)
 
 [node name="Ventilador_1" parent="." unique_id=638374821 instance=ExtResource("11_2xfxx")]
-position = Vector2(273, 792)
+position = Vector2(273, 739)
 
 [node name="Ventilador_2" parent="." unique_id=1894964831 instance=ExtResource("11_2xfxx")]
-position = Vector2(1064, 856)
+position = Vector2(1062, 814)
 rotation = -1.5707964
 
 [node name="Hazard" parent="." unique_id=1893595741 instance=ExtResource("12_evkta")]
-position = Vector2(702, 545)
+position = Vector2(647, 522)
 fall_delay = 3.0
 
 [node name="Eatable_1" parent="." unique_id=1679141243 instance=ExtResource("11_evkta")]
-position = Vector2(790, 791)
+position = Vector2(718, 741)
 
 [node name="Eatable_2" parent="." unique_id=1937773646 instance=ExtResource("11_evkta")]
-position = Vector2(870, 790)
+position = Vector2(785, 742)
 
 [node name="Eatable_3" parent="." unique_id=1531431173 instance=ExtResource("11_evkta")]
-position = Vector2(692, 789)
+position = Vector2(851, 741)
 
 [node name="Grade_1" parent="." unique_id=366387974 instance=ExtResource("10_2xfxx")]
-position = Vector2(973, 572)
+position = Vector2(970, 583)
 
 [node name="DeathZone" type="Area2D" parent="." unique_id=439923945]
 script = ExtResource("11_meivc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=1863830315]
-position = Vector2(134, 814)
+position = Vector2(82, 751)
 shape = SubResource("RectangleShape2D_0gjsy")
+
+[node name="Player" parent="." unique_id=2115506010 groups=["player"] instance=ExtResource("1_uppvb")]
+position = Vector2(1140, 744)
 
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]
 [connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]

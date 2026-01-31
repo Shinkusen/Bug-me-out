@@ -45,19 +45,18 @@ var wind_source_position: Vector2 = Vector2.ZERO
 func _init() -> void:
 	GameController.player = self
 
-func add_edible():
+func add_eatable():
 	edibles += 1
-	print("Edibles eaten:", edibles)
 
 func _process(delta):
 	# Input Climbing
-	if GameController.can_climb and Input.is_action_just_pressed("climb"):
+	if (GameController.can_climb) and (Input.is_action_just_pressed("climb")):
 		climbing = !climbing
 		if not climbing: sprite.rotation = 0
 			
 	# Input da Teia (Atirar/Soltar)
 	if Input.is_action_just_pressed("string"):
-		if current_web_state == WebState.IDLE:
+		if (current_web_state == WebState.IDLE) and (climbing):
 			if not dashing and not charging: 
 				start_shooting_web()
 		elif current_web_state == WebState.CARRYING:
@@ -96,6 +95,9 @@ func _physics_process(delta):
 			physics_movement_logic(delta) # Player se move
 			process_carrying_logic() # Verifica quebra de linha e visual
 	
+	# --- NOVA CHAMADA DE ANIMAÇÃO ---
+	update_animations()
+	
 	push_rigid_bodies()
 
 # ==========================================================
@@ -105,54 +107,54 @@ func physics_movement_logic(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	if input_direction.x > 0: facing = 1
 	elif input_direction.x < 0: facing = -1
-
-	# ---- CLIMBING ----
+	
+	# ---- CLIMBING (NA GRADE) ----
 	if climbing:
-		if input_direction != Vector2.ZERO:
+		# --- REGRA ESPECIAL: CARREGANDO BLOCO (STRING) ---
+		if current_web_state == WebState.CARRYING:
+			# Força a rotação para BAIXO (Vector2.DOWN), independente da tecla apertada
+			# Se quiser que ele olhe para cima (W), troque Vector2.DOWN por Vector2.UP
+			sprite.rotation = Vector2.DOWN.angle() + PI / 2
+			
+			# Movimentação continua normal (pode andar para os lados olhando para baixo)
+			if input_direction != Vector2.ZERO:
+				velocity = input_direction * speed
+			else:
+				velocity = velocity.move_toward(Vector2.ZERO, speed)
+	
+		# --- REGRA NORMAL: ANDANDO LIVRE ---
+		elif input_direction != Vector2.ZERO:
 			velocity = input_direction * speed
+			# Gira para onde estiver andando
 			sprite.rotation = input_direction.angle() + PI / 2
 		else:
 			velocity = velocity.move_toward(Vector2.ZERO, speed)
 		
-		# Se quiser vento na grade, insira lógica simples aqui
 		move_and_slide()
 		return 
 	
-	# ---- CÁLCULO DO VENTO REALISTA (ATENUAÇÃO) ----
+	# ---- CÁLCULO DO VENTO REALISTA (Mantido igual) ----
 	var final_wind_velocity = Vector2.ZERO
 	
 	if wind_direction != Vector2.ZERO:
-		# 1. Calcular Distância
-		# Usamos distance_to para saber quão longe estamos do ventilador
 		var dist = global_position.distance_to(wind_source_position)
-		
-		# Clamp para segurança (evita divisão por zero ou força infinita se encostar no ventilador
 		dist = clamp(dist, 120.0, 260.0)
 		
-		# 2. Calcular Força de Levitação (Eixo Y)
-		# Matemática: Queremos que em 150px a força seja igual a Gravidade (~16.3 per frame)
-		# Constante K = Força_Desejada * Distancia = 16.3 * 150 = 2445
 		var levitation_force = 2445.0 / dist
 		
-		# Aplicamos essa força na direção Y
-		# Se estiver segurando bloco, reduzimos a força pela metade (fica mais pesado)
 		if current_web_state == WebState.CARRYING:
 			levitation_force *= 0.5
-			
+		
 		final_wind_velocity.y = wind_direction.y * levitation_force
-
-		# 3. Calcular Empurrão Horizontal (Eixo X)
-		# Também usamos a distância: mais perto = empurrão mais forte
+	
 		var push_force_x = 0.0
 		if wind_direction.x != 0:
-			# Fórmula empírica: Perto (50px) = 400 speed, Longe (300px) = 66 speed
 			push_force_x = 20000.0 / dist 
 			
-			# Regra de Jogabilidade: Se estiver no chão, o atrito segura um pouco
 			if is_on_floor() or current_web_state == WebState.CARRYING:
-				push_force_x = clamp(push_force_x, 0, 100.0) # Teto máximo de 100 no chão
+				push_force_x = clamp(push_force_x, 0, 100.0)
 			else:
-				push_force_x = clamp(push_force_x, 0, 400.0) # Teto máximo de 400 no ar
+				push_force_x = clamp(push_force_x, 0, 400.0)
 		
 		final_wind_velocity.x = wind_direction.x * push_force_x
 
@@ -167,13 +169,11 @@ func physics_movement_logic(delta):
 	if input_direction.x != 0:
 		target_velocity_x = input_direction.x * speed
 	else:
-		# Desacelera a inércia do player, mas mantém o vento empurrando
 		target_velocity_x = move_toward(velocity.x - final_wind_velocity.x, 0, speed)
 	
 	velocity.x = target_velocity_x + final_wind_velocity.x
 	
 	# 3. Vertical + Vento Vertical
-	# O vento vertical age como aceleração (soma-se frame a frame)
 	velocity.y += final_wind_velocity.y
 
 	# ---- Charge & Dash ----
@@ -211,6 +211,29 @@ func physics_movement_logic(delta):
 		return 
 	
 	move_and_slide()
+
+# ==========================================================
+# NOVA FUNÇÃO DE ANIMAÇÃO
+# ==========================================================
+func update_animations():
+	# As animações 'Idle', 'Walk' e 'String' são exclusivas da Grade (climbing)
+	if climbing:
+		# Prioridade 1: Segurando bloco (String)
+		if current_web_state == WebState.CARRYING:
+			sprite.play("String")
+		
+		# Prioridade 2: Se movendo (Walk)
+		# Verificamos se a velocidade é maior que um valor pequeno para evitar flickers
+		elif velocity.length() > 10.0:
+			sprite.play("Walk")
+		
+		# Prioridade 3: Parado (Idle)
+		else:
+			sprite.play("Idle")
+	else:
+		# Lógica futura para animações fora da grade (pulo, corrida, etc)
+		# Por enquanto não faz nada ou pode parar a animação
+		pass
 
 # ==========================================================
 # FUNÇÕES DA TEIA
@@ -252,28 +275,23 @@ func process_pulling_block(_delta):
 		current_web_state = WebState.IDLE
 		return
 	
-	# Puxa visualmente até chegar na distancia de carregar
 	var direction_to_player = global_position - hooked_object.global_position
 	var distance = direction_to_player.length()
 	
 	web_line.points[1] = to_local(hooked_object.global_position)
 	
-	# Usamos uma margem de segurança. Se chegou a 120 (ou menos), conecta.
 	if distance > 120.0:
 		hooked_object.linear_velocity = direction_to_player.normalized() * WEB_SPEED
 	else:
-		# Define o tamanho inicial da corda como o tamanho atual (ou 120)
 		target_rope_length = max(distance, 65.0) 
 		start_carrying_block()
 
 func start_carrying_block():
 	current_web_state = WebState.CARRYING
 	
-	# Configura a Mola
 	web_joint.node_a = self.get_path()
 	web_joint.node_b = hooked_object.get_path()
 	
-	# Aplica os novos valores de física para ficar mais firme
 	web_joint.stiffness = JOINT_STIFFNESS
 	web_joint.damping = JOINT_DAMPING
 	
@@ -285,13 +303,10 @@ func process_carrying_logic():
 		drop_block()
 		return
 	
-	# Atualiza linha visual
 	web_line.points[1] = to_local(hooked_object.global_position)
 	
-	# VERIFICAÇÃO DE QUEBRA AUTOMÁTICA
 	var distance = global_position.distance_to(hooked_object.global_position)
 	
-	# Se ficar muito perto (< 60), corta a teia para evitar glitch
 	if distance < MIN_WEB_LENGTH:
 		drop_block()
 
@@ -299,7 +314,6 @@ func drop_block():
 	current_web_state = WebState.IDLE
 	web_line.visible = false
 	
-	# Desconecta a mola
 	web_joint.node_a = NodePath("")
 	web_joint.node_b = NodePath("")
 	hooked_object = null

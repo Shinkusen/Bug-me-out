@@ -132,7 +132,7 @@ func _physics_process(delta):
 	push_rigid_bodies()
 
 # ==========================================================
-# LÓGICA DE MOVIMENTO
+# LÓGICA DE MOVIMENTO (COM FLIP HORIZONTAL)
 # ==========================================================
 func physics_movement_logic(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -142,11 +142,21 @@ func physics_movement_logic(delta):
 		if is_on_floor() and velocity.y >= 0:
 			is_launched = false 
 	
-	if input_direction.x > 0: facing = 1
-	elif input_direction.x < 0: facing = -1
+	# --- ATUALIZAÇÃO DA DIREÇÃO E OLHAR (FLIP) ---
+	if input_direction.x > 0: 
+		facing = 1
+		# Se não estiver escalando, olha para a direita
+		if not climbing: sprite.flip_h = false 
+	elif input_direction.x < 0: 
+		facing = -1
+		# Se não estiver escalando, vira para a esquerda
+		if not climbing: sprite.flip_h = true 
 	
 	# ---- CLIMBING (NA GRADE) ----
 	if climbing:
+		# Garante que na grade o sprite não fique espelhado (a rotação cuida disso)
+		sprite.flip_h = false 
+		
 		if current_web_state == WebState.CARRYING:
 			sprite.rotation = Vector2.DOWN.angle() + PI / 2
 			if input_direction != Vector2.ZERO:
@@ -162,7 +172,7 @@ func physics_movement_logic(delta):
 		move_and_slide()
 		return 
 	
-	# ---- CÁLCULO DO VENTO REALISTA ----
+	# ---- CÁLCULO DO VENTO REALISTA (Mantido) ----
 	var final_wind_velocity = Vector2.ZERO
 	if wind_direction != Vector2.ZERO:
 		var dist = global_position.distance_to(wind_source_position)
@@ -203,8 +213,8 @@ func physics_movement_logic(delta):
 	# 3. Vertical + Vento Vertical
 	velocity.y += final_wind_velocity.y
 
-	# ---- Charge & Dash (Nível 4+) ----
-	if insect_level >= 4: # Validação de Nível para Fly/Dash
+	# ---- Charge & Dash (Mantido) ----
+	if insect_level >= 4:
 		if Input.is_action_just_pressed("fly") and not dashing and not climbing:
 			charging = true
 			charge_timer = 0.0

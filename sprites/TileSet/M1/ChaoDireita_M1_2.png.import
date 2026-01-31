@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bya41xu5mbooo"
-path="res://.godot/imported/rede.png-5a39532ca07a572bd4bc74c8cd75c134.ctex"
+uid="uid://btaegbjkwxqpe"
+path="res://.godot/imported/ChaoDireita_M1_2.png-2fb1fbb598d9b436a5d7d3f1a6b7e6c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/rede.png"
-dest_files=["res://.godot/imported/rede.png-5a39532ca07a572bd4bc74c8cd75c134.ctex"]
+source_file="res://sprites/TileSet/M1/ChaoDireita_M1_2.png"
+dest_files=["res://.godot/imported/ChaoDireita_M1_2.png-2fb1fbb598d9b436a5d7d3f1a6b7e6c8.ctex"]
 
 [params]
 

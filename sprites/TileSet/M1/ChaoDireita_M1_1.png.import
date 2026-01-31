@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn3o1vc1pgprn"
-path="res://.godot/imported/ChaoEsquerda_M3.png-d59495b3a952cb1e36a1c9b79eb3f49c.ctex"
+uid="uid://coo6jc2fj365b"
+path="res://.godot/imported/ChaoDireita_M1_1.png-2ea06925c99e222bab6716f4220ce32c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/TileSet/M3/ChaoEsquerda_M3.png"
-dest_files=["res://.godot/imported/ChaoEsquerda_M3.png-d59495b3a952cb1e36a1c9b79eb3f49c.ctex"]
+source_file="res://sprites/TileSet/M1/ChaoDireita_M1_1.png"
+dest_files=["res://.godot/imported/ChaoDireita_M1_1.png-2ea06925c99e222bab6716f4220ce32c.ctex"]
 
 [params]
 

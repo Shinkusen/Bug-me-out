@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://carmbk38v662q"
-path="res://.godot/imported/ChaoCentral_M1.png-15d747377c5d3c7bd5ec7845d65ed7e4.ctex"
+uid="uid://b8yahx75xh8yy"
+path="res://.godot/imported/ChaoCentral_M1_2.png-09b90e31ae28fe58fb6e72fd316a75e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/TileSet/M1/ChaoCentral_M1.png"
-dest_files=["res://.godot/imported/ChaoCentral_M1.png-15d747377c5d3c7bd5ec7845d65ed7e4.ctex"]
+source_file="res://sprites/TileSet/M1/ChaoCentral_M1_2.png"
+dest_files=["res://.godot/imported/ChaoCentral_M1_2.png-09b90e31ae28fe58fb6e72fd316a75e4.ctex"]
 
 [params]
 

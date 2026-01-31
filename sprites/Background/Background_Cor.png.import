@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq4hi8tb4b6qs"
-path="res://.godot/imported/Inseto_1.png-ee3923302e86a2f23bb13ca23c09cb50.ctex"
+uid="uid://4wm3xkpr2xmw"
+path="res://.godot/imported/Background_Cor.png-7a283430d1a48fcf7573592c6fc679af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Inseto_1.png"
-dest_files=["res://.godot/imported/Inseto_1.png-ee3923302e86a2f23bb13ca23c09cb50.ctex"]
+source_file="res://sprites/Background/Background_Cor.png"
+dest_files=["res://.godot/imported/Background_Cor.png-7a283430d1a48fcf7573592c6fc679af.ctex"]
 
 [params]
 

@@ -1,10 +1,14 @@
 extends RigidBody2D
 
+@export var is_area: bool
+
 func _ready():
 	gravity_scale = 0
 
 # --- SINAL DO FILHO (Area2D) ---
 func _on_area_2d_body_entered(body):
+	if !is_area: return
+	
 	if body.name == "Player":
 		gravity_scale = 1
 		

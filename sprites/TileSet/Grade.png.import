@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg6hxxrwi50kp"
-path="res://.godot/imported/Inseto_2.png-4e5ad1d53d29d39a6ecb387ac3c9affa.ctex"
+uid="uid://3xh2f8824jfb"
+path="res://.godot/imported/Grade.png-61e34953e313863de2e111107f982351.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Inseto_2.png"
-dest_files=["res://.godot/imported/Inseto_2.png-4e5ad1d53d29d39a6ecb387ac3c9affa.ctex"]
+source_file="res://sprites/TileSet/Grade.png"
+dest_files=["res://.godot/imported/Grade.png-61e34953e313863de2e111107f982351.ctex"]
 
 [params]
 

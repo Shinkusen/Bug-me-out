@@ -54,4 +54,4 @@ func iniciar_sequencia_particulas():
 	# --- T = 8 segundos (FIM) ---
 	explosao_fumaca.emitting = false
 	explosao_sparks.emitting = false
-	faiscas.emitting = false
+	#faiscas.emitting = false

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3yrefv8fg0q5"
-path="res://.godot/imported/Grade.png-e23bea0ac2c835440e3f8576feee7020.ctex"
+uid="uid://bae3oqxo1ef80"
+path="res://.godot/imported/ChaoEsquerda_M1_4.png-d6bacd8b51be1e4a8a00c1407f682e03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/TileSet/Grade/Grade.png"
-dest_files=["res://.godot/imported/Grade.png-e23bea0ac2c835440e3f8576feee7020.ctex"]
+source_file="res://sprites/TileSet/M1/ChaoEsquerda_M1_4.png"
+dest_files=["res://.godot/imported/ChaoEsquerda_M1_4.png-d6bacd8b51be1e4a8a00c1407f682e03.ctex"]
 
 [params]
 

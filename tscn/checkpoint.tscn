@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://b2rsc10sv6eji"]
 
 [ext_resource type="Script" uid="uid://cd8ubtw1sc3pm" path="res://scripts/checkpoint_enter.gd" id="1_61ms1"]
+[ext_resource type="Texture2D" uid="uid://bdh2ryvn44tts" path="res://sprites/feriados.png" id="2_0l1sk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0l1sk"]
 size = Vector2(60, 60)
 
 [node name="Checkpoint" type="Area2D" unique_id=629245070]
 script = ExtResource("1_61ms1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1573588139]
+texture = ExtResource("2_0l1sk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1355201143]
 shape = SubResource("RectangleShape2D_0l1sk")

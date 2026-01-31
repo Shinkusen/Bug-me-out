@@ -3,18 +3,19 @@
 [ext_resource type="Script" uid="uid://dnk0afltvpddg" path="res://scripts/cenario_1.gd" id="1_5yugu"]
 [ext_resource type="PackedScene" uid="uid://cljk0xq12son8" path="res://tscn/player.tscn" id="1_uppvb"]
 [ext_resource type="Texture2D" uid="uid://d1suqwsskth4e" path="res://sprites/Background/Background.png" id="2_tjqbj"]
-[ext_resource type="Texture2D" uid="uid://bl0r23tt3rkxq" path="res://sprites/TileSet/ChaoCentral.png" id="3_evkta"]
 [ext_resource type="Texture2D" uid="uid://ct3y651ehxbg5" path="res://sprites/Black.png" id="4_a4twe"]
-[ext_resource type="Texture2D" uid="uid://bblqhtfx8g44s" path="res://sprites/TileSet/ChaoBaixo.png" id="5_0gjsy"]
 [ext_resource type="Script" uid="uid://dqe31iawldfam" path="res://scripts/transicao_up.gd" id="5_lhw36"]
-[ext_resource type="Texture2D" uid="uid://3yrefv8fg0q5" path="res://sprites/Grade/Grade.png" id="7_blvl7"]
+[ext_resource type="Texture2D" uid="uid://3yrefv8fg0q5" path="res://sprites/TileSet/Grade/Grade.png" id="7_blvl7"]
 [ext_resource type="PackedScene" uid="uid://csstd0twl0uiq" path="res://tscn/bloco.tscn" id="10_pxtd2"]
 [ext_resource type="PackedScene" uid="uid://bu3lavvyof164" path="res://tscn/ventilador.tscn" id="11_2xfxx"]
+[ext_resource type="Texture2D" uid="uid://dlgs3lum2tvjc" path="res://sprites/TileSet/M1/ChaoBaixo_M1.png" id="11_blvl7"]
 [ext_resource type="PackedScene" uid="uid://dxir6k7kamspi" path="res://tscn/eatable.tscn" id="11_evkta"]
 [ext_resource type="Script" uid="uid://b474ki2chey17" path="res://scripts/deathzone.gd" id="11_meivc"]
-[ext_resource type="PackedScene" uid="uid://b5lmx3d88ae8s" path="res://tscn/hazard.tscn" id="12_evkta"]
+[ext_resource type="PackedScene" uid="uid://b5lmx3d88ae8s" path="res://tscn/estalactite.tscn" id="12_evkta"]
+[ext_resource type="Texture2D" uid="uid://cug4vgrsn58v4" path="res://sprites/TileSet/M1/ChaoEsquerda_M1.png" id="14_0gjsy"]
 [ext_resource type="PackedScene" uid="uid://0kmek7shcteb" path="res://tscn/security_camera.tscn" id="15_blvl7"]
-[ext_resource type="Texture2D" uid="uid://dhnaupkt1vshf" path="res://sprites/TileSet/ChaoEsquerda.png" id="15_tjqbj"]
+[ext_resource type="Texture2D" uid="uid://carmbk38v662q" path="res://sprites/TileSet/M1/ChaoCentral_M1.png" id="15_tjqbj"]
+[ext_resource type="PackedScene" uid="uid://b2rsc10sv6eji" path="res://tscn/checkpoint.tscn" id="16_blvl7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gjsy"]
 size = Vector2(143, 48)
@@ -22,36 +23,38 @@ size = Vector2(143, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4twe"]
 size = Vector2(1200, 4)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2xfxx"]
-texture = ExtResource("3_evkta")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tjqbj"]
+texture = ExtResource("14_0gjsy")
 texture_region_size = Vector2i(60, 60)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, -30, 30, -30, 30, 30, -30, 30)
 
-[sub_resource type="TileSet" id="TileSet_pxtd2"]
+[sub_resource type="TileSet" id="TileSet_blvl7"]
 tile_size = Vector2i(60, 60)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_2xfxx")
+sources/0 = SubResource("TileSetAtlasSource_tjqbj")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qg7ph"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_blvl7"]
 texture = ExtResource("15_tjqbj")
 texture_region_size = Vector2i(60, 60)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, -30, 30, -30, 30, 30, -30, 30)
 
-[sub_resource type="TileSet" id="TileSet_i5n5q"]
+[sub_resource type="TileSet" id="TileSet_a2yow"]
+tile_size = Vector2i(60, 60)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_blvl7")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qg7ph"]
+texture = ExtResource("11_blvl7")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, -30, 30, -30, 30, 30, -30, 30)
+
+[sub_resource type="TileSet" id="TileSet_tjqbj"]
 tile_size = Vector2i(60, 60)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_qg7ph")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tjqbj"]
-texture = ExtResource("5_0gjsy")
-texture_region_size = Vector2i(60, 60)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_meivc"]
-tile_size = Vector2i(60, 60)
-sources/0 = SubResource("TileSetAtlasSource_tjqbj")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a2yow"]
 texture = ExtResource("7_blvl7")
@@ -155,7 +158,7 @@ color = Color(1, 0, 0, 1)
 script = ExtResource("1_5yugu")
 
 [node name="DeathZone" type="Area2D" parent="." unique_id=439923945]
-visible = false
+position = Vector2(1317, 88)
 script = ExtResource("11_meivc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=1863830315]
@@ -163,29 +166,23 @@ position = Vector2(82, 751)
 shape = SubResource("RectangleShape2D_0gjsy")
 
 [node name="Bloco_1" parent="." unique_id=130143305 instance=ExtResource("10_pxtd2")]
-visible = false
-position = Vector2(966, 745)
+position = Vector2(1610, 828)
 
 [node name="Ventilador_1" parent="." unique_id=638374821 instance=ExtResource("11_2xfxx")]
-visible = false
 position = Vector2(378, 977)
 
 [node name="Ventilador_2" parent="." unique_id=1894964831 instance=ExtResource("11_2xfxx")]
-visible = false
 position = Vector2(794, 1268)
 rotation = -1.5707964
 
 [node name="Eatable_1" parent="." unique_id=1679141243 instance=ExtResource("11_evkta")]
-visible = false
-position = Vector2(718, 741)
+position = Vector2(931, 976)
 
 [node name="Eatable_2" parent="." unique_id=1937773646 instance=ExtResource("11_evkta")]
-visible = false
-position = Vector2(785, 742)
+position = Vector2(998, 977)
 
 [node name="Eatable_3" parent="." unique_id=1531431173 instance=ExtResource("11_evkta")]
-visible = false
-position = Vector2(851, 741)
+position = Vector2(1064, 976)
 
 [node name="Background" type="TextureRect" parent="." unique_id=521637942]
 offset_right = 1200.0
@@ -206,17 +203,17 @@ shape = SubResource("RectangleShape2D_a4twe")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=984190883]
 position = Vector2(600, 450)
 
-[node name="ChaoCentral" type="TileMapLayer" parent="." unique_id=98307650]
-tile_map_data = PackedByteArray("AAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAARAAwAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_pxtd2")
-
-[node name="ChaoEsquerda" type="TileMapLayer" parent="." unique_id=850737117]
+[node name="ChaoEsquerda_M1" type="TileMapLayer" parent="." unique_id=592601328]
 tile_map_data = PackedByteArray("AAAQAAwAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_i5n5q")
+tile_set = SubResource("TileSet_blvl7")
 
-[node name="ChaoBaixo" type="TileMapLayer" parent="." unique_id=1794183060]
-tile_map_data = PackedByteArray("AAATAA4AAAAAAAAAAAASAA4AAAAAAAAAAAARAA4AAAAAAAAAAAAQAA0AAAAAAAAAAAARAA0AAAAAAAAAAAASAA0AAAAAAAAAAAATAA0AAAAAAAAAAAAQAA4AAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_meivc")
+[node name="ChaoCentral_M1" type="TileMapLayer" parent="." unique_id=653845883]
+tile_map_data = PackedByteArray("AAARAAwAAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_a2yow")
+
+[node name="ChaoBaixo_M1" type="TileMapLayer" parent="." unique_id=504395214]
+tile_map_data = PackedByteArray("AAAQAA0AAAAAAAAAAAAQAA4AAAAAAAAAAAARAA4AAAAAAAAAAAARAA0AAAAAAAAAAAASAA0AAAAAAAAAAAASAA4AAAAAAAAAAAATAA4AAAAAAAAAAAATAA0AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_tjqbj")
 
 [node name="Grade" type="TileMapLayer" parent="." unique_id=641706925 groups=["layer_grade"]]
 tile_map_data = PackedByteArray("AAATAAsAAAAAAAAAAAATAAoAAAAAAAAAAAATAAkAAAAAAAAAAAATAAgAAAAAAAAAAAATAAcAAAAAAAAAAAATAAYAAAAAAAAAAAATAAUAAAAAAAAAAAATAAQAAAAAAAAAAAATAAMAAAAAAAAAAAATAAIAAAAAAAAAAAATAAEAAAAAAAAAAAATAAAAAAAAAAAAAAA=")
@@ -233,6 +230,7 @@ process_material = SubResource("ParticleProcessMaterial_0gjsy")
 
 [node name="ExplosaoCore" type="GPUParticles2D" parent="GrupoExplosao" unique_id=224554003]
 position = Vector2(632, 470)
+emitting = false
 amount = 10
 texture = SubResource("GradientTexture2D_blvl7")
 explosiveness = 0.9
@@ -240,6 +238,7 @@ process_material = SubResource("ParticleProcessMaterial_tjqbj")
 
 [node name="Explosao" type="GPUParticles2D" parent="GrupoExplosao" unique_id=1549362676]
 position = Vector2(632, 470)
+emitting = false
 amount = 60
 lifetime = 2.0
 explosiveness = 0.8
@@ -247,6 +246,7 @@ process_material = SubResource("ParticleProcessMaterial_blvl7")
 
 [node name="ExplosaoSparks" type="GPUParticles2D" parent="GrupoExplosao" unique_id=1851825825]
 position = Vector2(632, 470)
+emitting = false
 amount = 30
 lifetime = 1.5
 explosiveness = 0.95
@@ -260,8 +260,10 @@ position = Vector2(1173, 60)
 target_point = Vector2(-470, 700)
 
 [node name="Hazard" parent="." unique_id=1893595741 instance=ExtResource("12_evkta")]
-position = Vector2(1001, 425)
-gravity_scale = 0.0
+position = Vector2(1346, 418)
+
+[node name="Checkpoint" parent="." unique_id=629245070 instance=ExtResource("16_blvl7")]
+position = Vector2(1032, 679)
 
 [connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]

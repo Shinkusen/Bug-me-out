@@ -25,23 +25,25 @@ var facing = 1
 var edibles = 0
 
 # --- VARIÁVEIS DE CONTROLE DE CENA ---
-# Começa true se quiser travar logo de cara, ou controlamos pelo cenário
 var in_cutscene: bool = false
 var is_launched: bool = false
+
+# --- VARIÁVEIS NOVAS (ANIMAÇÃO) ---
+var is_changing_perspective: bool = false # Trava o player durante a animação de subir/descer
 
 # --- VARIÁVEIS DA TEIA ---
 enum WebState { IDLE, SHOOTING, RETRACTING, PULLING_BLOCK, CARRYING }
 var current_web_state = WebState.IDLE
 
 const MAX_WEB_LENGTH = 300.0
-const MIN_WEB_LENGTH = 80.0 # Se passar disso, quebra
+const MIN_WEB_LENGTH = 80.0 
 const JOINT_STIFFNESS = 64.0
 const JOINT_DAMPING = 16.0
-const WINCH_SPEED = 400.0 # Velocidade de aumentar/diminuir linha
+const WINCH_SPEED = 400.0 
 const WEB_SPEED = 400.0 
 
 var current_web_length = 0.0
-var target_rope_length = 120.0 # Controle do tamanho da corda
+var target_rope_length = 120.0 
 var hooked_object: RigidBody2D = null
 
 var wind_direction: Vector2 = Vector2.ZERO
@@ -52,59 +54,62 @@ var insect_level: int = 1
 func _init() -> void:
 	GameController.player = self
 
+func _ready():
+	# Conecta o sinal para saber quando a animação "Perspectiva" acabou
+	sprite.animation_finished.connect(_on_animation_finished)
+	
+	if GameController.is_respawning:
+		global_position = GameController.checkpoint_position
+		GameController.is_respawning = false
+
 func add_eatable():
 	edibles += 1
-	
-func die():
-	dead = false  # evita rodar várias vezes
-	CheckpointManager.reload_scene()
 
 func _process(delta):
-	# --- TRAVA DE CUTSCENE ---
-	# Se estiver na cutscene, não processa inputs
-	if in_cutscene:
-		return
+	if in_cutscene: return
 	
-	# Input Climbing
-	if (GameController.can_climb) and (Input.is_action_just_pressed("climb")):
-		climbing = !climbing
-		if not climbing: sprite.rotation = 0
+	# --- INPUT CLIMBING (ATUALIZADO PARA PERSPECTIVA) ---
+	# Só aceita input se não estiver no meio de uma transição de perspectiva
+	if (GameController.can_climb) and (Input.is_action_just_pressed("climb")) and not is_changing_perspective:
+		try_change_perspective()
 			
-	# Input da Teia (Atirar/Soltar)
+	# --- INPUT DA TEIA (Nível 3+) ---
 	if Input.is_action_just_pressed("string"):
-		if (current_web_state == WebState.IDLE) and (climbing):
-			if not dashing and not charging: 
-				start_shooting_web()
-		elif current_web_state == WebState.CARRYING:
-			drop_block()
+		if insect_level >= 3: # Validação de Nível
+			if (current_web_state == WebState.IDLE) and (climbing):
+				if not dashing and not charging: 
+					start_shooting_web()
+			elif current_web_state == WebState.CARRYING:
+				drop_block()
+		else:
+			print("Nível insuficiente para usar Teia")
 	
 	if Input.is_action_just_pressed("upar"):
 		evoluir_inseto()
 		update_animations()
 	
-	# CONTROLE DE AUMENTAR/DIMINUIR LINHA (Só funciona carregando)
+	# CONTROLE DE AUMENTAR/DIMINUIR LINHA
 	if current_web_state == WebState.CARRYING:
 		if Input.is_action_pressed("aumentar_linha"):
 			target_rope_length += WINCH_SPEED * delta
 		elif Input.is_action_pressed("diminuir_linha"):
 			target_rope_length -= WINCH_SPEED * delta
 		
-		# Limita o tamanho (entre 60 e 420)
 		target_rope_length = clamp(target_rope_length, MIN_WEB_LENGTH, MAX_WEB_LENGTH)
-		
-		# Aplica ao Joint (Isso faz a corda esticar ou encolher fisicamente)
 		web_joint.rest_length = target_rope_length
 		web_joint.length = target_rope_length
 
 func _physics_process(delta):
 	if dead:
-		die()
+		dead = false
+		GameController.reload_scene()
+		return
+	
 	if GameController.in_transition_fade: return
 	
-	# --- TRAVA DE CUTSCENE ---
-	if in_cutscene:
-		velocity = Vector2.ZERO # Garante que fica parado
-		# Não chamamos move_and_slide() para ele ficar estático na coordenada
+	# Se estiver na cutscene ou mudando de perspectiva, fica parado
+	if in_cutscene or is_changing_perspective:
+		velocity = Vector2.ZERO 
 		return
 	
 	check_grade_logic()
@@ -120,8 +125,8 @@ func _physics_process(delta):
 		WebState.PULLING_BLOCK:
 			process_pulling_block(delta)
 		WebState.CARRYING:
-			physics_movement_logic(delta) # Player se move
-			process_carrying_logic() # Verifica quebra de linha e visual
+			physics_movement_logic(delta) 
+			process_carrying_logic() 
 	
 	update_animations()
 	push_rigid_bodies()
@@ -129,20 +134,13 @@ func _physics_process(delta):
 # ==========================================================
 # LÓGICA DE MOVIMENTO
 # ==========================================================
-# ==========================================================
-# LÓGICA DE MOVIMENTO (CORRIGIDA PARA INÉRCIA NO AR)
-# ==========================================================
 func physics_movement_logic(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	
 	if is_launched:
-		input_direction = Vector2.ZERO # Anula qualquer tecla que você apertar
-		
-		# Verifica se pousou.
-		# A checagem 'velocity.y >= 0' garante que ele não destrave 
-		# no frame 1 do lançamento enquanto ainda está subindo.
+		input_direction = Vector2.ZERO 
 		if is_on_floor() and velocity.y >= 0:
-			is_launched = false # Destrava os controles
+			is_launched = false 
 	
 	if input_direction.x > 0: facing = 1
 	elif input_direction.x < 0: facing = -1
@@ -164,7 +162,7 @@ func physics_movement_logic(delta):
 		move_and_slide()
 		return 
 	
-	# ---- CÁLCULO DO VENTO REALISTA (Mantido) ----
+	# ---- CÁLCULO DO VENTO REALISTA ----
 	var final_wind_velocity = Vector2.ZERO
 	if wind_direction != Vector2.ZERO:
 		var dist = global_position.distance_to(wind_source_position)
@@ -192,21 +190,11 @@ func physics_movement_logic(delta):
 	var target_velocity_x = 0.0
 	
 	if input_direction.x != 0:
-		# Se o jogador está apertando tecla, obedecemos a velocidade do input
 		target_velocity_x = input_direction.x * speed
 	else:
-		# --- AQUI ESTAVA O PROBLEMA ---
-		# Se não tem input, precisamos ver se estamos no chão ou no ar
-		
 		if is_on_floor():
-			# No chão: Freia rápido (Controle preciso)
-			# Nota: Multiplicar por delta aqui deixa o freio dependente do tempo, não dos frames
-			# Usei speed * 2 * delta para um freio firme, mas suave
-			# Se quiser parada INSTANTÂNEA, use apenas 'speed' sem delta.
 			target_velocity_x = move_toward(velocity.x - final_wind_velocity.x, 0, speed)
 		else:
-			# No ar: Freia MUITO pouco (Inércia/Resistência do ar)
-			# Isso permite que o lançamento (launch) mantenha a velocidade X
 			var air_friction = speed * delta * 0.5 
 			target_velocity_x = move_toward(velocity.x - final_wind_velocity.x, 0, air_friction)
 	
@@ -215,111 +203,162 @@ func physics_movement_logic(delta):
 	# 3. Vertical + Vento Vertical
 	velocity.y += final_wind_velocity.y
 
-	# ---- Charge & Dash (Mantido) ----
-	if Input.is_action_just_pressed("fly") and not dashing and not climbing:
-		charging = true
-		charge_timer = 0.0
-		dash_dir = facing
+	# ---- Charge & Dash (Nível 4+) ----
+	if insect_level >= 4: # Validação de Nível para Fly/Dash
+		if Input.is_action_just_pressed("fly") and not dashing and not climbing:
+			charging = true
+			charge_timer = 0.0
+			dash_dir = facing
 
-	if Input.is_action_just_released("fly") and charging and not dashing:
-		charging = false
-		charge_timer = 0.0
-
-	if charging and not dashing:
-		charge_timer += delta
-		velocity.x = move_toward(velocity.x, 0, speed) + final_wind_velocity.x
-		if not climbing and not is_on_floor(): velocity.y += gravity * delta
-		if charge_timer >= CHARGE_TIME:
+		if Input.is_action_just_released("fly") and charging and not dashing:
 			charging = false
-			dashing = true
-		move_and_slide()
-		return 
+			charge_timer = 0.0
 
-	if Input.is_action_just_released("fly") and dashing: dashing = false
+		if charging and not dashing:
+			charge_timer += delta
+			velocity.x = move_toward(velocity.x, 0, speed) + final_wind_velocity.x
+			if not climbing and not is_on_floor(): velocity.y += gravity * delta
+			if charge_timer >= CHARGE_TIME:
+				charging = false
+				dashing = true
+			move_and_slide()
+			return 
 
-	if dashing:
-		velocity.x = dash_dir * DASH_SPEED
-		velocity.y = 0.0 
-		move_and_slide()
-		for i in range(get_slide_collision_count()):
-			var c = get_slide_collision(i)
-			if abs(c.get_normal().x) > 0.7:
-				dashing = false
-				velocity.x = 0
-				break
-		return 
+		if Input.is_action_just_released("fly") and dashing: dashing = false
+
+		if dashing:
+			velocity.x = dash_dir * DASH_SPEED
+			velocity.y = 0.0 
+			move_and_slide()
+			for i in range(get_slide_collision_count()):
+				var c = get_slide_collision(i)
+				if abs(c.get_normal().x) > 0.7:
+					dashing = false
+					velocity.x = 0
+					break
+			return 
 	
 	move_and_slide()
 
 # ==========================================================
-# NOVA FUNÇÃO: LANÇAMENTO BALÍSTICO
+# LANÇAMENTO BALÍSTICO
 # ==========================================================
 func launch_to_position(target_pos: Vector2, flight_time: float):
-	# 1. Libera o player da cutscene
 	in_cutscene = false
 	is_launched = true
 	
-	# 2. Matemática de Projétil
-	# Fórmula: S = S0 + V0*t + 0.5*g*t^2
-	# Isolando V0: V0 = (S - S0 - 0.5*g*t^2) / t
-	
 	var displacement = target_pos - global_position
 	var gravity_vector = Vector2(0, gravity)
-	
-	# Calcula a velocidade inicial necessária para atingir o alvo no tempo X
 	var launch_velocity = (displacement - 0.5 * gravity_vector * (flight_time * flight_time)) / flight_time
 	
 	velocity = launch_velocity
-	# O _physics_process normal vai assumir a partir daqui e aplicar a gravidade
-	# fazendo a curva naturalmente.
 
 # ==========================================================
-# NOVA FUNÇÃO DE ANIMAÇÃO
+# NOVA LÓGICA DE ANIMAÇÃO CENTRALIZADA (ATUALIZADA)
 # ==========================================================
 func update_animations():
-	# Montamos o prefixo baseado no nível atual. Ex: "Inseto_1_"
+	# Se estiver mudando de perspectiva, não atrapalha a animação One Shot
+	if is_changing_perspective:
+		return
+
 	var prefix = "Inseto_" + str(insect_level) + "_"
 	
+	# 1. Prioridade Máxima: Dash (Fly) - Só Nível 4
+	if dashing:
+		_try_play_animation(prefix + "Fly")
+		return
+
+	# 2. Prioridade: String (Carregando bloco) - Só Nível 3+
+	if current_web_state == WebState.CARRYING:
+		_try_play_animation(prefix + "String")
+		return
+
+	# 3. Lógica de Movimento
 	if climbing:
-		if current_web_state == WebState.CARRYING: # Prioridade 1: Segurando bloco (String)
-			sprite.play(prefix + "String")
-		elif velocity.length() > 10.0: # Prioridade 2: Se movendo (Walk)
-			sprite.play(prefix + "Walk")
-		else: # Prioridade 3: Parado (Idle)
-			sprite.play(prefix + "Idle")
-	else:
-		# TEMPORARIO
-		if current_web_state == WebState.CARRYING:
-			sprite.play(prefix + "String")
-		elif velocity.length() > 10.0:
-			sprite.play(prefix + "Walk")
+		# --- NA GRADE (VERTICAL) ---
+		# Aqui mantemos a lógica de separar Andar de Parado
+		if velocity.length() > 10.0:
+			_try_play_animation(prefix + "Walk_Vertical")
 		else:
-			sprite.play(prefix + "Idle")
+			_try_play_animation(prefix + "Idle")
+	else:
+		# --- NO CHÃO (HORIZONTAL) ---
+		# CORREÇÃO: Você pediu para usar o Walk Horizontal como se fosse o Idle.
+		# Então removemos a checagem de velocidade (velocity.x > 10) e o "else: Idle".
+		# Ele vai tocar Walk_Horizontal o tempo todo enquanto estiver no chão.
+		_try_play_animation(prefix + "Walk_Horizontal")
+
+# Função auxiliar segura para tocar animação (evita erro se faltar assets)
+func _try_play_animation(anim_name: String):
+	if sprite.sprite_frames.has_animation(anim_name):
+		sprite.play(anim_name)
+	else:
+		# Fallback: Se não tiver Walk_Horizontal, tenta Walk, ou Idle
+		# Isso previne o jogo de travar ou ficar invisível no Nível 4 incompleto
+		if "Walk" in anim_name:
+			if sprite.sprite_frames.has_animation("Inseto_" + str(insect_level) + "_Idle"):
+				sprite.play("Inseto_" + str(insect_level) + "_Idle")
+		# Apenas um print de debug para avisar o dev
+		# print("Animação faltando: ", anim_name)
 
 # ==========================================================
-# NOVA LÓGICA DA GRADE (TILEMAP)
+# GERENCIAMENTO DE PERSPECTIVA (ANIM & LOGIC)
+# ==========================================================
+func try_change_perspective():
+	var prefix = "Inseto_" + str(insect_level) + "_"
+	var anim_name = ""
+	
+	if not climbing:
+		# Quer Subir -> Animação Perspectiva_Subir
+		anim_name = prefix + "Perspectiva_Subir"
+	else:
+		# Quer Descer -> Animação Perspectiva_Descer
+		anim_name = prefix + "Perspectiva_Descer"
+	
+	# Verifica se a animação existe (Inseto 1 tem, Inseto 2 não tem)
+	if sprite.sprite_frames.has_animation(anim_name):
+		# Se TEM a animação: Trava o player e dá play
+		is_changing_perspective = true
+		sprite.play(anim_name)
+		velocity = Vector2.ZERO # Para o movimento para não deslizar
+	else:
+		# Se NÃO TEM a animação: Troca imediata (lógica antiga)
+		execute_climb_switch()
+
+# Chamado automaticamente pelo sinal 'animation_finished' do AnimatedSprite
+func _on_animation_finished():
+	if is_changing_perspective:
+		execute_climb_switch()
+		is_changing_perspective = false # Destrava o player
+
+# A lógica real de trocar o booleano 'climbing'
+func execute_climb_switch():
+	climbing = !climbing
+	
+	if climbing:
+		# Acabou de subir
+		pass
+	else:
+		# Acabou de descer
+		sprite.rotation = 0
+
+# ==========================================================
+# LÓGICA DA GRADE (TILEMAP)
 # ==========================================================
 func check_grade_logic():
-	# 1. Encontra o TileMap da Grade pelo grupo
 	var grade_map = get_tree().get_first_node_in_group("layer_grade")
 	
 	if grade_map:
-		# 2. Converte a posição global do Player para a coordenada do Mapa (Grid)
-		# Usamos global_position para pegar o centro/pé do player
 		var map_pos = grade_map.local_to_map(grade_map.to_local(global_position))
-		
-		# 3. Pega os dados do azulejo (Tile) nessa coordenada
 		var tile_data = grade_map.get_cell_tile_data(map_pos)
 		
-		# 4. Verifica se o azulejo existe E se tem a etiqueta 'can_climb' verdadeira
 		if tile_data and tile_data.get_custom_data("can_climb"):
 			GameController.can_climb = true
 		else:
-			# Se NÃO estiver no azulejo, desativa (igual ao on_body_exited antigo)
 			if not GameController.in_transition_fade:
 				GameController.can_climb = false
 				
-				# Se estava escalando e saiu da grade, para de escalar
+				# Se saiu da grade, força a descida (sem animação de perspectiva, pois caiu)
 				if climbing:
 					climbing = false
 					sprite.rotation = 0
@@ -422,3 +461,4 @@ func evoluir_inseto():
 	insect_level += 1
 	if insect_level > 4:
 		insect_level = 1
+	print("Evoluiu para nível: ", insect_level)

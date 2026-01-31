@@ -8,6 +8,13 @@ var in_transition_fade: bool = false
 var proxima_cena_path: String = ""
 var can_climb: bool = false
 
+var checkpoint_position = Vector2.ZERO
+var checkpoint_cena: int = 1
+
+var is_respawning: bool = false
+
+const PASTA_CENAS = "res://tscn/"
+
 func _ready() -> void:
 	_criar_tela_preta_global()
 
@@ -56,3 +63,20 @@ func transicao_entrada():
 
 func liberar_jogo():
 	in_transition_fade = false
+
+func set_checkpoint(pos: Vector2, num_cena: int):
+	checkpoint_position = pos
+	checkpoint_cena = num_cena
+	#print("Checkpoint salvo: Cena ", checkpoint_cena, " em ", checkpoint_position)
+
+func reload_scene():
+	# Ativa a flag para avisar o próximo player que ele deve ir para o checkpoint
+	is_respawning = true
+	
+	# Monta o caminho: "res://cenario_2.tscn", por exemplo
+	var nome_cena = "cenario_" + str(checkpoint_cena) + ".tscn"
+	var caminho_completo = PASTA_CENAS + nome_cena
+	
+	# Troca para a cena correta (seja a mesma ou uma anterior)
+	# Usamos call_deferred para evitar travamentos durante física
+	get_tree().change_scene_to_file.call_deferred(caminho_completo)

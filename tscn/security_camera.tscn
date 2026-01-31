@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://0kmek7shcteb"]
+
+[ext_resource type="Script" uid="uid://tti6jew663sa" path="res://scripts/security_camera.gd" id="1_e45m3"]
+[ext_resource type="Texture2D" uid="uid://by3ne6dsjgoxn" path="res://sprites/camera-cftv.png" id="1_w1d4h"]
+
+[node name="SecurityCamera" type="Node2D" unique_id=1006889508]
+script = ExtResource("1_e45m3")
+target_point = Vector2(-350, 350)
+start_width = 0.0
+end_width = 64.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1084662002]
+texture = ExtResource("1_w1d4h")
+
+[node name="LightCone" type="Polygon2D" parent="." unique_id=1237018444]
+color = Color(0, 0.53333336, 1, 0.29411766)
+polygon = PackedVector2Array(0, 0, 0, 0, -372.6274, 327.3726, -327.3726, 372.6274)
+vertex_colors = PackedColorArray(0, 0.53333336, 1, 0.29411766, 0, 0.53333336, 1, 0.29411766, 0, 0.53333336, 1, 0, 0, 0.53333336, 1, 0)

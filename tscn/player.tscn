@@ -39,3 +39,16 @@ shape = SubResource("RectangleShape2D_3c7ea")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=608045568]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_u4c7w")
+
+[node name="WebRayCast" type="RayCast2D" parent="." unique_id=900176522]
+target_position = Vector2(0, 0)
+
+[node name="WebLine" type="Line2D" parent="." unique_id=1459631425]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 4.0
+default_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
+
+[node name="WebJoint" type="DampedSpringJoint2D" parent="." unique_id=674932605]
+disable_collision = false
+length = 120.0
+rest_length = 120.0

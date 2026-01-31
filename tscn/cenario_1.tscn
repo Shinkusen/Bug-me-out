@@ -133,7 +133,7 @@ position = Vector2(692, 663.5)
 shape = SubResource("RectangleShape2D_vybtd")
 
 [node name="Bloco" parent="." unique_id=130143305 instance=ExtResource("10_pxtd2")]
-position = Vector2(347, 635)
+position = Vector2(789, 657)
 
 [connection signal="body_entered" from="Grade_1/Area" to="Grade_1/Area" method="_on_body_entered"]
 [connection signal="body_exited" from="Grade_1/Area" to="Grade_1/Area" method="_on_body_exited"]

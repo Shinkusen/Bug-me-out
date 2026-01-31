@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://ct3y651ehxbg5" path="res://sprites/Black.png" id="1_ldxwp"]
 [ext_resource type="Script" uid="uid://dqe31iawldfam" path="res://scripts/transicao_up.gd" id="2_x501g"]
 [ext_resource type="PackedScene" uid="uid://cljk0xq12son8" path="res://tscn/player.tscn" id="3_uxdhn"]
+[ext_resource type="PackedScene" uid="uid://b5lmx3d88ae8s" path="res://tscn/hazard.tscn" id="4_hxk02"]
+[ext_resource type="PackedScene" uid="uid://cha0kqwi0ihoy" path="res://tscn/hazardtrigger.tscn" id="5_k0j65"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxdhn"]
 size = Vector2(1200, 4)
@@ -39,5 +41,11 @@ shape = SubResource("RectangleShape2D_x501g")
 
 [node name="Player" parent="." unique_id=2115506010 instance=ExtResource("3_uxdhn")]
 position = Vector2(76, 44)
+
+[node name="Hazard" parent="." unique_id=1893595741 instance=ExtResource("4_hxk02")]
+position = Vector2(399, 60)
+
+[node name="Area2D" parent="." unique_id=1886125653 instance=ExtResource("5_k0j65")]
+position = Vector2(350, 295)
 
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]

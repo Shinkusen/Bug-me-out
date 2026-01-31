@@ -175,11 +175,6 @@ visible = false
 position = Vector2(794, 1268)
 rotation = -1.5707964
 
-[node name="Hazard" parent="." unique_id=1893595741 instance=ExtResource("12_evkta")]
-visible = false
-position = Vector2(647, 522)
-fall_delay = 3.0
-
 [node name="Eatable_1" parent="." unique_id=1679141243 instance=ExtResource("11_evkta")]
 visible = false
 position = Vector2(718, 741)
@@ -263,6 +258,10 @@ position = Vector2(632, 470)
 [node name="SecurityCamera" parent="." unique_id=1006889508 instance=ExtResource("15_blvl7")]
 position = Vector2(1173, 60)
 target_point = Vector2(-470, 700)
+
+[node name="Hazard" parent="." unique_id=1893595741 instance=ExtResource("12_evkta")]
+position = Vector2(1001, 425)
+gravity_scale = 0.0
 
 [connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]

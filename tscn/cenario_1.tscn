@@ -1,104 +1,58 @@
-[gd_scene format=3 uid="uid://bi3o4ag70hkf1"]
+[gd_scene format=4 uid="uid://bi3o4ag70hkf1"]
 
 [ext_resource type="Script" uid="uid://dnk0afltvpddg" path="res://scripts/cenario_1.gd" id="1_5yugu"]
 [ext_resource type="PackedScene" uid="uid://cljk0xq12son8" path="res://tscn/player.tscn" id="1_uppvb"]
-[ext_resource type="Texture2D" uid="uid://8w028iqqm21r" path="res://sprites/tronco.png" id="2_640eb"]
-[ext_resource type="Texture2D" uid="uid://bya41xu5mbooo" path="res://sprites/rede.png" id="3_rnlh3"]
+[ext_resource type="Texture2D" uid="uid://c1eq1l5qqyifc" path="res://sprites/1 Tiles/FieldsTileset.png" id="2_evkta"]
 [ext_resource type="Texture2D" uid="uid://ct3y651ehxbg5" path="res://sprites/Black.png" id="4_a4twe"]
 [ext_resource type="Script" uid="uid://dqe31iawldfam" path="res://scripts/transicao_up.gd" id="5_lhw36"]
-[ext_resource type="Script" uid="uid://bg18koecqqjm0" path="res://scripts/grade.gd" id="5_nkgjo"]
-[ext_resource type="Script" uid="uid://c4se11iu7jggi" path="res://scripts/edible_object.gd" id="7_ag815"]
-[ext_resource type="Texture2D" uid="uid://dgqeo3m2op52p" path="res://icon.svg" id="7_vybtd"]
+[ext_resource type="PackedScene" uid="uid://d3awba1a681ue" path="res://tscn/grade.tscn" id="10_2xfxx"]
 [ext_resource type="PackedScene" uid="uid://csstd0twl0uiq" path="res://tscn/bloco.tscn" id="10_pxtd2"]
 [ext_resource type="PackedScene" uid="uid://bu3lavvyof164" path="res://tscn/ventilador.tscn" id="11_2xfxx"]
+[ext_resource type="PackedScene" uid="uid://dxir6k7kamspi" path="res://tscn/eatable.tscn" id="11_evkta"]
+[ext_resource type="Script" uid="uid://b474ki2chey17" path="res://scripts/deathzone.gd" id="11_meivc"]
+[ext_resource type="PackedScene" uid="uid://b5lmx3d88ae8s" path="res://tscn/hazard.tscn" id="12_evkta"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_640eb"]
-size = Vector2(126.90001, 40)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_meivc"]
+texture = ExtResource("2_evkta")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnlh3"]
-size = Vector2(97, 127.5)
+[sub_resource type="TileSet" id="TileSet_0gjsy"]
+tile_size = Vector2i(60, 60)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_meivc")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4twe"]
 size = Vector2(1200, 4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ag815"]
-size = Vector2(145.31549, 148.76025)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vybtd"]
-size = Vector2(214, 111)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gjsy"]
+size = Vector2(143, 48)
 
 [node name="Cenario_1" type="Node2D" unique_id=2106832681]
 script = ExtResource("1_5yugu")
 
+[node name="ChaoTiles" type="TileMapLayer" parent="." unique_id=1298611511]
+tile_map_data = PackedByteArray("AAATAAAAAAABAAEAAAATAAEAAAABAAEAAAATAAIAAAABAAEAAAATAAMAAAABAAEAAAATAAQAAAABAAEAAAATAAUAAAABAAEAAAATAAYAAAABAAEAAAATAAcAAAABAAEAAAATAAgAAAABAAEAAAATAAkAAAABAAEAAAATAAoAAAABAAEAAAATAAsAAAABAAEAAAATAAwAAAABAAEAAAATAA0AAAABAAEAAAATAA4AAAABAAEAAAASAA4AAAABAAEAAAANAA4AAAABAAEAAAAMAA4AAAABAAEAAAALAA4AAAABAAEAAAAKAA4AAAABAAEAAAAJAA4AAAABAAEAAAAIAA4AAAABAAEAAAAHAA4AAAABAAEAAAAGAA4AAAABAAEAAAAFAA4AAAABAAEAAAAEAA4AAAABAAEAAAADAA4AAAABAAEAAAACAA4AAAABAAEAAAABAA4AAAABAAEAAAAAAA4AAAABAAEAAAAOAA4AAAABAAEAAAAPAA4AAAABAAEAAAAQAA4AAAABAAEAAAARAA4AAAABAAEAAAAAAA0AAAABAAEAAAAAAAwAAAABAAEAAAAAAAsAAAABAAEAAAAAAAoAAAABAAEAAAAAAAkAAAABAAEAAAAAAAgAAAABAAEAAAAAAAcAAAABAAEAAAAAAAYAAAABAAEAAAAAAAUAAAABAAEAAAAAAAQAAAABAAEAAAAAAAMAAAABAAEAAAAAAAIAAAABAAEAAAAAAAEAAAABAAEAAAAAAAAAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_0gjsy")
+
 [node name="Player" parent="." unique_id=2115506010 groups=["player"] instance=ExtResource("1_uppvb")]
 position = Vector2(953, 649)
-
-[node name="Tronco" type="Sprite2D" parent="." unique_id=2117998303]
-position = Vector2(794, 724)
-scale = Vector2(10, 1)
-texture = ExtResource("2_640eb")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Tronco" unique_id=171275124]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tronco/StaticBody2D" unique_id=1497726956]
-position = Vector2(-0.44999695, 3)
-shape = SubResource("RectangleShape2D_640eb")
-
-[node name="Grade_1" type="Sprite2D" parent="." unique_id=1625187329]
-position = Vector2(1012, 577)
-scale = Vector2(2, 2)
-texture = ExtResource("3_rnlh3")
-
-[node name="Area" type="Area2D" parent="Grade_1" unique_id=1219768017]
-script = ExtResource("5_nkgjo")
-
-[node name="Collision" type="CollisionShape2D" parent="Grade_1/Area" unique_id=1123390131]
-position = Vector2(0, -0.25)
-shape = SubResource("RectangleShape2D_rnlh3")
-
-[node name="Grade_2" type="Sprite2D" parent="." unique_id=1861302714]
-position = Vector2(795, 398)
-texture = ExtResource("3_rnlh3")
-
-[node name="Area" type="Area2D" parent="Grade_2" unique_id=2087887517]
-script = ExtResource("5_nkgjo")
-
-[node name="Collision" type="CollisionShape2D" parent="Grade_2/Area" unique_id=1482799900]
-position = Vector2(0, -0.25)
-shape = SubResource("RectangleShape2D_rnlh3")
-
-[node name="Grade_3" type="Sprite2D" parent="." unique_id=1914731137]
-position = Vector2(632, 286)
-texture = ExtResource("3_rnlh3")
-
-[node name="Area" type="Area2D" parent="Grade_3" unique_id=2061583359]
-script = ExtResource("5_nkgjo")
-
-[node name="Collision" type="CollisionShape2D" parent="Grade_3/Area" unique_id=633712980]
-position = Vector2(0, -0.25)
-shape = SubResource("RectangleShape2D_rnlh3")
-
-[node name="Grade_4" type="Sprite2D" parent="." unique_id=2099054804]
-position = Vector2(456, 178)
-texture = ExtResource("3_rnlh3")
-
-[node name="Area" type="Area2D" parent="Grade_4" unique_id=950071121]
-script = ExtResource("5_nkgjo")
-
-[node name="Collision" type="CollisionShape2D" parent="Grade_4/Area" unique_id=1234141135]
-position = Vector2(0, -0.25)
-shape = SubResource("RectangleShape2D_rnlh3")
-
-[node name="Grade_5" type="Sprite2D" parent="." unique_id=1554880999]
-position = Vector2(282, 68)
-texture = ExtResource("3_rnlh3")
-
-[node name="Area" type="Area2D" parent="Grade_5" unique_id=1662915015]
-script = ExtResource("5_nkgjo")
-
-[node name="Collision" type="CollisionShape2D" parent="Grade_5/Area" unique_id=1810316606]
-position = Vector2(0, -0.25)
-shape = SubResource("RectangleShape2D_rnlh3")
 
 [node name="Black_Screen_Up" type="Sprite2D" parent="." unique_id=1465490665]
 position = Vector2(600, -450)
@@ -114,47 +68,37 @@ shape = SubResource("RectangleShape2D_a4twe")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=984190883]
 position = Vector2(600, 450)
 
-[node name="EdibleObject" type="StaticBody2D" parent="." unique_id=1011176961 groups=["edible"]]
-position = Vector2(-420, -30)
-script = ExtResource("7_ag815")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EdibleObject" unique_id=641497080]
-position = Vector2(636, 668)
-scale = Vector2(0.523, 0.484)
-shape = SubResource("RectangleShape2D_ag815")
-
-[node name="Sprite2D" type="Sprite2D" parent="EdibleObject" unique_id=1135167852]
-position = Vector2(637.5, 667)
-scale = Vector2(0.5234375, 0.484375)
-texture = ExtResource("7_vybtd")
-
-[node name="PickupArea" type="Area2D" parent="EdibleObject" unique_id=410868876]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EdibleObject/PickupArea" unique_id=1820682913]
-position = Vector2(692, 663.5)
-shape = SubResource("RectangleShape2D_vybtd")
-
 [node name="Bloco_1" parent="." unique_id=130143305 instance=ExtResource("10_pxtd2")]
-position = Vector2(560, 638)
-
-[node name="Bloco_2" parent="." unique_id=503634058 instance=ExtResource("10_pxtd2")]
-position = Vector2(1197, 656)
+position = Vector2(1101, 796)
 
 [node name="Ventilador_1" parent="." unique_id=638374821 instance=ExtResource("11_2xfxx")]
-position = Vector2(432, 653)
+position = Vector2(273, 792)
 
 [node name="Ventilador_2" parent="." unique_id=1894964831 instance=ExtResource("11_2xfxx")]
-position = Vector2(881, 678)
+position = Vector2(1064, 856)
 rotation = -1.5707964
 
-[connection signal="body_entered" from="Grade_1/Area" to="Grade_1/Area" method="_on_body_entered"]
-[connection signal="body_exited" from="Grade_1/Area" to="Grade_1/Area" method="_on_body_exited"]
-[connection signal="body_entered" from="Grade_2/Area" to="Grade_2/Area" method="_on_body_entered"]
-[connection signal="body_exited" from="Grade_2/Area" to="Grade_2/Area" method="_on_body_exited"]
-[connection signal="body_entered" from="Grade_3/Area" to="Grade_3/Area" method="_on_body_entered"]
-[connection signal="body_exited" from="Grade_3/Area" to="Grade_3/Area" method="_on_body_exited"]
-[connection signal="body_entered" from="Grade_4/Area" to="Grade_4/Area" method="_on_body_entered"]
-[connection signal="body_exited" from="Grade_4/Area" to="Grade_4/Area" method="_on_body_exited"]
-[connection signal="body_entered" from="Grade_5/Area" to="Grade_5/Area" method="_on_body_entered"]
-[connection signal="body_exited" from="Grade_5/Area" to="Grade_5/Area" method="_on_body_exited"]
+[node name="Hazard" parent="." unique_id=1893595741 instance=ExtResource("12_evkta")]
+position = Vector2(702, 545)
+fall_delay = 3.0
+
+[node name="Eatable" parent="." unique_id=1679141243 instance=ExtResource("11_evkta")]
+position = Vector2(790, 791)
+
+[node name="Eatable2" parent="." unique_id=1937773646 instance=ExtResource("11_evkta")]
+position = Vector2(870, 790)
+
+[node name="Eatable3" parent="." unique_id=1531431173 instance=ExtResource("11_evkta")]
+position = Vector2(692, 789)
+
+[node name="Node2D" parent="." unique_id=366387974 instance=ExtResource("10_2xfxx")]
+position = Vector2(973, 572)
+
+[node name="DeathZone" type="Area2D" parent="." unique_id=439923945]
+script = ExtResource("11_meivc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=1863830315]
+position = Vector2(134, 814)
+shape = SubResource("RectangleShape2D_0gjsy")
+
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]

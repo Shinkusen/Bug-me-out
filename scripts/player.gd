@@ -126,9 +126,8 @@ func physics_movement_logic(delta):
 		# Usamos distance_to para saber quão longe estamos do ventilador
 		var dist = global_position.distance_to(wind_source_position)
 		
-		# Clamp para segurança (evita divisão por zero ou força infinita se encostar no ventilador)
-		# Mínimo 50px, Máximo 300px (alcance do Area2D)
-		dist = clamp(dist, 50.0, 300.0)
+		# Clamp para segurança (evita divisão por zero ou força infinita se encostar no ventilador
+		dist = clamp(dist, 120.0, 260.0)
 		
 		# 2. Calcular Força de Levitação (Eixo Y)
 		# Matemática: Queremos que em 150px a força seja igual a Gravidade (~16.3 per frame)
@@ -248,7 +247,7 @@ func process_web_retracting(delta):
 	else:
 		web_line.points[1] = Vector2(0, current_web_length)
 
-func process_pulling_block(delta):
+func process_pulling_block(_delta):
 	if hooked_object == null:
 		current_web_state = WebState.IDLE
 		return

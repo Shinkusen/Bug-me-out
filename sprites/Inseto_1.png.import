@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8w028iqqm21r"
-path="res://.godot/imported/tronco.png-52edb1311c81290bda4a70f22130a303.ctex"
+uid="uid://cq4hi8tb4b6qs"
+path="res://.godot/imported/Inseto_1.png-ee3923302e86a2f23bb13ca23c09cb50.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tronco.png"
-dest_files=["res://.godot/imported/tronco.png-52edb1311c81290bda4a70f22130a303.ctex"]
+source_file="res://sprites/Inseto_1.png"
+dest_files=["res://.godot/imported/Inseto_1.png-ee3923302e86a2f23bb13ca23c09cb50.ctex"]
 
 [params]
 

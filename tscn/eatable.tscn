@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dxir6k7kamspi"]
+
+[ext_resource type="Script" uid="uid://c4se11iu7jggi" path="res://scripts/eatable.gd" id="1_3wbm5"]
+[ext_resource type="Texture2D" uid="uid://cbycyxvgnqxlg" path="res://sprites/maca.png" id="1_dcmmt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wbm5"]
+size = Vector2(54, 48)
+
+[node name="Eatable" type="Area2D" unique_id=1679141243]
+script = ExtResource("1_3wbm5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1060545524]
+texture = ExtResource("1_dcmmt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=960629859]
+position = Vector2(-1, 8)
+shape = SubResource("RectangleShape2D_3wbm5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

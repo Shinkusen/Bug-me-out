@@ -2,16 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://ct3y651ehxbg5" path="res://sprites/Black.png" id="1_6id2c"]
 [ext_resource type="Script" uid="uid://ct0moug4brla3" path="res://scripts/cenario_2.gd" id="1_posyo"]
-[ext_resource type="Texture2D" uid="uid://8w028iqqm21r" path="res://sprites/tronco.png" id="2_lqb22"]
 [ext_resource type="Script" uid="uid://dqe31iawldfam" path="res://scripts/transicao_up.gd" id="3_6iwao"]
-[ext_resource type="Texture2D" uid="uid://bya41xu5mbooo" path="res://sprites/rede.png" id="3_6qlw0"]
 [ext_resource type="PackedScene" uid="uid://cljk0xq12son8" path="res://tscn/player.tscn" id="4_l8h6f"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqj4n"]
-size = Vector2(126.90001, 40)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xh8c"]
-size = Vector2(97, 127.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l8h6f"]
 size = Vector2(1200, 4)
@@ -21,28 +13,6 @@ script = ExtResource("1_posyo")
 
 [node name="Player" parent="." unique_id=2115506010 instance=ExtResource("4_l8h6f")]
 position = Vector2(655, 621)
-
-[node name="Tronco" type="Sprite2D" parent="." unique_id=1222632665]
-position = Vector2(794, 724)
-scale = Vector2(10, 1)
-texture = ExtResource("2_lqb22")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Tronco" unique_id=1827192600]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tronco/StaticBody2D" unique_id=1919177499]
-position = Vector2(-0.44999695, 3)
-shape = SubResource("RectangleShape2D_eqj4n")
-
-[node name="Grade" type="Sprite2D" parent="." unique_id=1596694097]
-position = Vector2(1012, 577)
-scale = Vector2(2, 2)
-texture = ExtResource("3_6qlw0")
-
-[node name="Area2D" type="Area2D" parent="Grade" unique_id=882432674]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Grade/Area2D" unique_id=506001488]
-position = Vector2(0, -0.25)
-shape = SubResource("RectangleShape2D_6xh8c")
 
 [node name="Black_Screen_Up" type="Sprite2D" parent="." unique_id=130046481]
 position = Vector2(600, -450)

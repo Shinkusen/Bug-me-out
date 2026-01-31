@@ -24,6 +24,11 @@ var facing = 1
 
 var edibles = 0
 
+# --- VARIÁVEIS DE CONTROLE DE CENA ---
+# Começa true se quiser travar logo de cara, ou controlamos pelo cenário
+var in_cutscene: bool = false
+var is_launched: bool = false
+
 # --- VARIÁVEIS DA TEIA ---
 enum WebState { IDLE, SHOOTING, RETRACTING, PULLING_BLOCK, CARRYING }
 var current_web_state = WebState.IDLE
@@ -51,6 +56,11 @@ func add_eatable():
 	edibles += 1
 
 func _process(delta):
+	# --- TRAVA DE CUTSCENE ---
+	# Se estiver na cutscene, não processa inputs
+	if in_cutscene:
+		return
+	
 	# Input Climbing
 	if (GameController.can_climb) and (Input.is_action_just_pressed("climb")):
 		climbing = !climbing
@@ -83,9 +93,14 @@ func _process(delta):
 		web_joint.length = target_rope_length
 
 func _physics_process(delta):
-	if dead: #implementar a logica de morte
-		pass
+	if dead: pass
 	if GameController.in_transition_fade: return
+	
+	# --- TRAVA DE CUTSCENE ---
+	if in_cutscene:
+		velocity = Vector2.ZERO # Garante que fica parado
+		# Não chamamos move_and_slide() para ele ficar estático na coordenada
+		return
 	
 	check_grade_logic()
 	
@@ -104,35 +119,39 @@ func _physics_process(delta):
 			process_carrying_logic() # Verifica quebra de linha e visual
 	
 	update_animations()
-	
 	push_rigid_bodies()
 
 # ==========================================================
 # LÓGICA DE MOVIMENTO
 # ==========================================================
+# ==========================================================
+# LÓGICA DE MOVIMENTO (CORRIGIDA PARA INÉRCIA NO AR)
+# ==========================================================
 func physics_movement_logic(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
+	
+	if is_launched:
+		input_direction = Vector2.ZERO # Anula qualquer tecla que você apertar
+		
+		# Verifica se pousou.
+		# A checagem 'velocity.y >= 0' garante que ele não destrave 
+		# no frame 1 do lançamento enquanto ainda está subindo.
+		if is_on_floor() and velocity.y >= 0:
+			is_launched = false # Destrava os controles
+	
 	if input_direction.x > 0: facing = 1
 	elif input_direction.x < 0: facing = -1
 	
 	# ---- CLIMBING (NA GRADE) ----
 	if climbing:
-		# --- REGRA ESPECIAL: CARREGANDO BLOCO (STRING) ---
 		if current_web_state == WebState.CARRYING:
-			# Força a rotação para BAIXO (Vector2.DOWN), independente da tecla apertada
-			# Se quiser que ele olhe para cima (W), troque Vector2.DOWN por Vector2.UP
 			sprite.rotation = Vector2.DOWN.angle() + PI / 2
-			
-			# Movimentação continua normal (pode andar para os lados olhando para baixo)
 			if input_direction != Vector2.ZERO:
 				velocity = input_direction * speed
 			else:
 				velocity = velocity.move_toward(Vector2.ZERO, speed)
-	
-		# --- REGRA NORMAL: ANDANDO LIVRE ---
 		elif input_direction != Vector2.ZERO:
 			velocity = input_direction * speed
-			# Gira para onde estiver andando
 			sprite.rotation = input_direction.angle() + PI / 2
 		else:
 			velocity = velocity.move_toward(Vector2.ZERO, speed)
@@ -140,29 +159,22 @@ func physics_movement_logic(delta):
 		move_and_slide()
 		return 
 	
-	# ---- CÁLCULO DO VENTO REALISTA (Mantido igual) ----
+	# ---- CÁLCULO DO VENTO REALISTA (Mantido) ----
 	var final_wind_velocity = Vector2.ZERO
-	
 	if wind_direction != Vector2.ZERO:
 		var dist = global_position.distance_to(wind_source_position)
 		dist = clamp(dist, 120.0, 260.0)
-		
 		var levitation_force = 2445.0 / dist
-		
 		if current_web_state == WebState.CARRYING:
 			levitation_force *= 0.5
-		
 		final_wind_velocity.y = wind_direction.y * levitation_force
-	
 		var push_force_x = 0.0
 		if wind_direction.x != 0:
 			push_force_x = 20000.0 / dist 
-			
 			if is_on_floor() or current_web_state == WebState.CARRYING:
 				push_force_x = clamp(push_force_x, 0, 100.0)
 			else:
 				push_force_x = clamp(push_force_x, 0, 400.0)
-		
 		final_wind_velocity.x = wind_direction.x * push_force_x
 
 	# ---- MOVIMENTO FÍSICO ----
@@ -171,19 +183,34 @@ func physics_movement_logic(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# 2. Input Horizontal + Vento Horizontal
+	# 2. Input Horizontal + Inércia
 	var target_velocity_x = 0.0
+	
 	if input_direction.x != 0:
+		# Se o jogador está apertando tecla, obedecemos a velocidade do input
 		target_velocity_x = input_direction.x * speed
 	else:
-		target_velocity_x = move_toward(velocity.x - final_wind_velocity.x, 0, speed)
+		# --- AQUI ESTAVA O PROBLEMA ---
+		# Se não tem input, precisamos ver se estamos no chão ou no ar
+		
+		if is_on_floor():
+			# No chão: Freia rápido (Controle preciso)
+			# Nota: Multiplicar por delta aqui deixa o freio dependente do tempo, não dos frames
+			# Usei speed * 2 * delta para um freio firme, mas suave
+			# Se quiser parada INSTANTÂNEA, use apenas 'speed' sem delta.
+			target_velocity_x = move_toward(velocity.x - final_wind_velocity.x, 0, speed)
+		else:
+			# No ar: Freia MUITO pouco (Inércia/Resistência do ar)
+			# Isso permite que o lançamento (launch) mantenha a velocidade X
+			var air_friction = speed * delta * 0.5 
+			target_velocity_x = move_toward(velocity.x - final_wind_velocity.x, 0, air_friction)
 	
 	velocity.x = target_velocity_x + final_wind_velocity.x
 	
 	# 3. Vertical + Vento Vertical
 	velocity.y += final_wind_velocity.y
 
-	# ---- Charge & Dash ----
+	# ---- Charge & Dash (Mantido) ----
 	if Input.is_action_just_pressed("fly") and not dashing and not climbing:
 		charging = true
 		charge_timer = 0.0
@@ -218,6 +245,28 @@ func physics_movement_logic(delta):
 		return 
 	
 	move_and_slide()
+
+# ==========================================================
+# NOVA FUNÇÃO: LANÇAMENTO BALÍSTICO
+# ==========================================================
+func launch_to_position(target_pos: Vector2, flight_time: float):
+	# 1. Libera o player da cutscene
+	in_cutscene = false
+	is_launched = true
+	
+	# 2. Matemática de Projétil
+	# Fórmula: S = S0 + V0*t + 0.5*g*t^2
+	# Isolando V0: V0 = (S - S0 - 0.5*g*t^2) / t
+	
+	var displacement = target_pos - global_position
+	var gravity_vector = Vector2(0, gravity)
+	
+	# Calcula a velocidade inicial necessária para atingir o alvo no tempo X
+	var launch_velocity = (displacement - 0.5 * gravity_vector * (flight_time * flight_time)) / flight_time
+	
+	velocity = launch_velocity
+	# O _physics_process normal vai assumir a partir daqui e aplicar a gravidade
+	# fazendo a curva naturalmente.
 
 # ==========================================================
 # NOVA FUNÇÃO DE ANIMAÇÃO

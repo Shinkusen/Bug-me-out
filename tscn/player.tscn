@@ -98,6 +98,10 @@
 [ext_resource type="Texture2D" uid="uid://cc46vdb53psch" path="res://sprites/Insetos/Inseto_4_Perspectiva_Subir/Inseto_4_Perspectiva_Subir_4.png" id="85_dp1w7"]
 [ext_resource type="Texture2D" uid="uid://r4wo40lr260u" path="res://sprites/Insetos/Inseto_4_Walk_Horizontal/Inseto_4_Walk_Horizontal_3.png" id="85_sisna"]
 [ext_resource type="Texture2D" uid="uid://dkny5ywrgdukf" path="res://sprites/Insetos/Inseto_4_Walk_Horizontal/Inseto_4_Walk_Horizontal_4.png" id="86_mw47k"]
+[ext_resource type="AudioStream" uid="uid://b580c8wydydqw" path="res://sounds/Barulhos da Barata/Inseto Andando.mp3" id="99_yikd1"]
+[ext_resource type="AudioStream" uid="uid://ykhrdj6qe4wb" path="res://sounds/Barulhos da Barata/Inseto Escalando.mp3" id="100_c0o37"]
+[ext_resource type="AudioStream" uid="uid://rvvul5p2tkeg" path="res://sounds/Barulhos da Barata/Som de Morte.mp3" id="101_1huc3"]
+[ext_resource type="AudioStream" uid="uid://dmfwhlyu7rqdq" path="res://sounds/Barulhos da Barata/respawn+ovoquebrando.mp3" id="102_t62tu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6sl1v"]
 animations = [{
@@ -520,7 +524,7 @@ script = ExtResource("1_7j80i")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=264484940]
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_6sl1v")
-animation = &"Inseto_4_Perspectiva_Subir"
+animation = &"Inseto_4_Walk_Vertical"
 autoplay = "Inseto_1_Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156716506]
@@ -547,3 +551,18 @@ length = 120.0
 rest_length = 120.0
 stiffness = 64.0
 damping = 16.0
+
+[node name="Audio_Walk" type="AudioStreamPlayer2D" parent="." unique_id=1087504222]
+stream = ExtResource("99_yikd1")
+volume_db = 10.0
+
+[node name="Audio_Climb" type="AudioStreamPlayer2D" parent="." unique_id=1788232052]
+stream = ExtResource("100_c0o37")
+volume_db = 10.0
+
+[node name="Audio_Death" type="AudioStreamPlayer2D" parent="." unique_id=2021600096]
+stream = ExtResource("101_1huc3")
+
+[node name="Audio_Respawn" type="AudioStreamPlayer2D" parent="." unique_id=586272756]
+stream = ExtResource("102_t62tu")
+volume_db = 10.0

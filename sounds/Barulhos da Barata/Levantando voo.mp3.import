@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://coc0dykoqxdff"
+path="res://.godot/imported/Levantando voo.mp3-499a1f28a2aa6746343f1e5453327a62.mp3str"
+
+[deps]
+
+source_file="res://sounds/Barulhos da Barata/Levantando voo.mp3"
+dest_files=["res://.godot/imported/Levantando voo.mp3-499a1f28a2aa6746343f1e5453327a62.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

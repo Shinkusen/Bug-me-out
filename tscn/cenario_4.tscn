@@ -250,7 +250,7 @@ position = Vector2(810, 210)
 rotation = 3.1415927
 
 [node name="Checkpoint" parent="." unique_id=629245070 instance=ExtResource("21_llpqc")]
-position = Vector2(270, 330)
+position = Vector2(270, 338)
 numero_da_cena = 4
 
 [node name="Area_Transition_Black" type="Area2D" parent="." unique_id=441314668]

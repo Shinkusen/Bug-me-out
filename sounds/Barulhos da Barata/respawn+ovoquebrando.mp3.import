@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dmfwhlyu7rqdq"
+path="res://.godot/imported/respawn+ovoquebrando.mp3-91cb9579f7619d6a91db3b2034dd2781.mp3str"
+
+[deps]
+
+source_file="res://sounds/Barulhos da Barata/respawn+ovoquebrando.mp3"
+dest_files=["res://.godot/imported/respawn+ovoquebrando.mp3-91cb9579f7619d6a91db3b2034dd2781.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

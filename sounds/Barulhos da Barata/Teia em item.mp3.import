@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bvl78tfeufttg"
+path="res://.godot/imported/Teia em item.mp3-4eea32990415c1a6661c9d60ca7f3108.mp3str"
+
+[deps]
+
+source_file="res://sounds/Barulhos da Barata/Teia em item.mp3"
+dest_files=["res://.godot/imported/Teia em item.mp3-4eea32990415c1a6661c9d60ca7f3108.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

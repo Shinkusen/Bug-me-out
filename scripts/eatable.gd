@@ -1,17 +1,15 @@
 extends Area2D
 
 @onready var anim = $AnimatedSprite2D
+@onready var audio_eat = $Audio_Eat
 
 var player_ref: CharacterBody2D = null
-var ja_foi_comido: bool = false 
+var ja_foi_comido: bool = false
 
-# NOVO: Define qual índice do Array esse corpo representa (0, 1 ou 2)
 @export var id_corpo: int = 0 
 
 func _ready():
 	anim.frame = 0
-	
-	# Verificação opcional: Se já comeu esse corpo antes (load game), já mostra comido
 	if GameController.corpos[id_corpo] == 1:
 		ja_foi_comido = true
 		anim.frame = 1
@@ -33,13 +31,11 @@ func comer():
 	
 	player_ref.add_eatable()
 	
-	# NOVO: Atualiza o GameController dizendo que este corpo foi comido
 	GameController.corpos[id_corpo] = 1
-	print("Corpo ", id_corpo, " comido! Array atual: ", GameController.corpos)
 	
 	anim.frame = 1
 	
-	# $AudioStreamPlayer.play()
+	audio_eat.play()
 	
 	GameController.player.evoluir_inseto()
 	GameController.player.update_animations()

@@ -6,6 +6,12 @@ extends CharacterBody2D
 @onready var web_line = $WebLine
 @onready var web_joint = $WebJoint 
 
+# --- REFERÊNCIAS DE ÁUDIO (NOVO) ---
+@onready var audio_walk = $Audio_Walk
+@onready var audio_climb = $Audio_Climb
+@onready var audio_death = $Audio_Death
+@onready var audio_respawn = $Audio_Respawn
+
 # --- VARIÁVEIS ORIGINAIS ---
 var climbing = false
 var dead = false
@@ -55,12 +61,17 @@ func _init() -> void:
 	GameController.player = self
 
 func _ready():
+	insect_level = GameController.get_insect_level_atual()
+	update_animations()
+	
 	# Conecta o sinal para saber quando a animação "Perspectiva" acabou
 	sprite.animation_finished.connect(_on_animation_finished)
 	
 	if GameController.is_respawning:
 		global_position = GameController.checkpoint_position
 		GameController.is_respawning = false
+		
+		audio_respawn.play()
 
 func add_eatable():
 	edibles += 1
@@ -98,6 +109,8 @@ func _process(delta):
 func _physics_process(delta):
 	if dead:
 		dead = false
+		audio_death.play()
+		await get_tree().create_timer(0.86).timeout
 		GameController.reload_scene()
 		return
 	
@@ -113,22 +126,30 @@ func _physics_process(delta):
 	match current_web_state:
 		WebState.IDLE:
 			physics_movement_logic(delta)
+			process_audio_logic()
 			web_line.visible = false
 		WebState.SHOOTING:
 			process_web_shooting(delta)
+			audio_walk.stop()
+			audio_climb.stop()
 		WebState.RETRACTING:
 			process_web_retracting(delta)
+			audio_walk.stop()
+			audio_climb.stop()
 		WebState.PULLING_BLOCK:
 			process_pulling_block(delta)
+			audio_walk.stop()
+			audio_climb.stop()
 		WebState.CARRYING:
-			physics_movement_logic(delta) 
+			physics_movement_logic(delta)
+			process_audio_logic() 
 			process_carrying_logic() 
 	
 	update_animations()
 	push_rigid_bodies()
 
 # ==========================================================
-# LÓGICA DE MOVIMENTO (COM FLIP HORIZONTAL)
+# LÓGICA DE MOVIMENTO (CORRIGIDA: VENTO NA GRADE)
 # ==========================================================
 func physics_movement_logic(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -141,58 +162,76 @@ func physics_movement_logic(delta):
 	# --- ATUALIZAÇÃO DA DIREÇÃO E OLHAR (FLIP) ---
 	if input_direction.x > 0: 
 		facing = 1
-		# Se não estiver escalando, olha para a direita
 		if not climbing: sprite.flip_h = false 
 	elif input_direction.x < 0: 
 		facing = -1
-		# Se não estiver escalando, vira para a esquerda
 		if not climbing: sprite.flip_h = true 
-	
-	# ---- CLIMBING (NA GRADE) ----
-	if climbing:
-		# Garante que na grade o sprite não fique espelhado (a rotação cuida disso)
-		sprite.flip_h = false 
-		
-		if current_web_state == WebState.CARRYING:
-			sprite.rotation = Vector2.DOWN.angle() + PI / 2
-			if input_direction != Vector2.ZERO:
-				velocity = input_direction * speed
-			else:
-				velocity = velocity.move_toward(Vector2.ZERO, speed)
-		elif input_direction != Vector2.ZERO:
-			velocity = input_direction * speed
-			sprite.rotation = input_direction.angle() + PI / 2
-		else:
-			velocity = velocity.move_toward(Vector2.ZERO, speed)
-		
-		move_and_slide()
-		return 
-	
-	# ---- CÁLCULO DO VENTO REALISTA (Mantido) ----
+
+	# -----------------------------------------------------------
+	# 1. CÁLCULO DO VENTO (MOVIDO PARA O TOPO)
+	# Calculamos antes de tudo para usar tanto na Grade quanto no Chão
+	# -----------------------------------------------------------
 	var final_wind_velocity = Vector2.ZERO
 	if wind_direction != Vector2.ZERO:
 		var dist = global_position.distance_to(wind_source_position)
 		dist = clamp(dist, 120.0, 260.0)
+		
+		# Força de levitação (Y)
 		var levitation_force = 2445.0 / dist
 		if current_web_state == WebState.CARRYING:
 			levitation_force *= 0.5
 		final_wind_velocity.y = wind_direction.y * levitation_force
+		
+		# Força de empurrão (X)
 		var push_force_x = 0.0
 		if wind_direction.x != 0:
 			push_force_x = 20000.0 / dist 
-			if is_on_floor() or current_web_state == WebState.CARRYING:
+			
+			# Ajuste de estabilidade:
+			# Se estiver no chão, carregando bloco OU ESCALANDO, o vento empurra menos
+			if is_on_floor() or current_web_state == WebState.CARRYING or climbing:
 				push_force_x = clamp(push_force_x, 0, 100.0)
 			else:
 				push_force_x = clamp(push_force_x, 0, 400.0)
+				
 		final_wind_velocity.x = wind_direction.x * push_force_x
 
-	# ---- MOVIMENTO FÍSICO ----
+	# -----------------------------------------------------------
+	# 2. CLIMBING (NA GRADE)
+	# -----------------------------------------------------------
+	if climbing:
+		sprite.flip_h = false 
+		
+		# Define a rotação do sprite
+		if current_web_state == WebState.CARRYING:
+			sprite.rotation = Vector2.DOWN.angle() + PI / 2
+		elif input_direction != Vector2.ZERO:
+			sprite.rotation = input_direction.angle() + PI / 2
+		
+		# Calcula movimento base do input
+		var target_vel = Vector2.ZERO
+		if input_direction != Vector2.ZERO:
+			target_vel = input_direction * speed
+		else:
+			target_vel = velocity.move_toward(Vector2.ZERO, speed)
+		
+		# APLICA O VENTO NA GRADE
+		# Somamos o vetor do vento ao movimento.
+		# Se você estiver andando contra o vento, isso vai reduzir sua velocidade automaticamente.
+		velocity = target_vel + final_wind_velocity
+		
+		move_and_slide()
+		return 
+
+	# -----------------------------------------------------------
+	# 3. MOVIMENTO FÍSICO NORMAL (CHÃO/AR)
+	# -----------------------------------------------------------
 	
-	# 1. Gravidade
+	# Gravidade
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# 2. Input Horizontal + Inércia
+	# Input Horizontal + Inércia + Vento X
 	var target_velocity_x = 0.0
 	
 	if input_direction.x != 0:
@@ -206,7 +245,7 @@ func physics_movement_logic(delta):
 	
 	velocity.x = target_velocity_x + final_wind_velocity.x
 	
-	# 3. Vertical + Vento Vertical
+	# Vertical + Vento Y
 	velocity.y += final_wind_velocity.y
 
 	# ---- Charge & Dash (Mantido) ----
@@ -245,6 +284,29 @@ func physics_movement_logic(delta):
 			return 
 	
 	move_and_slide()
+
+# ==========================================================
+# (NOVO) LÓGICA DE ÁUDIO DE MOVIMENTO
+# ==========================================================
+func process_audio_logic():
+	# Verifica se o player está se movendo (velocidade significativa)
+	var is_moving = velocity.length() > 10.0
+	
+	if is_moving and is_on_floor() or (climbing and is_moving):
+		if climbing:
+			# Está na grade
+			if not audio_climb.playing:
+				audio_climb.play()
+				audio_walk.stop() # Garante que o outro pare
+		else:
+			# Está no chão (Horizontal)
+			if not audio_walk.playing:
+				audio_walk.play()
+				audio_climb.stop()
+	else:
+		# Está parado ou no ar (pulo/queda) -> Para tudo
+		audio_walk.stop()
+		audio_climb.stop()
 
 # ==========================================================
 # LANÇAMENTO BALÍSTICO

@@ -21,6 +21,13 @@ var corpos: Array = [0, 0, 0]
 func _ready() -> void:
 	_criar_tela_preta_global()
 
+func get_insect_level_atual() -> int:
+	var nivel = 1
+	for status in corpos:
+		if status == 1:
+			nivel += 1
+	return nivel
+
 func _criar_tela_preta_global():
 	var canvas = CanvasLayer.new()
 	canvas.layer = 100

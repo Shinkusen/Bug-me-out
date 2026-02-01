@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bfw4uvt4jqyyv"
+path="res://.godot/imported/Aylex - Tension Rising (freetouse.com).mp3-602e30e305ed03570d5bf518bbb113c5.mp3str"
+
+[deps]
+
+source_file="res://sounds/Música ambiente (precisa botar credito na descrição)/Aylex - Tension Rising (freetouse.com).mp3"
+dest_files=["res://.godot/imported/Aylex - Tension Rising (freetouse.com).mp3-602e30e305ed03570d5bf518bbb113c5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

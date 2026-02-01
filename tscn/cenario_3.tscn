@@ -222,7 +222,7 @@ tile_map_data = PackedByteArray("AAAFAA0AAAAAAAAAAAAEAA0AAAAAAAAAAAAEAAwAAAAAAAA
 tile_set = SubResource("TileSet_scili")
 
 [node name="Checkpoint" parent="." unique_id=629245070 instance=ExtResource("21_lm0vh")]
-position = Vector2(390, 630)
+position = Vector2(390, 638)
 numero_da_cena = 3
 
 [node name="Estalactite_1" parent="." unique_id=1893595741 instance=ExtResource("24_scili")]

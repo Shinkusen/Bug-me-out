@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c4se11iu7jggi" path="res://scripts/eatable.gd" id="1_3wbm5"]
 [ext_resource type="Texture2D" uid="uid://wtak566ursfn" path="res://sprites/Cadaver_1/Cadaver_1_Vivo.png" id="2_rydkh"]
 [ext_resource type="Texture2D" uid="uid://u1m7yewpvws0" path="res://sprites/Cadaver_1/Cadaver_1_Morto.png" id="3_cjm5q"]
+[ext_resource type="AudioStream" uid="uid://begf2102gu86w" path="res://sounds/Barulhos da Barata/Comendo o corpo.mp3" id="4_cjm5q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7btmv"]
 animations = [{
@@ -32,6 +33,10 @@ animation = &"comer_corpo"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=960629859]
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_3wbm5")
+
+[node name="Audio_Eat" type="AudioStreamPlayer2D" parent="." unique_id=1931915091]
+stream = ExtResource("4_cjm5q")
+volume_db = -18.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

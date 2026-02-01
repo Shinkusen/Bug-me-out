@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://rvvul5p2tkeg"
+path="res://.godot/imported/Som de Morte.mp3-866ff3a37eebeb18578e9d22a24324b8.mp3str"
+
+[deps]
+
+source_file="res://sounds/Barulhos da Barata/Som de Morte.mp3"
+dest_files=["res://.godot/imported/Som de Morte.mp3-866ff3a37eebeb18578e9d22a24324b8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

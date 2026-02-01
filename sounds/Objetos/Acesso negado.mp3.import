@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cmgo7twbijhef"
+path="res://.godot/imported/Acesso negado.mp3-23afe0f1e0c861391830321a6d995f93.mp3str"
+
+[deps]
+
+source_file="res://sounds/Objetos/Acesso negado.mp3"
+dest_files=["res://.godot/imported/Acesso negado.mp3-23afe0f1e0c861391830321a6d995f93.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

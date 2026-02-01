@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d2h570sc1f4w6"
+path="res://.godot/imported/Voando.mp3-68cc07a53661c495b093dac472f82ae0.mp3str"
+
+[deps]
+
+source_file="res://sounds/Barulhos da Barata/Voando.mp3"
+dest_files=["res://.godot/imported/Voando.mp3-68cc07a53661c495b093dac472f82ae0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

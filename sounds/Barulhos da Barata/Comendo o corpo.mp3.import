@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://begf2102gu86w"
+path="res://.godot/imported/Comendo o corpo.mp3-9efc946a8c196ef4abdc5d25b4bce133.mp3str"
+
+[deps]
+
+source_file="res://sounds/Barulhos da Barata/Comendo o corpo.mp3"
+dest_files=["res://.godot/imported/Comendo o corpo.mp3-9efc946a8c196ef4abdc5d25b4bce133.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

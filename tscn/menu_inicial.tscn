@@ -2,37 +2,53 @@
 
 [ext_resource type="Texture2D" uid="uid://c673r38wrs0qu" path="res://sprites/Menu Inicial.png" id="1_n8gae"]
 [ext_resource type="Script" uid="uid://dcptgw2xstj0s" path="res://scripts/menu_inicial.gd" id="1_nryl7"]
+[ext_resource type="Texture2D" uid="uid://coxgu5iia4x4l" path="res://sprites/BugMeOut_Title.png" id="3_usw2c"]
+
+[sub_resource type="SystemFont" id="SystemFont_usw2c"]
 
 [node name="Menu_Inicial" type="Control" unique_id=2026256637]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_nryl7")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1771344058]
+[node name="Background" type="TextureRect" parent="." unique_id=1771344058]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_n8gae")
 
+[node name="Titulo" type="TextureRect" parent="." unique_id=139767232]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 77.0
+offset_right = 1084.0
+offset_bottom = 294.0
+texture = ExtResource("3_usw2c")
+
 [node name="Jogar" type="Button" parent="." unique_id=335920441]
-modulate = Color(0.75371706, 0.0449076, 0.7129243, 0.29411766)
 layout_mode = 1
-offset_left = 480.0
-offset_top = 83.0
-offset_right = 720.0
-offset_bottom = 143.0
+offset_left = 229.0
+offset_top = 671.0
+offset_right = 469.0
+offset_bottom = 731.0
+theme_override_colors/font_color = Color(0.6431373, 0.4862745, 0, 1)
+theme_override_colors/font_hover_color = Color(0.40784314, 0.3019608, 0, 1)
 theme_override_font_sizes/font_size = 36
 text = "Jogar"
+flat = true
 
 [node name="Sair" type="Button" parent="." unique_id=307072225]
-modulate = Color(0.75371706, 0.0449076, 0.7129243, 0.29411766)
 layout_mode = 0
-offset_left = 480.0
-offset_top = 196.0
-offset_right = 720.0
-offset_bottom = 256.0
+offset_left = 727.0
+offset_top = 705.0
+offset_right = 967.0
+offset_bottom = 765.0
+theme_override_colors/font_color = Color(0.6431373, 0.4862745, 0, 1)
+theme_override_colors/font_hover_color = Color(0.40784314, 0.3019608, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_usw2c")
 theme_override_font_sizes/font_size = 36
 text = "Sair"
+flat = true
 
 [connection signal="pressed" from="Jogar" to="." method="_on_jogar_pressed"]
 [connection signal="pressed" from="Sair" to="." method="_on_sair_pressed"]

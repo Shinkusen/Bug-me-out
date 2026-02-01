@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bqfbmmmrt12s6" path="res://sprites/Ventilador/Ventilador_1.png" id="2_bbypo"]
 [ext_resource type="Texture2D" uid="uid://cg2pchx2p2qjq" path="res://sprites/Ventilador/Ventilador_2.png" id="3_00so2"]
 [ext_resource type="Texture2D" uid="uid://ciosp87y62ofp" path="res://resources/risco_vento.tres" id="3_au78i"]
+[ext_resource type="AudioStream" uid="uid://cguwuq0183jp2" path="res://sounds/Objetos/Ventilador.mp3" id="5_00so2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n560r"]
 animations = [{
@@ -71,6 +72,13 @@ position = Vector2(132, 0)
 amount = 14
 texture = ExtResource("3_au78i")
 process_material = SubResource("ParticleProcessMaterial_im8bh")
+
+[node name="Audio_Fan" type="AudioStreamPlayer2D" parent="." unique_id=103004838]
+stream = ExtResource("5_00so2")
+volume_db = 24.0
+autoplay = true
+max_distance = 500.0
+attenuation = 1.5691683
 
 [connection signal="body_entered" from="AreaVento" to="." method="_on_area_vento_body_entered"]
 [connection signal="body_exited" from="AreaVento" to="." method="_on_area_vento_body_exited"]

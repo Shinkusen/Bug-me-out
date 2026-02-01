@@ -18,15 +18,11 @@ const PASTA_CENAS = "res://tscn/"
 # 0 = não comido, 1 = comido
 var corpos: Array = [0, 0, 0]
 
+var music_player: AudioStreamPlayer
+
 func _ready() -> void:
 	_criar_tela_preta_global()
-
-func get_insect_level_atual() -> int:
-	var nivel = 1
-	for status in corpos:
-		if status == 1:
-			nivel += 1
-	return nivel
+	_iniciar_musica_ambiente()
 
 func _criar_tela_preta_global():
 	var canvas = CanvasLayer.new()
@@ -39,6 +35,29 @@ func _criar_tela_preta_global():
 	_global_fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_global_fade_rect.modulate.a = 0.0
 	canvas.add_child(_global_fade_rect)
+
+func _iniciar_musica_ambiente():
+	# 1. Cria o nó de áudio na memória
+	music_player = AudioStreamPlayer.new()
+	
+	# 2. Carrega o arquivo MP3
+	var stream_musica = load("res://sounds/Música ambiente (precisa botar credito na descrição)/Aylex - Tension Rising (freetouse.com).mp3") 
+	music_player.stream = stream_musica
+	
+	# 3. Configurações
+	music_player.volume_db = 0.0
+	music_player.autoplay = true
+	
+	# 4. Adiciona o nó como filho do GameController e toca
+	add_child(music_player)
+	music_player.play()
+
+func get_insect_level_atual() -> int:
+	var nivel = 1
+	for status in corpos:
+		if status == 1:
+			nivel += 1
+	return nivel
 
 func transicao_saida(path_cena: String):
 	if camera_atual_cenario == null: return

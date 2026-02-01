@@ -554,15 +554,15 @@ damping = 16.0
 
 [node name="Audio_Walk" type="AudioStreamPlayer2D" parent="." unique_id=1087504222]
 stream = ExtResource("99_yikd1")
-volume_db = 10.0
+volume_db = 7.5
 
 [node name="Audio_Climb" type="AudioStreamPlayer2D" parent="." unique_id=1788232052]
 stream = ExtResource("100_c0o37")
-volume_db = 10.0
+volume_db = 7.5
 
 [node name="Audio_Death" type="AudioStreamPlayer2D" parent="." unique_id=2021600096]
 stream = ExtResource("101_1huc3")
 
 [node name="Audio_Respawn" type="AudioStreamPlayer2D" parent="." unique_id=586272756]
 stream = ExtResource("102_t62tu")
-volume_db = 10.0
+volume_db = 7.5

@@ -23,8 +23,8 @@ func animar_botao(botao: Button):
 	var tween_alpha = create_tween().set_loops()
 	tween_alpha.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
-	tween_alpha.tween_property(botao, "modulate:a", 0.2, 1.0)
-	tween_alpha.tween_property(botao, "modulate:a", 0.3, 1.0)
+	tween_alpha.tween_property(botao, "modulate:a", 0.6, 1.0)
+	tween_alpha.tween_property(botao, "modulate:a", 0.7, 1.0)
 
 func _on_jogar_pressed() -> void:
 	get_tree().change_scene_to_file("res://tscn/cenario_1.tscn")

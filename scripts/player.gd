@@ -17,6 +17,7 @@ extends CharacterBody2D
 # --- VARIÁVEIS ORIGINAIS ---
 var climbing = false
 var dead = false
+var uma_chamada_dead = false
 var speed = 200.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -63,6 +64,9 @@ func _init() -> void:
 	GameController.player = self
 
 func _ready():
+	dead = false
+	uma_chamada_dead = false
+	
 	insect_level = GameController.get_insect_level_atual()
 	update_animations()
 	
@@ -79,7 +83,7 @@ func add_eatable():
 	edibles += 1
 
 func _process(delta):
-	if in_cutscene: return
+	if in_cutscene or dead: return
 	
 	# --- INPUT CLIMBING (ATUALIZADO PARA PERSPECTIVA) ---
 	# Só aceita input se não estiver no meio de uma transição de perspectiva
@@ -110,12 +114,16 @@ func _process(delta):
 
 func _physics_process(delta):
 	if dead:
-		dead = false
-		audio_death.play()
-		$ExplosaoSparks.emitting = true
-		sprite.play("Empty")
-		await get_tree().create_timer(0.86).timeout
-		GameController.reload_scene()
+		if !uma_chamada_dead:
+			uma_chamada_dead = true
+			sprite.visible = false
+			audio_death.play()
+			$ExplosaoSparks.emitting = true
+			await get_tree().create_timer(1.0).timeout
+			GameController.reload_scene()
+		return
+	
+	if uma_chamada_dead:
 		return
 	
 	if GameController.in_transition_fade: return
@@ -156,6 +164,8 @@ func _physics_process(delta):
 # LÓGICA DE MOVIMENTO (CORRIGIDA: VENTO NA GRADE)
 # ==========================================================
 func physics_movement_logic(delta):
+	if dead: return
+	
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	
 	if is_launched:

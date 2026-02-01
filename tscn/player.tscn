@@ -105,11 +105,6 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6sl1v"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"Empty",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_udxxx")
@@ -539,7 +534,7 @@ script = ExtResource("1_7j80i")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=264484940]
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_6sl1v")
-animation = &"Empty"
+animation = &"Inseto_1_Idle"
 autoplay = "Inseto_1_Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156716506]

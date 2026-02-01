@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://yswqpamif6dw"]
+[gd_scene format=4 uid="uid://yswqpamif6dw"]
 
 [ext_resource type="Texture2D" uid="uid://4wm3xkpr2xmw" path="res://sprites/Background/Background_Cor.png" id="1_f1lqf"]
 [ext_resource type="Script" uid="uid://dt1di5hr3hhpe" path="res://scripts/cenario_7.gd" id="1_vocnn"]
@@ -24,6 +24,10 @@
 [ext_resource type="PackedScene" uid="uid://b2rsc10sv6eji" path="res://tscn/checkpoint.tscn" id="21_welny"]
 [ext_resource type="Script" uid="uid://dqe31iawldfam" path="res://scripts/transicao_up.gd" id="22_lcksk"]
 [ext_resource type="PackedScene" uid="uid://cljk0xq12son8" path="res://tscn/player.tscn" id="23_ueirp"]
+[ext_resource type="PackedScene" uid="uid://dxir6k7kamspi" path="res://tscn/eatable.tscn" id="25_hgyca"]
+[ext_resource type="PackedScene" uid="uid://0kmek7shcteb" path="res://tscn/security_camera.tscn" id="26_rpdp6"]
+[ext_resource type="Script" uid="uid://drmjft4e3lcrk" path="res://scripts/carregamento_bloqueador.gd" id="26_u0voh"]
+[ext_resource type="Texture2D" uid="uid://b6mdgpguf6tak" path="res://sprites/TileSet/Bloqueador_Passagem.png" id="27_xwfe2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxo5x"]
 texture = ExtResource("3_hgyca")
@@ -180,6 +184,12 @@ scale_min = 2.0
 scale_max = 3.0
 color = Color(1, 1, 0.57254905, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sy7xl"]
+size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oba5j"]
+size = Vector2(120, 120)
+
 [node name="Cenario_7" type="Node2D" unique_id=659214951]
 script = ExtResource("1_vocnn")
 
@@ -200,34 +210,106 @@ texture = ExtResource("2_vocnn")
 position = Vector2(600, 450)
 
 [node name="ChaoColisores_M1" type="TileMapLayer" parent="." unique_id=1557546725]
+tile_map_data = PackedByteArray("AAAEAA4AAAAAAAAAAAAFAA4AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAA4AAAAAAAAAAAALAA4AAAAAAAAAAAAMAA4AAAAAAAAAAAANAA4AAAAAAAAAAAAOAA4AAAAAAAAAAAAPAA4AAAAAAAAAAAAQAA4AAAAAAAAAAAARAA4AAAAAAAAAAAASAA4AAAAAAAAAAAATAA4ABAAAAAAAAAAAAA0AAAAAAAAAAAAAAAwAAQAAAAAAAAAAAAsAAQAAAAAAAAAAAAoAAQAAAAAAAAAAAAkAAQAAAAAAAAAAAAgAAQAAAAAAAAAAAAcAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAIAAQAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAGAAgABAAAAAAAAAAFAAgAAAAAAAAAAAADAA0ABAAAAAAAAAACAA0AAAAAAAAAAAABAA0AAAAAAAAAAAAHAA0AAwAAAAAAAAAHAAwAAwAAAAAAAAAIAAsACQAAAAAAAAAIAAwAAQAAAAAAAAAIAA0AAQAAAAAAAAAHAAsABwAAAAAAAAAKAAoAAAAAAAAAAAAMAAkAAAAAAAAAAAAOAAgAAAAAAAAAAAAQAAcAAAAAAAAAAAASAAYAAAAAAAAAAAAQAAMAAAAAAAAAAAAPAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAARAAMABAAAAAAAAAANAAMACAAAAAAAAAAEAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAFAAUABAAAAAAAAAACAAUACAAAAAAAAAARAAsACAAAAAAAAAASAAsABAAAAAAAAAAKAAwACAAAAAAAAAALAAwAAAAAAAAAAAAMAAwABAAAAAAAAAAAAAEAAQAAAAAAAAAAAAAAAQAAAAAAAAAUAA0AAwAAAAAAAAAUAAwAAwAAAAAAAAAUAAsAAwAAAAAAAAAUAAoAAwAAAAAAAAAUAAkAAwAAAAAAAAAUAAgAAwAAAAAAAAAUAAcAAwAAAAAAAAAUAAYAAwAAAAAAAAAUAAUAAwAAAAAAAAAUAAQAAwAAAAAAAAAUAAMAAwAAAAAAAAAUAAIAAwAAAAAAAAAUAAEAAwAAAAAAAAAUAAAAAwAAAAAAAAA=")
 tile_set = SubResource("TileSet_5r2p1")
 
 [node name="ChaoSemColisores_Baixo" type="TileMapLayer" parent="." unique_id=1568102665]
+tile_map_data = PackedByteArray("AAADAA4AAAAAAAAAAAACAA4AAAAAAAAAAAABAA4AAAAAAAAAAAAAAA4AAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_u1vth")
 
 [node name="ChaoColisores_M2" type="TileMapLayer" parent="." unique_id=1953463454]
 tile_set = SubResource("TileSet_15syn")
 
 [node name="Grade" type="TileMapLayer" parent="." unique_id=440401883 groups=["layer_grade"]]
+tile_map_data = PackedByteArray("AAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAFAA0AAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAGAA0AAAAAAAAAAAAFAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAYAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAUAAAAAAAAAAAASAAUAAAAAAAAAAAASAAQAAAAAAAAAAAASAAMAAAAAAAAAAAASAAIAAAAAAAAAAAARAAIAAAAAAAAAAAATAA0AAAAAAAAAAAATAAwAAAAAAAAAAAATAAsAAAAAAAAAAAATAAoAAAAAAAAAAAASAAoAAAAAAAAAAAAJAAwAAAAAAAAAAAALAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAoAAAAAAAAAAAADAAQAAAAAAAAAAAADAAMAAAAAAAAAAAADAAIAAAAAAAAAAAADAAEAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_scili")
 
 [node name="Checkpoint" parent="." unique_id=629245070 instance=ExtResource("21_welny")]
 position = Vector2(150, 750)
-numero_da_cena = 2
+numero_da_cena = 7
+
+[node name="Eatable" parent="." unique_id=1679141243 instance=ExtResource("25_hgyca")]
+position = Vector2(953, 822)
+id_corpo = 2
+
+[node name="Player" parent="." unique_id=2115506010 instance=ExtResource("23_ueirp")]
+position = Vector2(270, 809)
 
 [node name="Area_Transition_Black" type="Area2D" parent="." unique_id=441314668]
 script = ExtResource("22_lcksk")
+numero_proxima_cena = 8
 
 [node name="Transicao_Up" type="CollisionShape2D" parent="Area_Transition_Black" unique_id=1206525684]
-position = Vector2(420, 2)
+position = Vector2(600, 2)
 shape = SubResource("RectangleShape2D_so2o8")
 
 [node name="Faiscas" type="GPUParticles2D" parent="Area_Transition_Black" unique_id=1210254363]
-position = Vector2(422, 97)
+position = Vector2(600, 97)
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_483au")
 
-[node name="Player" parent="." unique_id=2115506010 instance=ExtResource("23_ueirp")]
-position = Vector2(159, 688)
+[node name="Carregamento_Bloqueador" type="Area2D" parent="." unique_id=887890859 node_paths=PackedStringArray("sprites_visuais", "bloqueadores_fisicos")]
+position = Vector2(0, 2)
+script = ExtResource("26_u0voh")
+sprites_visuais = [NodePath("Sprite2D_1"), NodePath("Sprite2D_2"), NodePath("Sprite2D_3"), NodePath("Sprite2D_4")]
+bloqueadores_fisicos = [NodePath("Bloqueador_1"), NodePath("Bloqueador_2")]
+id_corpo_necessario = 2
+
+[node name="Bloqueador_1" type="StaticBody2D" parent="Carregamento_Bloqueador" unique_id=289897971]
+position = Vector2(570, 30)
+
+[node name="Sprite2D" type="Sprite2D" parent="Carregamento_Bloqueador/Bloqueador_1" unique_id=87858855]
+texture = ExtResource("27_xwfe2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Carregamento_Bloqueador/Bloqueador_1" unique_id=1901003565]
+shape = SubResource("RectangleShape2D_sy7xl")
+
+[node name="Bloqueador_2" type="StaticBody2D" parent="Carregamento_Bloqueador" unique_id=150132776]
+position = Vector2(630, 30)
+
+[node name="Sprite2D" type="Sprite2D" parent="Carregamento_Bloqueador/Bloqueador_2" unique_id=160062785]
+texture = ExtResource("27_xwfe2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Carregamento_Bloqueador/Bloqueador_2" unique_id=444883303]
+shape = SubResource("RectangleShape2D_sy7xl")
+
+[node name="Sprite2D_1" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=1465172209]
+modulate = Color(0, 0.53333336, 1, 0.29411766)
+position = Vector2(210, 210)
+texture = ExtResource("20_87rkg")
+
+[node name="Sprite2D_2" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=135639242]
+modulate = Color(0, 0.53333336, 1, 0.29411766)
+position = Vector2(270, 210)
+texture = ExtResource("20_87rkg")
+
+[node name="Sprite2D_3" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=1043058629]
+modulate = Color(0, 0.53333336, 1, 0.29411766)
+position = Vector2(210, 270)
+texture = ExtResource("20_87rkg")
+
+[node name="Sprite2D_4" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=1174654334]
+modulate = Color(0, 0.53333336, 1, 0.29411766)
+position = Vector2(270, 270)
+texture = ExtResource("20_87rkg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Carregamento_Bloqueador" unique_id=79159936]
+position = Vector2(660, 420)
+shape = SubResource("RectangleShape2D_oba5j")
+
+[node name="ProgressBar" type="ProgressBar" parent="Carregamento_Bloqueador" unique_id=2117765964]
+visible = false
+offset_left = 838.0
+offset_top = 136.0
+offset_right = 842.0
+offset_bottom = 163.0
+show_percentage = false
+
+[node name="SecurityCamera" parent="." unique_id=1006889508 instance=ExtResource("26_rpdp6")]
+position = Vector2(1158, 32)
+target_point = Vector2(-990, 230)
+end_width = 128.0
 
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]
+[connection signal="body_entered" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_entered"]
+[connection signal="body_exited" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_exited"]

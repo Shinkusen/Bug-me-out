@@ -230,6 +230,12 @@ tile_set = SubResource("TileSet_scili")
 position = Vector2(60, 758)
 numero_da_cena = 5
 
+[node name="Eatable" parent="." unique_id=1679141243 instance=ExtResource("24_fln6u")]
+position = Vector2(1077, 286)
+
+[node name="Player" parent="." unique_id=2115506010 instance=ExtResource("23_18wrb")]
+position = Vector2(181, 806)
+
 [node name="Area_Transition_Black" type="Area2D" parent="." unique_id=441314668]
 script = ExtResource("2_s3h74")
 numero_proxima_cena = 6
@@ -242,12 +248,6 @@ shape = SubResource("RectangleShape2D_so2o8")
 position = Vector2(480, 97)
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_483au")
-
-[node name="Eatable" parent="." unique_id=1679141243 instance=ExtResource("24_fln6u")]
-position = Vector2(1077, 286)
-
-[node name="Player" parent="." unique_id=2115506010 instance=ExtResource("23_18wrb")]
-position = Vector2(181, 806)
 
 [node name="Carregamento_Bloqueador" type="Area2D" parent="." unique_id=69039250 node_paths=PackedStringArray("sprites_visuais", "bloqueadores_fisicos")]
 script = ExtResource("25_p05lg")

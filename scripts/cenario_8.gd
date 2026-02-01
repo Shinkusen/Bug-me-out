@@ -6,8 +6,15 @@ extends Node2D
 @onready var titulo_final = $Titulo_Final
 @onready var label_thanks = $Label
 
+@onready var musica_final = $Audio_Final_Music
+
 func _ready() -> void:
 	GameController.camera_atual_cenario = camera
+	
+	if GameController.music_player:
+		GameController.music_player.stop()
+	musica_final.play()
+	
 	# A transição de entrada do GameController já faz um fade da tela preta.
 	# Se você quiser que o título só comece a aparecer DEPOIS que a tela clarear,
 	# você pode usar um 'await' aqui. Vou deixar sem por enquanto para começar junto.

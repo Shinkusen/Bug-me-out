@@ -28,6 +28,9 @@
 [ext_resource type="Texture2D" uid="uid://b6mdgpguf6tak" path="res://sprites/TileSet/Bloqueador_Passagem.png" id="24_x3iht"]
 [ext_resource type="Script" uid="uid://drmjft4e3lcrk" path="res://scripts/carregamento_bloqueador.gd" id="25_p05lg"]
 [ext_resource type="PackedScene" uid="uid://0kmek7shcteb" path="res://tscn/security_camera.tscn" id="25_t20ku"]
+[ext_resource type="AudioStream" uid="uid://buwxkugb0fw51" path="res://sounds/Objetos/Scanner.mp3" id="28_tqlj1"]
+[ext_resource type="AudioStream" uid="uid://bq5116v6nte7g" path="res://sounds/Objetos/Acesso Permitido.mp3" id="29_db1tc"]
+[ext_resource type="AudioStream" uid="uid://cmgo7twbijhef" path="res://sounds/Objetos/Acesso negado.mp3" id="30_dp0hi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxo5x"]
 texture = ExtResource("3_x3iht")
@@ -294,6 +297,15 @@ offset_top = 136.0
 offset_right = 842.0
 offset_bottom = 163.0
 show_percentage = false
+
+[node name="Audio_Scanner" type="AudioStreamPlayer2D" parent="Carregamento_Bloqueador" unique_id=334459908]
+stream = ExtResource("28_tqlj1")
+
+[node name="Audio_Access_Granted" type="AudioStreamPlayer2D" parent="Carregamento_Bloqueador" unique_id=1065737698]
+stream = ExtResource("29_db1tc")
+
+[node name="Audio_Access_Denied" type="AudioStreamPlayer2D" parent="Carregamento_Bloqueador" unique_id=1115424682]
+stream = ExtResource("30_dp0hi")
 
 [node name="SecurityCamera" parent="." unique_id=1006889508 instance=ExtResource("25_t20ku")]
 position = Vector2(1158, 32)

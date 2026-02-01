@@ -566,3 +566,9 @@ stream = ExtResource("101_1huc3")
 [node name="Audio_Respawn" type="AudioStreamPlayer2D" parent="." unique_id=586272756]
 stream = ExtResource("102_t62tu")
 volume_db = 7.5
+
+[node name="Audio_TakeOff" type="AudioStreamPlayer2D" parent="." unique_id=2096630295]
+volume_db = 24.0
+
+[node name="Audio_Flying" type="AudioStreamPlayer2D" parent="." unique_id=1622029802]
+volume_db = 24.0

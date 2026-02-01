@@ -11,6 +11,8 @@ extends CharacterBody2D
 @onready var audio_climb = $Audio_Climb
 @onready var audio_death = $Audio_Death
 @onready var audio_respawn = $Audio_Respawn
+@onready var audio_takeoff = $Audio_TakeOff
+@onready var audio_flying = $Audio_Flying
 
 # --- VARIÁVEIS ORIGINAIS ---
 var climbing = false

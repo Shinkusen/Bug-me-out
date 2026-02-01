@@ -88,7 +88,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Inseto_1_Perspectiva_Descer",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -111,7 +111,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Inseto_1_Perspectiva_Subir",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -161,12 +161,12 @@ animations = [{
 "frames": [],
 "loop": false,
 "name": &"Inseto_2_Perspectiva_Descer",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [],
 "loop": false,
 "name": &"Inseto_2_Perspectiva_Subir",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -218,12 +218,12 @@ animations = [{
 "frames": [],
 "loop": false,
 "name": &"Inseto_3_Perspectiva_Descer",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [],
 "loop": false,
 "name": &"Inseto_3_Perspectiva_Subir",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -295,12 +295,12 @@ animations = [{
 "frames": [],
 "loop": false,
 "name": &"Inseto_4_Perspectiva_Descer",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [],
 "loop": false,
 "name": &"Inseto_4_Perspectiva_Subir",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,

@@ -1,7 +1,40 @@
 [gd_scene format=3 uid="uid://0kmek7shcteb"]
 
 [ext_resource type="Script" uid="uid://tti6jew663sa" path="res://scripts/security_camera.gd" id="1_e45m3"]
-[ext_resource type="Texture2D" uid="uid://by3ne6dsjgoxn" path="res://sprites/camera-cftv.png" id="1_w1d4h"]
+[ext_resource type="Texture2D" uid="uid://c0npblvy64rvg" path="res://sprites/SecurityCamera/Security_Camera_1.png" id="2_x4s4e"]
+[ext_resource type="Texture2D" uid="uid://c7ffr1samk8ul" path="res://sprites/SecurityCamera/Security_Camera_2.png" id="3_1ybqf"]
+[ext_resource type="Texture2D" uid="uid://bps4mhvcgx1il" path="res://sprites/SecurityCamera/Security_Camera_3.png" id="4_lbufy"]
+[ext_resource type="Texture2D" uid="uid://cgnkikhvl2f55" path="res://sprites/SecurityCamera/Security_Camera_4.png" id="5_2fpgr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o7ltj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x4s4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1ybqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lbufy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2fpgr")
+}],
+"loop": true,
+"name": &"Alerta",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Verde",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Vermelho",
+"speed": 5.0
+}]
 
 [node name="SecurityCamera" type="Node2D" unique_id=1006889508]
 script = ExtResource("1_e45m3")
@@ -9,8 +42,11 @@ target_point = Vector2(-350, 350)
 start_width = 0.0
 end_width = 64.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1084662002]
-texture = ExtResource("1_w1d4h")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1566098529]
+position = Vector2(21, -5)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_o7ltj")
+animation = &"Vermelho"
 
 [node name="LightCone" type="Polygon2D" parent="." unique_id=1237018444]
 color = Color(0, 0.53333336, 1, 0.29411766)

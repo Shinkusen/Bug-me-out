@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="GGJ-2026-Bug-me-out"
-run/main_scene="uid://bi3o4ag70hkf1"
+config/name="Bug-me-out"
+run/main_scene="uid://da0i4no15nq8d"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

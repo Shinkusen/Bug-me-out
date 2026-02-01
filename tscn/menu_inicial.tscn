@@ -1,10 +1,38 @@
 [gd_scene format=3 uid="uid://da0i4no15nq8d"]
 
+[ext_resource type="Texture2D" uid="uid://c673r38wrs0qu" path="res://sprites/Menu Inicial.png" id="1_n8gae"]
+[ext_resource type="Script" uid="uid://dcptgw2xstj0s" path="res://scripts/menu_inicial.gd" id="1_nryl7"]
+
 [node name="Menu_Inicial" type="Control" unique_id=2026256637]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_nryl7")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1771344058]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+texture = ExtResource("1_n8gae")
+
+[node name="Jogar" type="Button" parent="." unique_id=335920441]
+modulate = Color(0.75371706, 0.0449076, 0.7129243, 0.29411766)
+layout_mode = 1
+offset_left = 480.0
+offset_top = 83.0
+offset_right = 720.0
+offset_bottom = 143.0
+theme_override_font_sizes/font_size = 36
+text = "Jogar"
+
+[node name="Sair" type="Button" parent="." unique_id=307072225]
+modulate = Color(0.75371706, 0.0449076, 0.7129243, 0.29411766)
+layout_mode = 0
+offset_left = 480.0
+offset_top = 196.0
+offset_right = 720.0
+offset_bottom = 256.0
+theme_override_font_sizes/font_size = 36
+text = "Sair"
+
+[connection signal="pressed" from="Jogar" to="." method="_on_jogar_pressed"]
+[connection signal="pressed" from="Sair" to="." method="_on_sair_pressed"]

@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://bkijwkebnarrs" path="res://sprites/TileSet/M1/ChaoEsquerda_M1_2.png" id="21_mxpcp"]
 [ext_resource type="Texture2D" uid="uid://bqfbmmmrt12s6" path="res://sprites/BugMeOut_Fan1-removebg-preview_2.png" id="23_wtb85"]
 [ext_resource type="Texture2D" uid="uid://cg2pchx2p2qjq" path="res://sprites/BugMeOut_Fan2-removebg-preview_2.png" id="24_ccai2"]
+[ext_resource type="Texture2D" uid="uid://mktdiocf2ttf" path="res://sprites/Mascara_Animacao_Inicial.png" id="25_ccai2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4twe"]
 size = Vector2(1200, 4)
@@ -304,7 +305,7 @@ process_material = SubResource("ParticleProcessMaterial_0gjsy")
 [node name="GrupoExplosao" type="Node2D" parent="." unique_id=291497826]
 
 [node name="ExplosaoCore" type="GPUParticles2D" parent="GrupoExplosao" unique_id=224554003]
-position = Vector2(632, 470)
+position = Vector2(655, 470)
 emitting = false
 amount = 10
 texture = SubResource("GradientTexture2D_blvl7")
@@ -312,7 +313,7 @@ explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_tjqbj")
 
 [node name="Explosao" type="GPUParticles2D" parent="GrupoExplosao" unique_id=1549362676]
-position = Vector2(632, 470)
+position = Vector2(655, 470)
 emitting = false
 amount = 60
 lifetime = 2.0
@@ -320,12 +321,18 @@ explosiveness = 0.8
 process_material = SubResource("ParticleProcessMaterial_blvl7")
 
 [node name="ExplosaoSparks" type="GPUParticles2D" parent="GrupoExplosao" unique_id=1851825825]
-position = Vector2(632, 470)
+position = Vector2(655, 470)
 emitting = false
 amount = 30
 lifetime = 1.5
 explosiveness = 0.95
 process_material = SubResource("ParticleProcessMaterial_qg7ph")
+
+[node name="Mascara_Animacao_Inicial" type="Sprite2D" parent="." unique_id=2060599859]
+position = Vector2(654.00006, 473.99997)
+rotation = 1.570906
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("25_ccai2")
 
 [node name="Player" parent="." unique_id=2115506010 groups=["player"] instance=ExtResource("1_uppvb")]
 position = Vector2(632, 470)

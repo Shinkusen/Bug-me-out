@@ -31,6 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://buwxkugb0fw51" path="res://sounds/Objetos/Scanner.mp3" id="28_oba5j"]
 [ext_resource type="AudioStream" uid="uid://bq5116v6nte7g" path="res://sounds/Objetos/Acesso Permitido.mp3" id="29_iq4sg"]
 [ext_resource type="AudioStream" uid="uid://cmgo7twbijhef" path="res://sounds/Objetos/Acesso negado.mp3" id="30_uex0h"]
+[ext_resource type="Script" uid="uid://dqjnq46ebej5v" path="res://scripts/area_texto_flutuante.gd" id="32_iq4sg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxo5x"]
 texture = ExtResource("3_hgyca")
@@ -193,6 +194,9 @@ scale_min = 2.0
 scale_max = 3.0
 color = Color(1, 1, 0.57254905, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uex0h"]
+size = Vector2(300, 120)
+
 [node name="Cenario_7" type="Node2D" unique_id=659214951]
 script = ExtResource("1_vocnn")
 
@@ -323,6 +327,17 @@ position = Vector2(1158, 32)
 target_point = Vector2(-990, 230)
 end_width = 128.0
 
+[node name="Area_Texto_Flutuante_1" type="Area2D" parent="." unique_id=1045423643]
+script = ExtResource("32_iq4sg")
+texto_export = "Pressione Shift para voar"
+tipo = "Fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Texto_Flutuante_1" unique_id=1804660638]
+position = Vector2(930, 780)
+shape = SubResource("RectangleShape2D_uex0h")
+
 [connection signal="body_entered" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_entered"]
 [connection signal="body_exited" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_exited"]
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]
+[connection signal="body_entered" from="Area_Texto_Flutuante_1" to="Area_Texto_Flutuante_1" method="_on_body_entered"]
+[connection signal="body_exited" from="Area_Texto_Flutuante_1" to="Area_Texto_Flutuante_1" method="_on_body_exited"]

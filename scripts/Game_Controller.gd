@@ -20,6 +20,14 @@ var corpos: Array = [0, 0, 0]
 
 var music_player: AudioStreamPlayer
 
+var Tutorial_WASD: bool = false
+var Tutorial_Espaco: bool = false
+var Tutorial_Checkpoint: bool = false
+var Tutorial_Eat: bool = false
+var Tutorial_Scanner: bool = false
+var Tutorial_String: bool = false
+var Tutorial_Fly: bool = false
+
 func _ready() -> void:
 	_criar_tela_preta_global()
 	_iniciar_musica_ambiente()

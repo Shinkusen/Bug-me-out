@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cua1ctoneaotg" path="res://sprites/TileSet/M1/ChaoDireita_M1_4.png" id="19_x2ttl"]
 [ext_resource type="Texture2D" uid="uid://m4jhav46ina0" path="res://sprites/TileSet/M1/ChaoEsquerda_M1_1.png" id="20_3atri"]
 [ext_resource type="Texture2D" uid="uid://bkijwkebnarrs" path="res://sprites/TileSet/M1/ChaoEsquerda_M1_2.png" id="21_mxpcp"]
+[ext_resource type="Script" uid="uid://dqjnq46ebej5v" path="res://scripts/area_texto_flutuante.gd" id="22_b417i"]
 [ext_resource type="Texture2D" uid="uid://mktdiocf2ttf" path="res://sprites/Mascara_Animacao_Inicial.png" id="25_ccai2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4twe"]
@@ -237,6 +238,9 @@ scale_min = 2.0
 scale_max = 3.0
 color = Color(1, 1, 0.57254905, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsiwh"]
+size = Vector2(90, 90)
+
 [node name="Cenario_1" type="Node2D" unique_id=2106832681]
 script = ExtResource("1_5yugu")
 
@@ -326,5 +330,27 @@ position = Vector2(1170, 97)
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_pgog6")
 
+[node name="Area_Texto_Flutuante_1" type="Area2D" parent="." unique_id=1712965385]
+script = ExtResource("22_b417i")
+texto_export = "Aperte WASD para movimentação"
+tipo = "WASD"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Texto_Flutuante_1" unique_id=2021960956]
+position = Vector2(1005, 675)
+shape = SubResource("RectangleShape2D_tsiwh")
+
+[node name="Area_Texto_Flutuante_2" type="Area2D" parent="." unique_id=861282136]
+script = ExtResource("22_b417i")
+texto_export = "Aperte Espaço para escalar"
+tipo = "Espaco"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Texto_Flutuante_2" unique_id=1290274731]
+position = Vector2(1155, 675)
+shape = SubResource("RectangleShape2D_tsiwh")
+
 [connection signal="body_entered" from="Area_Die" to="Area_Die" method="_on_body_entered"]
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]
+[connection signal="body_entered" from="Area_Texto_Flutuante_1" to="Area_Texto_Flutuante_1" method="_on_body_entered"]
+[connection signal="body_exited" from="Area_Texto_Flutuante_1" to="Area_Texto_Flutuante_1" method="_on_body_exited"]
+[connection signal="body_entered" from="Area_Texto_Flutuante_2" to="Area_Texto_Flutuante_2" method="_on_body_entered"]
+[connection signal="body_exited" from="Area_Texto_Flutuante_2" to="Area_Texto_Flutuante_2" method="_on_body_exited"]

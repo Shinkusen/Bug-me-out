@@ -34,6 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://buwxkugb0fw51" path="res://sounds/Objetos/Scanner.mp3" id="30_xdvdt"]
 [ext_resource type="AudioStream" uid="uid://bq5116v6nte7g" path="res://sounds/Objetos/Acesso Permitido.mp3" id="31_c5vxg"]
 [ext_resource type="AudioStream" uid="uid://cmgo7twbijhef" path="res://sounds/Objetos/Acesso negado.mp3" id="32_clwql"]
+[ext_resource type="Script" uid="uid://dqjnq46ebej5v" path="res://scripts/area_texto_flutuante.gd" id="35_c5vxg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxo5x"]
 texture = ExtResource("3_5sji1")
@@ -210,6 +211,9 @@ color = Color(1, 1, 0.57254905, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ea0"]
 size = Vector2(120, 4)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clwql"]
+size = Vector2(180, 180)
+
 [node name="Cenario_6" type="Node2D" unique_id=659214951]
 script = ExtResource("1_kt4cq")
 
@@ -372,7 +376,18 @@ script = ExtResource("30_a4uo3")
 position = Vector2(540, 813)
 shape = SubResource("RectangleShape2D_f1ea0")
 
+[node name="Area_Texto_Flutuante_1" type="Area2D" parent="." unique_id=1499094824]
+script = ExtResource("35_c5vxg")
+texto_export = "Aperte Q para usar teia"
+tipo = "String"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Texto_Flutuante_1" unique_id=1044382723]
+position = Vector2(870, 450)
+shape = SubResource("RectangleShape2D_clwql")
+
 [connection signal="body_entered" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_entered"]
 [connection signal="body_exited" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_exited"]
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]
 [connection signal="body_entered" from="Area_Die" to="Area_Die" method="_on_body_entered"]
+[connection signal="body_entered" from="Area_Texto_Flutuante_1" to="Area_Texto_Flutuante_1" method="_on_body_entered"]
+[connection signal="body_exited" from="Area_Texto_Flutuante_1" to="Area_Texto_Flutuante_1" method="_on_body_exited"]

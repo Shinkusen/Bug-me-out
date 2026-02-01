@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://doafpcldpulcc" path="res://sprites/TileSet/M3/ChaoBaixo_M3.png" id="19_jr7l4"]
 [ext_resource type="PackedScene" uid="uid://bu3lavvyof164" path="res://tscn/ventilador.tscn" id="24_g77qk"]
 [ext_resource type="PackedScene" uid="uid://b5lmx3d88ae8s" path="res://tscn/estalactite.tscn" id="25_xcrbb"]
+[ext_resource type="Script" uid="uid://dqjnq46ebej5v" path="res://scripts/area_texto_flutuante.gd" id="27_j2rf4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t8ajg"]
 texture = ExtResource("6_8v0bk")
@@ -183,6 +184,9 @@ scale_min = 2.0
 scale_max = 3.0
 color = Color(1, 1, 0.57254905, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8fdw"]
+size = Vector2(60, 60)
+
 [node name="Cenario_2" type="Node2D" unique_id=2096978835]
 script = ExtResource("1_posyo")
 
@@ -276,4 +280,15 @@ position = Vector2(420, 97)
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_xcrbb")
 
+[node name="Area_Texto_Flutuante_1" type="Area2D" parent="." unique_id=67036399]
+script = ExtResource("27_j2rf4")
+texto_export = "Passe pelos ovos para salvar checkpoint"
+tipo = "Checkpoint"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Texto_Flutuante_1" unique_id=642776220]
+position = Vector2(60, 690)
+shape = SubResource("RectangleShape2D_l8fdw")
+
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]
+[connection signal="body_entered" from="Area_Texto_Flutuante_1" to="Area_Texto_Flutuante_1" method="_on_body_entered"]
+[connection signal="body_exited" from="Area_Texto_Flutuante_1" to="Area_Texto_Flutuante_1" method="_on_body_exited"]

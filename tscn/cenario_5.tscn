@@ -31,6 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://buwxkugb0fw51" path="res://sounds/Objetos/Scanner.mp3" id="28_tqlj1"]
 [ext_resource type="AudioStream" uid="uid://bq5116v6nte7g" path="res://sounds/Objetos/Acesso Permitido.mp3" id="29_db1tc"]
 [ext_resource type="AudioStream" uid="uid://cmgo7twbijhef" path="res://sounds/Objetos/Acesso negado.mp3" id="30_dp0hi"]
+[ext_resource type="Script" uid="uid://dqjnq46ebej5v" path="res://scripts/area_texto_flutuante.gd" id="32_db1tc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxo5x"]
 texture = ExtResource("3_x3iht")
@@ -193,6 +194,9 @@ scale_min = 2.0
 scale_max = 3.0
 color = Color(1, 1, 0.57254905, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dp0hi"]
+size = Vector2(180, 180)
+
 [node name="Cenario_5" type="Node2D" unique_id=659214951 node_paths=PackedStringArray("sprites_visuais", "bloqueadores_fisicos")]
 script = ExtResource("1_55gj2")
 sprites_visuais = [NodePath("Carregamento_Bloqueador/Sprite2D_1"), NodePath("Carregamento_Bloqueador/Sprite2D_2")]
@@ -313,6 +317,28 @@ position = Vector2(1159, 41)
 target_point = Vector2(-350, 208)
 end_width = 128.0
 
+[node name="Area_Texto_Flutuante_1" type="Area2D" parent="." unique_id=911370956]
+script = ExtResource("32_db1tc")
+texto_export = "Aperte E para consumir"
+tipo = "Eat"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Texto_Flutuante_1" unique_id=264421220]
+position = Vector2(570, 330)
+shape = SubResource("RectangleShape2D_dp0hi")
+
+[node name="Area_Texto_Flutuante_2" type="Area2D" parent="." unique_id=1726001551]
+script = ExtResource("32_db1tc")
+texto_export = "Mantenha-se no scanner após consumir"
+tipo = "Scanner"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Texto_Flutuante_2" unique_id=1143980588]
+position = Vector2(840, 210)
+shape = SubResource("RectangleShape2D_dp0hi")
+
 [connection signal="body_entered" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_entered"]
 [connection signal="body_exited" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_exited"]
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]
+[connection signal="body_entered" from="Area_Texto_Flutuante_1" to="Area_Texto_Flutuante_1" method="_on_body_entered"]
+[connection signal="body_exited" from="Area_Texto_Flutuante_1" to="Area_Texto_Flutuante_1" method="_on_body_exited"]
+[connection signal="body_entered" from="Area_Texto_Flutuante_2" to="Area_Texto_Flutuante_2" method="_on_body_entered"]
+[connection signal="body_exited" from="Area_Texto_Flutuante_2" to="Area_Texto_Flutuante_2" method="_on_body_exited"]

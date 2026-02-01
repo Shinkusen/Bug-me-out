@@ -26,9 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://doafpcldpulcc" path="res://sprites/TileSet/M3/ChaoBaixo_M3.png" id="19_jr7l4"]
 [ext_resource type="PackedScene" uid="uid://b5lmx3d88ae8s" path="res://tscn/estalactite.tscn" id="25_xcrbb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8h6f"]
-size = Vector2(1200, 4)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t8ajg"]
 texture = ExtResource("6_8v0bk")
 texture_region_size = Vector2i(60, 60)
@@ -133,19 +130,19 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_u4tfr")
 sources/1 = SubResource("TileSetAtlasSource_g77qk")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t22cp"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xcrbb"]
 texture = ExtResource("9_51sln")
 texture_region_size = Vector2i(60, 60)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, -30, 30, -30, 30, 30, -30, 30)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jr7l4"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2rf4"]
 texture = ExtResource("11_x02pp")
 texture_region_size = Vector2i(60, 60)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, -30, 30, -30, 30, 30, -30, 30)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xcrbb"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l8fdw"]
 texture = ExtResource("10_ttcmk")
 texture_region_size = Vector2i(60, 60)
 0:0/0 = 0
@@ -154,11 +151,11 @@ texture_region_size = Vector2i(60, 60)
 [sub_resource type="TileSet" id="TileSet_u4tfr"]
 tile_size = Vector2i(60, 60)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_t22cp")
-sources/1 = SubResource("TileSetAtlasSource_jr7l4")
-sources/2 = SubResource("TileSetAtlasSource_xcrbb")
+sources/0 = SubResource("TileSetAtlasSource_xcrbb")
+sources/1 = SubResource("TileSetAtlasSource_j2rf4")
+sources/2 = SubResource("TileSetAtlasSource_l8fdw")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_82kx2"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fnc8p"]
 texture = ExtResource("12_i2flk")
 texture_region_size = Vector2i(60, 60)
 0:0/0 = 0
@@ -168,7 +165,22 @@ texture_region_size = Vector2i(60, 60)
 tile_size = Vector2i(60, 60)
 custom_data_layer_0/name = "can_climb"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_82kx2")
+sources/0 = SubResource("TileSetAtlasSource_fnc8p")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8h6f"]
+size = Vector2(120, 4)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xcrbb"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -100.19, 0)
+emission_shape = 3
+emission_box_extents = Vector3(60, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 30, 0)
+scale_min = 2.0
+scale_max = 3.0
+color = Color(1, 1, 0.57254905, 1)
 
 [node name="Cenario_2" type="Node2D" unique_id=2096978835]
 script = ExtResource("1_posyo")
@@ -186,25 +198,15 @@ texture = ExtResource("1_6id2c")
 position = Vector2(600, 1350)
 texture = ExtResource("1_6id2c")
 
-[node name="Area_Transition_Black" type="Area2D" parent="." unique_id=620985426]
-script = ExtResource("3_6iwao")
-
-[node name="Transicao_Up" type="CollisionShape2D" parent="Area_Transition_Black" unique_id=1871516452]
-position = Vector2(600, 2)
-shape = SubResource("RectangleShape2D_l8h6f")
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=137992105]
 position = Vector2(600, 1350)
 
-[node name="Player" parent="." unique_id=2115506010 instance=ExtResource("4_l8h6f")]
-position = Vector2(45, 674)
-
 [node name="ChaoColisores_M1" type="TileMapLayer" parent="." unique_id=2143230091]
-tile_map_data = PackedByteArray("AAAAAAwAAAAAAAAAAAACAA0AAAAAAAAAAAAEAA4ACAAAAAAAAAAFAA4AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAA4ABAAAAAAAAAADAA0ABAAAAAAAAAABAAwABAAAAAAAAAALAA0ACAAAAAAAAAAPAAwACAAAAAAAAAAMAA0AAAAAAAAAAAANAA0AAAAAAAAAAAAOAA0AAAAAAAAAAAAQAAwAAAAAAAAAAAARAAwAAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAACAAYACgAAAAAAAAAAAAgAAgAAAAAAAAABAAgACgAAAAAAAAADAAMAAQAAAAAAAAADAAIAAQAAAAAAAAADAAEAAQAAAAAAAAADAAAAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAwAAAAAAAAAAAACAA0AAAAAAAAAAAAEAA4ACAAAAAAAAAAFAA4AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAA4ABAAAAAAAAAADAA0ABAAAAAAAAAABAAwABAAAAAAAAAALAA0ACAAAAAAAAAAPAAwACAAAAAAAAAAMAA0AAAAAAAAAAAANAA0AAAAAAAAAAAAOAA0AAAAAAAAAAAAQAAwAAAAAAAAAAAARAAwAAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAACAAYACgAAAAAAAAAAAAgAAgAAAAAAAAABAAgACgAAAAAAAAADAAMAAQAAAAAAAAADAAIAAQAAAAAAAAADAAEAAQAAAAAAAAADAAAAAQAAAAAAAAATAAgABgAAAAAAAAASAAYABgAAAAAAAAARAAQABgAAAAAAAAD//wkAAQAAAAAAAAD//woAAQAAAAAAAAD//wsAAQAAAAAAAAAUAAsAAwAAAAAAAAAUAAoAAwAAAAAAAAAUAAkAAwAAAAAAAAA=")
 tile_set = SubResource("TileSet_eqj4n")
 
 [node name="ChaoSemColisores_Baixo" type="TileMapLayer" parent="." unique_id=1620785133]
-tile_map_data = PackedByteArray("AAADAA4AAAAAAAAAAAACAA4AAAAAAAAAAAABAA4AAQAAAAAAAAAAAA4AAAAAAAAAAAABAA0AAAAAAAAAAAAAAA0AAAAAAAAAAAALAA4AAAAAAAAAAAAMAA4AAAAAAAAAAAANAA4AAQAAAAAAAAAOAA4AAAAAAAAAAAAPAA4AAAAAAAAAAAAPAA0AAAAAAAAAAAAQAA0AAQAAAAAAAAARAA0AAAAAAAAAAAASAA0AAAAAAAAAAAATAA0AAAAAAAAAAAATAA4AAAAAAAAAAAASAA4AAQAAAAAAAAARAA4AAAAAAAAAAAAQAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAAMAAAAAAAAAAAACAAIAAAAAAAAAAAACAAEAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAACAAQAAAAAAAAAAAABAAUAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAACAAUAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAADAA4AAAAAAAAAAAACAA4AAAAAAAAAAAABAA4AAQAAAAAAAAAAAA4AAAAAAAAAAAABAA0AAAAAAAAAAAAAAA0AAAAAAAAAAAALAA4AAAAAAAAAAAAMAA4AAAAAAAAAAAANAA4AAQAAAAAAAAAOAA4AAAAAAAAAAAAPAA4AAAAAAAAAAAAPAA0AAAAAAAAAAAAQAA0AAQAAAAAAAAARAA0AAAAAAAAAAAASAA0AAAAAAAAAAAATAA0AAAAAAAAAAAATAA4AAAAAAAAAAAASAA4AAQAAAAAAAAARAA4AAAAAAAAAAAAQAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAAMAAAAAAAAAAAACAAIAAAAAAAAAAAACAAEAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAACAAQAAAAAAAAAAAABAAUAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAACAAUAAAAAAAAAAAARAAAAAAAAAAAAAAARAAEAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAASAAMAAAAAAAAAAAASAAQAAAAAAAAAAAASAAUAAAAAAAAAAAATAAUAAAAAAAAAAAATAAYAAAAAAAAAAAATAAcAAAAAAAAAAAATAAQAAAAAAAAAAAATAAMAAAAAAAAAAAATAAIAAAAAAAAAAAATAAEAAAAAAAAAAAATAAAAAAAAAAAAAAASAAAAAAAAAAAAAAASAAEAAAAAAAAAAAASAAIAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_emxrl")
 
 [node name="ChaoColisores_M2" type="TileMapLayer" parent="." unique_id=1108263653]
@@ -223,7 +225,44 @@ numero_da_cena = 2
 position = Vector2(150, 450)
 
 [node name="Estalactite_2" parent="." unique_id=300047428 instance=ExtResource("25_xcrbb")]
-position = Vector2(234, 479)
+position = Vector2(270, 330)
 is_area = true
+is_killable = true
+distance = 6
+
+[node name="Estalactite_3" parent="." unique_id=1010238880 instance=ExtResource("25_xcrbb")]
+position = Vector2(510, 330)
+is_area = true
+is_killable = true
+distance = 7
+
+[node name="Estalactite_4" parent="." unique_id=641820179 instance=ExtResource("25_xcrbb")]
+position = Vector2(1170, 570)
+
+[node name="Estalactite_5" parent="." unique_id=323405507 instance=ExtResource("25_xcrbb")]
+position = Vector2(1170, 690)
+rotation = 3.1415927
+
+[node name="Estalactite_6" parent="." unique_id=770586665 instance=ExtResource("25_xcrbb")]
+position = Vector2(1050, 330)
+is_area = true
+is_killable = true
+distance = 5
+
+[node name="Player" parent="." unique_id=2115506010 instance=ExtResource("4_l8h6f")]
+position = Vector2(60, 688)
+
+[node name="Area_Transition_Black" type="Area2D" parent="." unique_id=620985426]
+script = ExtResource("3_6iwao")
+numero_proxima_cena = 3
+
+[node name="Transicao_Up" type="CollisionShape2D" parent="Area_Transition_Black" unique_id=1871516452]
+position = Vector2(420, 2)
+shape = SubResource("RectangleShape2D_l8h6f")
+
+[node name="Faiscas" type="GPUParticles2D" parent="Area_Transition_Black" unique_id=174653007]
+position = Vector2(420, 97)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_xcrbb")
 
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]

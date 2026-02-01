@@ -1,9 +1,14 @@
 extends RigidBody2D
 
 @export var is_area: bool
+@export var is_killable: bool
+@export var distance: int
 
 func _ready():
 	gravity_scale = 0
+	
+	$Area2D.position.y = 54 + distance * 64
+	$Faiscas.emitting = is_killable
 
 # --- SINAL DO FILHO (Area2D) ---
 func _on_area_2d_body_entered(body):
@@ -17,6 +22,8 @@ func _on_area_2d_body_entered(body):
 
 # --- SINAL DO PAI (RigidBody) ---
 func _on_body_entered(body):
+	if !is_killable: return
+	
 	if body.name == "Player":
 		GameController.player.dead = true
 	

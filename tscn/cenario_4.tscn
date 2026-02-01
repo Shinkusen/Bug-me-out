@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://ddbl4no6s7il6"]
 
+[ext_resource type="Script" uid="uid://0owbm7nw5d7n" path="res://scripts/cenario_4.gd" id="1_kio45"]
 [ext_resource type="Texture2D" uid="uid://ct3y651ehxbg5" path="res://sprites/Black.png" id="1_ldxwp"]
 [ext_resource type="Texture2D" uid="uid://4wm3xkpr2xmw" path="res://sprites/Background/Background_Cor.png" id="1_lvblc"]
 [ext_resource type="Script" uid="uid://dqe31iawldfam" path="res://scripts/transicao_up.gd" id="2_x501g"]
@@ -185,6 +186,7 @@ color = Color(1, 1, 0.57254905, 1)
 size = Vector2(1200, 4)
 
 [node name="Cenario_4" type="Node2D" unique_id=659214951]
+script = ExtResource("1_kio45")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1728573793]
 offset_right = 1200.0
@@ -203,7 +205,7 @@ texture = ExtResource("1_ldxwp")
 position = Vector2(600, 450)
 
 [node name="ChaoColisores_M1" type="TileMapLayer" parent="." unique_id=1557546725]
-tile_map_data = PackedByteArray("AAACAA4AAwAAAAAAAAACAA0AAwAAAAAAAAACAAwAAwAAAAAAAAACAAsAAwAAAAAAAAACAAoAAwAAAAAAAAACAAkAAwAAAAAAAAACAAgAAwAAAAAAAAADAA4AAQAAAAAAAAADAA0AAQAAAAAAAAADAAwAAQAAAAAAAAADAAsAAQAAAAAAAAADAAoAAQAAAAAAAAADAAkAAQAAAAAAAAADAAgAAQAAAAAAAAAGAAYABAAAAAAAAAACAAcABgAAAAAAAAACAAYACAAAAAAAAAAGAAcACgAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAADAAcAAgAAAAAAAAAEAAcAAgAAAAAAAAAFAAcAAgAAAAAAAAAAAA4AAAAAAAAAAAABAA4AAAAAAAAAAAD//w4AAQAAAAAAAAD//w0AAQAAAAAAAAD//wwAAQAAAAAAAAD//wsAAQAAAAAAAAD//woAAQAAAAAAAAD//wkAAQAAAAAAAAD//wgAAQAAAAAAAAD//wcAAQAAAAAAAAD//wYAAQAAAAAAAAD//wUAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAAAAAAAAD//wAAAQAAAAAAAAATAAwAAAAAAAAAAAATAA0AAgAAAAAAAAASAA0ABgAAAAAAAAASAAwACAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAACAA4AAwAAAAAAAAACAA0AAwAAAAAAAAACAAwAAwAAAAAAAAACAAsAAwAAAAAAAAACAAoAAwAAAAAAAAACAAkAAwAAAAAAAAACAAgAAwAAAAAAAAADAA4AAQAAAAAAAAADAA0AAQAAAAAAAAADAAwAAQAAAAAAAAADAAsAAQAAAAAAAAADAAoAAQAAAAAAAAADAAkAAQAAAAAAAAADAAgAAQAAAAAAAAAGAAYABAAAAAAAAAACAAcABgAAAAAAAAACAAYACAAAAAAAAAAGAAcACgAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAADAAcAAgAAAAAAAAAEAAcAAgAAAAAAAAAFAAcAAgAAAAAAAAAAAA4AAAAAAAAAAAABAA4AAAAAAAAAAAD//w4AAQAAAAAAAAD//w0AAQAAAAAAAAD//wwAAQAAAAAAAAD//wsAAQAAAAAAAAD//woAAQAAAAAAAAD//wkAAQAAAAAAAAD//wgAAQAAAAAAAAD//wcAAQAAAAAAAAD//wYAAQAAAAAAAAD//wUAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAAAAAAAAD//wAAAQAAAAAAAAATAAwAAAAAAAAAAAATAA0AAgAAAAAAAAASAA0ABgAAAAAAAAASAAwACAAAAAAAAAAUAAAAAwAAAAAAAAAUAAEAAwAAAAAAAAAUAAIAAwAAAAAAAAAUAAMAAwAAAAAAAAAUAAQAAwAAAAAAAAAUAAUAAwAAAAAAAAAUAAYAAwAAAAAAAAAUAAcAAwAAAAAAAAAUAAgAAwAAAAAAAAAUAAkAAwAAAAAAAAAUAAoAAwAAAAAAAAAUAAsAAwAAAAAAAAAUAA4AAwAAAAAAAAA=")
 tile_set = SubResource("TileSet_5r2p1")
 
 [node name="ChaoSemColisores_Baixo" type="TileMapLayer" parent="." unique_id=1568102665]
@@ -220,12 +222,28 @@ tile_set = SubResource("TileSet_scili")
 [node name="Estalactite_1" parent="." unique_id=1893595741 instance=ExtResource("21_3tosq")]
 position = Vector2(570, 390)
 
+[node name="Estalactite_2" parent="." unique_id=1711767304 instance=ExtResource("21_3tosq")]
+position = Vector2(689, 330)
+
+[node name="Estalactite_3" parent="." unique_id=35680130 instance=ExtResource("21_3tosq")]
+position = Vector2(870, 270)
+
+[node name="Estalactite_4" parent="." unique_id=1902543414 instance=ExtResource("21_3tosq")]
+position = Vector2(990, 270)
+
+[node name="Estalactite_5" parent="." unique_id=1858615496 instance=ExtResource("21_3tosq")]
+position = Vector2(1110, 870)
+
+[node name="Estalactite_6" parent="." unique_id=907350761 instance=ExtResource("21_3tosq")]
+position = Vector2(330, 510)
+
 [node name="Checkpoint" parent="." unique_id=629245070 instance=ExtResource("21_llpqc")]
 position = Vector2(270, 330)
-numero_da_cena = 2
+numero_da_cena = 4
 
 [node name="Area_Transition_Black" type="Area2D" parent="." unique_id=441314668]
 script = ExtResource("2_x501g")
+numero_proxima_cena = 5
 
 [node name="Transicao_Up" type="CollisionShape2D" parent="Area_Transition_Black" unique_id=1206525684]
 position = Vector2(420, 2)

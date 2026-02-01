@@ -84,10 +84,6 @@ func _process(delta):
 		else:
 			print("Nível insuficiente para usar Teia")
 	
-	if Input.is_action_just_pressed("upar"):
-		evoluir_inseto()
-		update_animations()
-	
 	# CONTROLE DE AUMENTAR/DIMINUIR LINHA
 	if current_web_state == WebState.CARRYING:
 		if Input.is_action_pressed("aumentar_linha"):
@@ -469,6 +465,4 @@ func push_rigid_bodies():
 
 func evoluir_inseto():
 	insect_level += 1
-	if insect_level > 4:
-		insect_level = 1
 	print("Evoluiu para nível: ", insect_level)

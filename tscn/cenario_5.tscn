@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://3xh2f8824jfb" path="res://sprites/TileSet/Grade.png" id="20_3tq0j"]
 [ext_resource type="PackedScene" uid="uid://b2rsc10sv6eji" path="res://tscn/checkpoint.tscn" id="21_btclj"]
 [ext_resource type="PackedScene" uid="uid://cljk0xq12son8" path="res://tscn/player.tscn" id="23_18wrb"]
+[ext_resource type="PackedScene" uid="uid://dxir6k7kamspi" path="res://tscn/eatable.tscn" id="24_fln6u"]
 [ext_resource type="Texture2D" uid="uid://b6mdgpguf6tak" path="res://sprites/TileSet/Bloqueador_Passagem.png" id="24_x3iht"]
 [ext_resource type="Script" uid="uid://drmjft4e3lcrk" path="res://scripts/carregamento_bloqueador.gd" id="25_p05lg"]
 [ext_resource type="PackedScene" uid="uid://0kmek7shcteb" path="res://tscn/security_camera.tscn" id="25_t20ku"]
@@ -236,6 +237,9 @@ shape = SubResource("RectangleShape2D_so2o8")
 position = Vector2(480, 97)
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_483au")
+
+[node name="Eatable" parent="." unique_id=1679141243 instance=ExtResource("24_fln6u")]
+position = Vector2(1077, 286)
 
 [node name="Player" parent="." unique_id=2115506010 instance=ExtResource("23_18wrb")]
 position = Vector2(181, 806)

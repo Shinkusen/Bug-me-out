@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bacygkewam30i"
-path="res://.godot/imported/ventilador.png-d313dc1a477fe5eb15abc6ff3a740568.ctex"
+uid="uid://cg2pchx2p2qjq"
+path="res://.godot/imported/Ventilador_2.png-4b85d973bb34b1b5d542d9db8091a0b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ventilador.png"
-dest_files=["res://.godot/imported/ventilador.png-d313dc1a477fe5eb15abc6ff3a740568.ctex"]
+source_file="res://sprites/Ventilador/Ventilador_2.png"
+dest_files=["res://.godot/imported/Ventilador_2.png-4b85d973bb34b1b5d542d9db8091a0b3.ctex"]
 
 [params]
 

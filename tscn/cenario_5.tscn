@@ -184,6 +184,9 @@ scale_min = 2.0
 scale_max = 3.0
 color = Color(1, 1, 0.57254905, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fln6u"]
+size = Vector2(60, 60)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t20ku"]
 size = Vector2(120, 60)
 
@@ -248,13 +251,23 @@ position = Vector2(181, 806)
 [node name="Carregamento_Bloqueador" type="Area2D" parent="." unique_id=69039250]
 script = ExtResource("25_p05lg")
 
-[node name="Bloqueador_1" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=1335757430]
+[node name="Bloqueador_1" type="Area2D" parent="Carregamento_Bloqueador" unique_id=1821593250]
 position = Vector2(450, 30)
+
+[node name="Sprite2D" type="Sprite2D" parent="Carregamento_Bloqueador/Bloqueador_1" unique_id=596686498]
 texture = ExtResource("24_x3iht")
 
-[node name="Bloqueador_2" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=1421638013]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Carregamento_Bloqueador/Bloqueador_1" unique_id=624416940]
+shape = SubResource("RectangleShape2D_fln6u")
+
+[node name="Bloqueador_2" type="Area2D" parent="Carregamento_Bloqueador" unique_id=1504726807]
 position = Vector2(510, 30)
+
+[node name="Sprite2D" type="Sprite2D" parent="Carregamento_Bloqueador/Bloqueador_2" unique_id=1042801586]
 texture = ExtResource("24_x3iht")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Carregamento_Bloqueador/Bloqueador_2" unique_id=429729630]
+shape = SubResource("RectangleShape2D_fln6u")
 
 [node name="Sprite2D_1" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=277448545]
 modulate = Color(0, 0.53333336, 1, 0.29411766)

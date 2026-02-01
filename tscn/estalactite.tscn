@@ -11,13 +11,14 @@ size = Vector2(60, 60)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c0cry"]
 particle_flag_disable_z = true
-emission_shape_offset = Vector3(0, -70, 0)
+emission_shape_offset = Vector3(0, -55, 0)
 emission_shape = 3
 emission_box_extents = Vector3(15, 1, 1)
 direction = Vector3(0, 1, 0)
 spread = 0.0
 gravity = Vector3(0, 45, 0)
-scale_max = 2.0
+scale_min = 1.5
+scale_max = 2.5
 color = Color(0.49433076, 0.49433076, 0.4943307, 1)
 
 [node name="Estalactite" type="RigidBody2D" unique_id=1893595741]
@@ -41,7 +42,7 @@ shape = SubResource("RectangleShape2D_gmbfg")
 
 [node name="Faiscas" type="GPUParticles2D" parent="." unique_id=1694804421]
 position = Vector2(0, 70)
-amount = 5
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_c0cry")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

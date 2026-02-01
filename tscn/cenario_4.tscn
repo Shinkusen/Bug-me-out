@@ -25,9 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://3xh2f8824jfb" path="res://sprites/TileSet/Grade.png" id="20_a5sg4"]
 [ext_resource type="PackedScene" uid="uid://b5lmx3d88ae8s" path="res://tscn/estalactite.tscn" id="21_3tosq"]
 [ext_resource type="PackedScene" uid="uid://b2rsc10sv6eji" path="res://tscn/checkpoint.tscn" id="21_llpqc"]
+[ext_resource type="PackedScene" uid="uid://bu3lavvyof164" path="res://tscn/ventilador.tscn" id="23_xge4q"]
 [ext_resource type="Script" uid="uid://ceqvpphv5tssd" path="res://scripts/barra_cair_die.gd" id="24_0ajey"]
-[ext_resource type="PackedScene" uid="uid://birljsdwrej7j" path="res://tscn/restos_tronco.tscn" id="27_xge4q"]
-[ext_resource type="PackedScene" uid="uid://cjkri2nsajg5m" path="res://tscn/gancho.tscn" id="28_2c4dv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxo5x"]
 texture = ExtResource("3_0ajey")
@@ -239,6 +238,17 @@ position = Vector2(1110, 870)
 [node name="Estalactite_6" parent="." unique_id=907350761 instance=ExtResource("21_3tosq")]
 position = Vector2(330, 510)
 
+[node name="Ventilador_1" parent="." unique_id=638374821 instance=ExtResource("23_xge4q")]
+position = Vector2(270, 722)
+
+[node name="Ventilador_2" parent="." unique_id=1543500794 instance=ExtResource("23_xge4q")]
+position = Vector2(1050, 810)
+rotation = -1.5707964
+
+[node name="Ventilador_3" parent="." unique_id=1790456678 instance=ExtResource("23_xge4q")]
+position = Vector2(810, 210)
+rotation = 3.1415927
+
 [node name="Checkpoint" parent="." unique_id=629245070 instance=ExtResource("21_llpqc")]
 position = Vector2(270, 330)
 numero_da_cena = 4
@@ -265,18 +275,6 @@ shape = SubResource("RectangleShape2D_3tosq")
 
 [node name="Player" parent="." unique_id=2115506010 instance=ExtResource("3_uxdhn")]
 position = Vector2(30, 808)
-
-[node name="Restos_Tronco_1" parent="." unique_id=497383458 instance=ExtResource("27_xge4q")]
-position = Vector2(30, 113)
-rotation = 1.5707964
-
-[node name="Restos_Tronco_2" parent="." unique_id=1559060904 instance=ExtResource("27_xge4q")]
-position = Vector2(270, 696)
-rotation = 1.5707964
-
-[node name="Gancho" parent="." unique_id=1699783940 instance=ExtResource("28_2c4dv")]
-position = Vector2(1050, 796)
-rotation = 1.5707964
 
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]
 [connection signal="body_entered" from="Area_Die" to="Area_Die" method="_on_body_entered"]

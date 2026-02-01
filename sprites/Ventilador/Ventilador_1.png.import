@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg2pchx2p2qjq"
-path="res://.godot/imported/BugMeOut_Fan2-removebg-preview_2.png-b1c8535c17a3e870b84cccdef3d91a07.ctex"
+uid="uid://bqfbmmmrt12s6"
+path="res://.godot/imported/Ventilador_1.png-59d62b8cf1fbbefd78dcd41164308ec8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/BugMeOut_Fan2-removebg-preview_2.png"
-dest_files=["res://.godot/imported/BugMeOut_Fan2-removebg-preview_2.png-b1c8535c17a3e870b84cccdef3d91a07.ctex"]
+source_file="res://sprites/Ventilador/Ventilador_1.png"
+dest_files=["res://.godot/imported/Ventilador_1.png-59d62b8cf1fbbefd78dcd41164308ec8.ctex"]
 
 [params]
 

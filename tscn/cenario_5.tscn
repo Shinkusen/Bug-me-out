@@ -190,8 +190,10 @@ size = Vector2(60, 60)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t20ku"]
 size = Vector2(120, 60)
 
-[node name="Cenario_5" type="Node2D" unique_id=659214951]
+[node name="Cenario_5" type="Node2D" unique_id=659214951 node_paths=PackedStringArray("sprites_visuais", "bloqueadores_fisicos")]
 script = ExtResource("1_55gj2")
+sprites_visuais = [NodePath("Carregamento_Bloqueador/Sprite2D_1"), NodePath("Carregamento_Bloqueador/Sprite2D_2")]
+bloqueadores_fisicos = [NodePath("Carregamento_Bloqueador/Bloqueador_1"), NodePath("Carregamento_Bloqueador/Bloqueador_2")]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1728573793]
 offset_right = 1200.0
@@ -243,15 +245,17 @@ process_material = SubResource("ParticleProcessMaterial_483au")
 
 [node name="Eatable" parent="." unique_id=1679141243 instance=ExtResource("24_fln6u")]
 position = Vector2(1077, 286)
-id_corpo = 1
 
 [node name="Player" parent="." unique_id=2115506010 instance=ExtResource("23_18wrb")]
 position = Vector2(181, 806)
 
-[node name="Carregamento_Bloqueador" type="Area2D" parent="." unique_id=69039250]
+[node name="Carregamento_Bloqueador" type="Area2D" parent="." unique_id=69039250 node_paths=PackedStringArray("sprites_visuais", "bloqueadores_fisicos")]
 script = ExtResource("25_p05lg")
+sprites_visuais = [NodePath("Sprite2D_1"), NodePath("Sprite2D_2")]
+bloqueadores_fisicos = [NodePath("Bloqueador_1"), NodePath("Bloqueador_2")]
+id_corpo_necessario = 0
 
-[node name="Bloqueador_1" type="Area2D" parent="Carregamento_Bloqueador" unique_id=1821593250]
+[node name="Bloqueador_1" type="StaticBody2D" parent="Carregamento_Bloqueador" unique_id=1557115090]
 position = Vector2(450, 30)
 
 [node name="Sprite2D" type="Sprite2D" parent="Carregamento_Bloqueador/Bloqueador_1" unique_id=596686498]
@@ -260,7 +264,7 @@ texture = ExtResource("24_x3iht")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Carregamento_Bloqueador/Bloqueador_1" unique_id=624416940]
 shape = SubResource("RectangleShape2D_fln6u")
 
-[node name="Bloqueador_2" type="Area2D" parent="Carregamento_Bloqueador" unique_id=1504726807]
+[node name="Bloqueador_2" type="StaticBody2D" parent="Carregamento_Bloqueador" unique_id=1765985970]
 position = Vector2(510, 30)
 
 [node name="Sprite2D" type="Sprite2D" parent="Carregamento_Bloqueador/Bloqueador_2" unique_id=1042801586]

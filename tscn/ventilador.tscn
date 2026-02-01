@@ -53,6 +53,7 @@ script = ExtResource("1_im8bh")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1922331344]
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_n560r")
+autoplay = "default"
 frame_progress = 0.96615237
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2045978169]

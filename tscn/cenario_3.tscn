@@ -26,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://b2rsc10sv6eji" path="res://tscn/checkpoint.tscn" id="21_lm0vh"]
 [ext_resource type="PackedScene" uid="uid://b5lmx3d88ae8s" path="res://tscn/estalactite.tscn" id="24_scili"]
 [ext_resource type="Script" uid="uid://ceqvpphv5tssd" path="res://scripts/barra_cair_die.gd" id="26_iprea"]
-[ext_resource type="PackedScene" uid="uid://dxir6k7kamspi" path="res://tscn/eatable.tscn" id="27_qce4h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxo5x"]
 texture = ExtResource("3_lqwqc")
@@ -263,9 +262,6 @@ distance = 5
 
 [node name="Estalactite_8" parent="." unique_id=373296330 instance=ExtResource("24_scili")]
 position = Vector2(390, 450)
-
-[node name="Eatable" parent="." unique_id=1679141243 instance=ExtResource("27_qce4h")]
-position = Vector2(1054, 283)
 
 [node name="Area_Transition_Black" type="Area2D" parent="." unique_id=441314668]
 script = ExtResource("2_tnkw5")

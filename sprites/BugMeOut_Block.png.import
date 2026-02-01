@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvgnjnywh80sk"
-path="res://.godot/imported/sombra-quadrada.png-f7b04e00d1234574211079b192a4d2bd.ctex"
+uid="uid://u6ohuc8pup45"
+path="res://.godot/imported/BugMeOut_Block.png-ca64bea63df041fa7d9b4d89aee78ded.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/sombra-quadrada.png"
-dest_files=["res://.godot/imported/sombra-quadrada.png-f7b04e00d1234574211079b192a4d2bd.ctex"]
+source_file="res://sprites/BugMeOut_Block.png"
+dest_files=["res://.godot/imported/BugMeOut_Block.png-ca64bea63df041fa7d9b4d89aee78ded.ctex"]
 
 [params]
 

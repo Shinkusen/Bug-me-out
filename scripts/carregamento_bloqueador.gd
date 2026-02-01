@@ -1,16 +1,14 @@
 extends Area2D
 
-# Referências
-@onready var bloqueador_1 = $Bloqueador_1
-@onready var bloqueador_2 = $Bloqueador_2
-@onready var sprite_1 = $Sprite2D_1
-@onready var sprite_2 = $Sprite2D_2
+# --- REFERÊNCIAS GENÉRICAS (ARRAYS) ---
+@export var sprites_visuais: Array[Node2D]
+@export var bloqueadores_fisicos: Array[CollisionObject2D]
+
 @onready var barra = $ProgressBar
 
-# NOVO: Qual corpo é necessário para desbloquear isso? (Para o corpo 2, coloque 1 no Inspector)
-@export var id_corpo_necessario: int = 1 
+@export var id_corpo_necessario: int = 1
 
-# Configurações
+# Configurações de Tempo
 var tempo_total: float = 5.0
 var tempo_atual: float = 0.0
 var is_canalizando: bool = false
@@ -41,17 +39,21 @@ func completar_objetivo():
 	is_canalizando = false
 	barra.visible = false
 	
-	bloqueador_1.visible = false
-	bloqueador_2.visible = false
-	sprite_1.visible = false
-	sprite_2.visible = false
+	# --- LOOP PARA DESATIVAR TUDO NA LISTA ---
 	
-	# Desativa colisão dos bloqueadores se eles tiverem colisão
-	if bloqueador_1.has_method("set_collision_layer_value"):
-		bloqueador_1.process_mode = Node.PROCESS_MODE_DISABLED
-		bloqueador_2.process_mode = Node.PROCESS_MODE_DISABLED
+	# 1. Some com todos os Sprites visuais cadastrados
+	for sprite in sprites_visuais:
+		if sprite:
+			sprite.visible = false
+			
+	# 2. Desativa todos os Bloqueadores físicos cadastrados
+	for bloqueador in bloqueadores_fisicos:
+		if bloqueador:
+			bloqueador.visible = false # Some visualmente se tiver sprite atrelado
+			# Desativa a física completamente (colisão para de funcionar)
+			bloqueador.process_mode = Node.PROCESS_MODE_DISABLED
 	
-	print("Canalização completa! Acesso liberado.")
+	print("Canalização completa! Todos os bloqueios removidos.")
 
 # --- SINAIS ---
 
@@ -59,14 +61,12 @@ func _on_body_entered(body):
 	if completou: return
 	
 	if body.name == "Player":
-		# NOVO: Verificação Lógica
+		# Verificação Lógica
 		if GameController.corpos[id_corpo_necessario] == 1:
 			is_canalizando = true
 			barra.visible = true
 		else:
-			print("ACESSO NEGADO: Você precisa comer o corpo ", id_corpo_necessario + 1, " primeiro.")
-			# Aqui você pode adicionar um som de "Erro" ou um texto na tela
-			# Ex: GameController.show_message("Preciso me alimentar...")
+			print("ACESSO NEGADO: Preciso comer o corpo ", id_corpo_necessario + 1)
 
 func _on_body_exited(body):
 	if body.name == "Player":

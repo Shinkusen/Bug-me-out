@@ -102,11 +102,11 @@ func reload_scene():
 	# Ativa a flag para avisar o próximo player que ele deve ir para o checkpoint
 	is_respawning = true
 	
-	if checkpoint_cena <= 3:
+	if checkpoint_cena <= 5:
 		corpos = [0, 0, 0]
-	elif checkpoint_cena <= 5:
+	elif checkpoint_cena <= 6:
 		corpos = [1, 0, 0]
-	elif checkpoint_cena <= 8:
+	elif checkpoint_cena <= 7:
 		corpos = [1, 1, 0]
 	elif checkpoint_cena <= 11:
 		corpos = [1, 1, 1]

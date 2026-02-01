@@ -212,7 +212,7 @@ color = Color(1, 1, 0.57254905, 1)
 size = Vector2(120, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_clwql"]
-size = Vector2(180, 180)
+size = Vector2(180, 120)
 
 [node name="Cenario_6" type="Node2D" unique_id=659214951]
 script = ExtResource("1_kt4cq")
@@ -382,7 +382,7 @@ texto_export = "Aperte Q para usar teia"
 tipo = "String"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Texto_Flutuante_1" unique_id=1044382723]
-position = Vector2(870, 450)
+position = Vector2(990, 780)
 shape = SubResource("RectangleShape2D_clwql")
 
 [connection signal="body_entered" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_entered"]

@@ -14,6 +14,8 @@ extends CharacterBody2D
 @onready var audio_takeoff = $Audio_TakeOff
 @onready var audio_flying = $Audio_Flying
 
+@onready var fly_bar = $ProgressBar
+
 # --- VARIÁVEIS ORIGINAIS ---
 var climbing = false
 var dead = false
@@ -76,8 +78,12 @@ func _ready():
 	if GameController.is_respawning:
 		global_position = GameController.checkpoint_position
 		GameController.is_respawning = false
-		
 		audio_respawn.play()
+	
+	if fly_bar:
+		fly_bar.max_value = CHARGE_TIME
+		fly_bar.value = 0
+		fly_bar.visible = false
 
 func add_eatable():
 	edibles += 1
@@ -180,7 +186,7 @@ func physics_movement_logic(delta):
 	elif input_direction.x < 0: 
 		facing = -1
 		if not climbing: sprite.flip_h = true 
-
+	
 	# -----------------------------------------------------------
 	# 1. CÁLCULO DO VENTO (MOVIDO PARA O TOPO)
 	# Calculamos antes de tudo para usar tanto na Grade quanto no Chão
@@ -209,7 +215,7 @@ func physics_movement_logic(delta):
 				push_force_x = clamp(push_force_x, 0, 400.0)
 				
 		final_wind_velocity.x = wind_direction.x * push_force_x
-
+	
 	# -----------------------------------------------------------
 	# 2. CLIMBING (NA GRADE)
 	# -----------------------------------------------------------
@@ -236,7 +242,7 @@ func physics_movement_logic(delta):
 		
 		move_and_slide()
 		return 
-
+	
 	# -----------------------------------------------------------
 	# 3. MOVIMENTO FÍSICO NORMAL (CHÃO/AR)
 	# -----------------------------------------------------------
@@ -244,7 +250,7 @@ func physics_movement_logic(delta):
 	# Gravidade
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
+	
 	# Input Horizontal + Inércia + Vento X
 	var target_velocity_x = 0.0
 	
@@ -261,25 +267,44 @@ func physics_movement_logic(delta):
 	
 	# Vertical + Vento Y
 	velocity.y += final_wind_velocity.y
-
+	
 	# ---- Charge & Dash (Mantido) ----
 	if insect_level >= 4:
 		if Input.is_action_just_pressed("fly") and not dashing and not climbing:
 			charging = true
 			charge_timer = 0.0
 			dash_dir = facing
-
+			
+			audio_takeoff.play()
+			
+			fly_bar.visible = true
+			fly_bar.value = 0
+		
 		if Input.is_action_just_released("fly") and charging and not dashing:
 			charging = false
 			charge_timer = 0.0
-
+			
+			audio_takeoff.stop()
+			
+			fly_bar.visible = false
+			fly_bar.value = 0
+		
 		if charging and not dashing:
 			charge_timer += delta
+			fly_bar.value = charge_timer
 			velocity.x = move_toward(velocity.x, 0, speed) + final_wind_velocity.x
+			
 			if not climbing and not is_on_floor(): velocity.y += gravity * delta
+			
 			if charge_timer >= CHARGE_TIME:
 				charging = false
 				dashing = true
+				
+				audio_takeoff.stop()
+				audio_flying.play()
+				
+				fly_bar.visible = false
+			
 			move_and_slide()
 			return 
 

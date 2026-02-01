@@ -24,16 +24,6 @@ animations = [{
 "loop": true,
 "name": &"Alerta",
 "speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"Verde",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"Vermelho",
-"speed": 5.0
 }]
 
 [node name="SecurityCamera" type="Node2D" unique_id=1006889508]
@@ -46,7 +36,7 @@ end_width = 64.0
 position = Vector2(21, -5)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_o7ltj")
-animation = &"Vermelho"
+animation = &"Alerta"
 
 [node name="LightCone" type="Polygon2D" parent="." unique_id=1237018444]
 color = Color(0, 0.53333336, 1, 0.29411766)

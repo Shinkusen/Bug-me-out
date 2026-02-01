@@ -240,6 +240,7 @@ process_material = SubResource("ParticleProcessMaterial_483au")
 
 [node name="Eatable" parent="." unique_id=1679141243 instance=ExtResource("24_fln6u")]
 position = Vector2(1077, 286)
+id_corpo = 1
 
 [node name="Player" parent="." unique_id=2115506010 instance=ExtResource("23_18wrb")]
 position = Vector2(181, 806)

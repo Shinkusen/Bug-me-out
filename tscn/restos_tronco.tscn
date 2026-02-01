@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://birljsdwrej7j"]
+
+[ext_resource type="Texture2D" uid="uid://d13wjuutu6giy" path="res://sprites/Restos de tronco.png" id="1_kqyph"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxshb"]
+size = Vector2(44, 36)
+
+[node name="Restos_Tronco" type="Area2D" unique_id=497383458]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=134496405]
+texture = ExtResource("1_kqyph")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1174208556]
+position = Vector2(2, 12)
+shape = SubResource("RectangleShape2D_sxshb")

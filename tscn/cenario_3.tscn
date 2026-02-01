@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://m4jhav46ina0" path="res://sprites/TileSet/M1/ChaoEsquerda_M1_1.png" id="13_yh1pt"]
 [ext_resource type="Texture2D" uid="uid://bkijwkebnarrs" path="res://sprites/TileSet/M1/ChaoEsquerda_M1_2.png" id="14_1ludp"]
 [ext_resource type="Texture2D" uid="uid://dlgs3lum2tvjc" path="res://sprites/TileSet/M1/ChaoBaixo_M1.png" id="15_w1504"]
+[ext_resource type="PackedScene" uid="uid://cjkri2nsajg5m" path="res://tscn/gancho.tscn" id="16_fdlgf"]
 [ext_resource type="Texture2D" uid="uid://doafpcldpulcc" path="res://sprites/TileSet/M3/ChaoBaixo_M3.png" id="16_hp81y"]
 [ext_resource type="Texture2D" uid="uid://drjrd0e7lwbo3" path="res://sprites/TileSet/M2/ChaoCentral_M2.png" id="17_tmlmv"]
 [ext_resource type="Texture2D" uid="uid://dwt8p0jmphmha" path="res://sprites/TileSet/M2/ChaoDireita_M2.png" id="18_nj74p"]
@@ -27,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://b5lmx3d88ae8s" path="res://tscn/estalactite.tscn" id="24_scili"]
 [ext_resource type="Script" uid="uid://ceqvpphv5tssd" path="res://scripts/barra_cair_die.gd" id="26_iprea"]
 [ext_resource type="PackedScene" uid="uid://dxir6k7kamspi" path="res://tscn/eatable.tscn" id="27_qce4h"]
+[ext_resource type="PackedScene" uid="uid://birljsdwrej7j" path="res://tscn/restos_tronco.tscn" id="29_cc07i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxo5x"]
 texture = ExtResource("3_lqwqc")
@@ -205,6 +207,9 @@ position = Vector2(600, 450)
 tile_map_data = PackedByteArray("AAD//wEAAQAAAAAAAAD//wIAAQAAAAAAAAD//wMAAQAAAAAAAAD//wQAAQAAAAAAAAD//wUAAQAAAAAAAAD//wYAAQAAAAAAAAD//wcAAQAAAAAAAAD//wgAAQAAAAAAAAD//wkAAQAAAAAAAAD//woAAQAAAAAAAAD//wsAAQAAAAAAAAD//wwAAQAAAAAAAAD//w0AAQAAAAAAAAAAAA4AAAAAAAAAAAABAA4AAAAAAAAAAAACAA4AAAAAAAAAAAADAA4AAAAAAAAAAAAEAA4AAAAAAAAAAAAFAA4AAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAwAAQAAAAAAAAAIAA0AAQAAAAAAAAAIAA4AAQAAAAAAAAAGAA4AAwAAAAAAAAAGAA0AAwAAAAAAAAAGAAwAAwAAAAAAAAAIAAsABAAAAAAAAAAGAAsACAAAAAAAAAANAAsAAAAAAAAAAAAOAAwAAQAAAAAAAAAOAA0AAQAAAAAAAAAOAA4AAQAAAAAAAAAMAAwAAwAAAAAAAAAMAA0AAwAAAAAAAAAMAA4AAwAAAAAAAAAOAAsABAAAAAAAAAAMAAsACAAAAAAAAAAUAA4AAwAAAAAAAAAUAA0AAwAAAAAAAAAUAAwAAwAAAAAAAAAUAAsAAwAAAAAAAAAUAAoAAwAAAAAAAAAUAAkAAwAAAAAAAAAUAAgAAwAAAAAAAAAUAAcAAwAAAAAAAAAUAAYAAwAAAAAAAAAUAAQAAwAAAAAAAAAUAAMAAwAAAAAAAAAUAAIAAwAAAAAAAAAUAAEAAwAAAAAAAAAUAAAAAwAAAAAAAAADAAAAAwAAAAAAAAADAAEAAwAAAAAAAAADAAIAAwAAAAAAAAADAAMAAwAAAAAAAAADAAQAAwAAAAAAAAADAAUACAAAAAAAAAADAAYABgAAAAAAAAAEAAYAAgAAAAAAAAAFAAYAAgAAAAAAAAAGAAYAAgAAAAAAAAAHAAYAAgAAAAAAAAAIAAYACgAAAAAAAAAIAAUABAAAAAAAAAAHAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAQAAQAAAAAAAAAEAAMAAQAAAAAAAAAEAAIAAQAAAAAAAAAEAAEAAQAAAAAAAAAEAAAAAQAAAAAAAAACAAAAAgAAAAAAAAABAAAAAgAAAAAAAAAAAAAAAgAAAAAAAAANAAUABAAAAAAAAAAMAAYABgAAAAAAAAAMAAUACAAAAAAAAAANAAYACgAAAAAAAAAHAP//AgAAAAAAAAAIAP//AgAAAAAAAAAJAP//AgAAAAAAAAAKAP//AgAAAAAAAAALAP//AgAAAAAAAAAMAP//AgAAAAAAAAANAP//AgAAAAAAAAAOAP//AgAAAAAAAAAPAP//AgAAAAAAAAAQAP//AgAAAAAAAAARAP//AgAAAAAAAAASAP//AgAAAAAAAAATAP//AgAAAAAAAAA=")
 tile_set = SubResource("TileSet_5r2p1")
 
+[node name="Gancho_1" parent="." unique_id=1699783940 instance=ExtResource("16_fdlgf")]
+position = Vector2(994, 30)
+
 [node name="Black_Screen_Up" type="Sprite2D" parent="." unique_id=2042709844]
 position = Vector2(600, -450)
 texture = ExtResource("1_lm0dq")
@@ -264,6 +269,10 @@ distance = 5
 [node name="Estalactite_8" parent="." unique_id=373296330 instance=ExtResource("24_scili")]
 position = Vector2(390, 450)
 
+[node name="Gancho_2" parent="." unique_id=1988960472 instance=ExtResource("16_fdlgf")]
+position = Vector2(570, 350)
+rotation = -1.5707964
+
 [node name="Eatable" parent="." unique_id=1679141243 instance=ExtResource("27_qce4h")]
 position = Vector2(1054, 283)
 
@@ -289,6 +298,22 @@ shape = SubResource("RectangleShape2D_qce4h")
 
 [node name="Player" parent="." unique_id=2115506010 instance=ExtResource("4_483au")]
 position = Vector2(60, 806)
+
+[node name="Restos_Tronco_1" parent="." unique_id=497383458 instance=ExtResource("29_cc07i")]
+position = Vector2(763, 450)
+rotation = 3.1415927
+
+[node name="Restos_Tronco_2" parent="." unique_id=1985791133 instance=ExtResource("29_cc07i")]
+position = Vector2(150, 294)
+rotation = -1.5707964
+
+[node name="Restos_Tronco_3" parent="." unique_id=703022009 instance=ExtResource("29_cc07i")]
+position = Vector2(30, 366)
+rotation = 1.5707964
+
+[node name="Restos_Tronco_4" parent="." unique_id=1231643724 instance=ExtResource("29_cc07i")]
+position = Vector2(30, 561)
+rotation = 1.5707963
 
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]
 [connection signal="body_entered" from="Area_Die" to="Area_Die" method="_on_body_entered"]

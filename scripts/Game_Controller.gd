@@ -15,6 +15,9 @@ var is_respawning: bool = false
 
 const PASTA_CENAS = "res://tscn/"
 
+# 0 = não comido, 1 = comido
+var corpos: Array = [0, 0, 0]
+
 func _ready() -> void:
 	_criar_tela_preta_global()
 

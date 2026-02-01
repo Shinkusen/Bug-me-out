@@ -41,21 +41,63 @@
 [ext_resource type="Texture2D" uid="uid://yjh075npvd1p" path="res://sprites/Insetos/Inseto_4_Idle/Inseto_4_Idle.png" id="23_kfc8x"]
 [ext_resource type="Texture2D" uid="uid://c1a1kr4gvq83t" path="res://sprites/Insetos/Inseto_4_String/Inseto_4_String_1.png" id="24_kfc8x"]
 [ext_resource type="Texture2D" uid="uid://bnxmgftpiln86" path="res://sprites/Insetos/Inseto_4_Walk_Vertical/Inseto_4_Walk_Vertical_1.png" id="24_q6lhy"]
+[ext_resource type="Texture2D" uid="uid://cxbuvqeb2uuu3" path="res://sprites/Insetos/Inseto_2_Perspectiva_Descer/Inseto_2_Perspectiva_Descer_1.png" id="25_c4eo6"]
 [ext_resource type="Texture2D" uid="uid://dt0qkgmho4kgy" path="res://sprites/Insetos/Inseto_2_Walk_Horizontal/Inseto_2_Walk_Horizontal_1.png" id="25_l2cp7"]
 [ext_resource type="Texture2D" uid="uid://d4mr8ckl82qo1" path="res://sprites/Insetos/Inseto_4_Walk_Vertical/Inseto_4_Walk_Vertical_2.png" id="25_psry7"]
 [ext_resource type="Texture2D" uid="uid://c1iapqtidux5v" path="res://sprites/Insetos/Inseto_4_String/Inseto_4_String_2.png" id="25_q6lhy"]
 [ext_resource type="Texture2D" uid="uid://enivgg21ndit" path="res://sprites/Insetos/Inseto_2_Walk_Horizontal/Inseto_2_Walk_Horizontal_2.png" id="26_148wp"]
+[ext_resource type="Texture2D" uid="uid://ci3p83vf2p4hn" path="res://sprites/Insetos/Inseto_2_Perspectiva_Descer/Inseto_2_Perspectiva_Descer_2.png" id="26_eupi7"]
 [ext_resource type="Texture2D" uid="uid://doaqaw0yyk26f" path="res://sprites/Insetos/Inseto_4_Walk_Vertical/Inseto_4_Walk_Vertical_3.png" id="26_k6qcm"]
 [ext_resource type="Texture2D" uid="uid://cr14omtdntm32" path="res://sprites/Insetos/Inseto_4_String/Inseto_4_String_3.png" id="26_psry7"]
 [ext_resource type="Texture2D" uid="uid://b3ngpq7jyot3t" path="res://sprites/Insetos/Inseto_2_Walk_Horizontal/Inseto_2_Walk_Horizontal_3.png" id="27_f3068"]
 [ext_resource type="Texture2D" uid="uid://dvmr3hd8ap3tb" path="res://sprites/Insetos/Inseto_4_String/Inseto_4_String_4.png" id="27_k6qcm"]
+[ext_resource type="Texture2D" uid="uid://dk5c7dcngo7xu" path="res://sprites/Insetos/Inseto_2_Perspectiva_Descer/Inseto_2_Perspectiva_Descer_3.png" id="27_k8mlo"]
 [ext_resource type="Texture2D" uid="uid://cgxmp2nag5ffp" path="res://sprites/Insetos/Inseto_4_Walk_Vertical/Inseto_4_Walk_Vertical_4.png" id="27_l48rm"]
+[ext_resource type="Texture2D" uid="uid://dxg6vsfxsu5ci" path="res://sprites/Insetos/Inseto_2_Perspectiva_Descer/Inseto_2_Perspectiva_Descer_4.png" id="28_dpyuo"]
 [ext_resource type="Texture2D" uid="uid://60kauvsuusyy" path="res://sprites/Insetos/Inseto_4_String/Inseto_4_String_5.png" id="28_l48rm"]
 [ext_resource type="Texture2D" uid="uid://bie63gsso26kv" path="res://sprites/Insetos/Inseto_2_Walk_Horizontal/Inseto_2_Walk_Horizontal_4.png" id="28_mc7rx"]
+[ext_resource type="Texture2D" uid="uid://d3y8n7p5e00oe" path="res://sprites/Insetos/Inseto_2_Perspectiva_Descer/Inseto_2_Perspectiva_Descer_5.png" id="29_bubsy"]
+[ext_resource type="Texture2D" uid="uid://0de8aqbwmm61" path="res://sprites/Insetos/Inseto_2_Perspectiva_Descer/Inseto_2_Perspectiva_Descer_6.png" id="30_n3yhx"]
+[ext_resource type="Texture2D" uid="uid://dgqwr02k6s7hv" path="res://sprites/Insetos/Inseto_2_Perspectiva_Subir/Inseto_2_Perspectiva_Subir_1.png" id="31_l3l0t"]
+[ext_resource type="Texture2D" uid="uid://bqhkf3tu15dof" path="res://sprites/Insetos/Inseto_2_Perspectiva_Subir/Inseto_2_Perspectiva_Subir_2.png" id="32_b30y7"]
+[ext_resource type="Texture2D" uid="uid://b58ffkxogvi2" path="res://sprites/Insetos/Inseto_2_Perspectiva_Subir/Inseto_2_Perspectiva_Subir_3.png" id="33_4gtmp"]
+[ext_resource type="Texture2D" uid="uid://pt06rupihxhg" path="res://sprites/Insetos/Inseto_2_Perspectiva_Subir/Inseto_2_Perspectiva_Subir_4.png" id="34_35equ"]
+[ext_resource type="Texture2D" uid="uid://cc376m8dh0og2" path="res://sprites/Insetos/Inseto_2_Perspectiva_Subir/Inseto_2_Perspectiva_Subir_5.png" id="35_pafmc"]
+[ext_resource type="Texture2D" uid="uid://chhfkv41s4oh2" path="res://sprites/Insetos/Inseto_2_Perspectiva_Subir/Inseto_2_Perspectiva_Subir_6.png" id="36_y37pe"]
 [ext_resource type="Texture2D" uid="uid://bjghccqbpb865" path="res://sprites/Insetos/Inseto_3_Walk_Horizontal/Inseto_3_Walk_Horizontal_1.png" id="39_nn88p"]
 [ext_resource type="Texture2D" uid="uid://dgqak76x4ons" path="res://sprites/Insetos/Inseto_3_Walk_Horizontal/Inseto_3_Walk_Horizontal_2.png" id="40_e2i2h"]
 [ext_resource type="Texture2D" uid="uid://bv1saqpgv2lwm" path="res://sprites/Insetos/Inseto_3_Walk_Horizontal/Inseto_3_Walk_Horizontal_3.png" id="41_c4eo6"]
 [ext_resource type="Texture2D" uid="uid://kipfxliuv7it" path="res://sprites/Insetos/Inseto_3_Walk_Horizontal/Inseto_3_Walk_Horizontal_4.png" id="42_eupi7"]
+[ext_resource type="Texture2D" uid="uid://s2e6x63ryvmv" path="res://sprites/Insetos/Inseto_3_Perspectiva_Descer/Inseto_3_Perspectiva_Descer_1.png" id="46_bef03"]
+[ext_resource type="Texture2D" uid="uid://brdwavqca8crn" path="res://sprites/Insetos/Inseto_3_Perspectiva_Descer/Inseto_3_Perspectiva_Descer_2.png" id="47_erbq3"]
+[ext_resource type="Texture2D" uid="uid://bbfsewgvdtel" path="res://sprites/Insetos/Inseto_3_Perspectiva_Descer/Inseto_3_Perspectiva_Descer_3.png" id="48_lpkvm"]
+[ext_resource type="Texture2D" uid="uid://iw66i04uldm" path="res://sprites/Insetos/Inseto_3_Perspectiva_Descer/Inseto_3_Perspectiva_Descer_4.png" id="49_44vtl"]
+[ext_resource type="Texture2D" uid="uid://v7efht4avvqy" path="res://sprites/Insetos/Inseto_3_Perspectiva_Descer/Inseto_3_Perspectiva_Descer_5.png" id="50_58uou"]
+[ext_resource type="Texture2D" uid="uid://b7eeqpjlt5b5x" path="res://sprites/Insetos/Inseto_3_Perspectiva_Descer/Inseto_3_Perspectiva_Descer_6.png" id="51_oansn"]
+[ext_resource type="Texture2D" uid="uid://cjmiufrunr6ki" path="res://sprites/Insetos/Inseto_3_Perspectiva_Subir/Inseto_3_Perspectiva_Subir_1.png" id="52_8bkck"]
+[ext_resource type="Texture2D" uid="uid://f0eqehhpdj8s" path="res://sprites/Insetos/Inseto_3_Perspectiva_Subir/Inseto_3_Perspectiva_Subir_2.png" id="53_upjbo"]
+[ext_resource type="Texture2D" uid="uid://5ixu27ap35sx" path="res://sprites/Insetos/Inseto_3_Perspectiva_Subir/Inseto_3_Perspectiva_Subir_3.png" id="54_ks4h1"]
+[ext_resource type="Texture2D" uid="uid://chj00vqidk5lx" path="res://sprites/Insetos/Inseto_3_Perspectiva_Subir/Inseto_3_Perspectiva_Subir_4.png" id="55_6keew"]
+[ext_resource type="Texture2D" uid="uid://c40fgwlq4wlfe" path="res://sprites/Insetos/Inseto_3_Perspectiva_Subir/Inseto_3_Perspectiva_Subir_5.png" id="56_05ij5"]
+[ext_resource type="Texture2D" uid="uid://c8eogqd8hyal8" path="res://sprites/Insetos/Inseto_3_Perspectiva_Subir/Inseto_3_Perspectiva_Subir_6.png" id="57_krlnm"]
+[ext_resource type="Texture2D" uid="uid://dsrd4jehk5jw3" path="res://sprites/Insetos/Inseto_4_Fly/Inseto_4_Fly_1.png" id="71_8bkck"]
+[ext_resource type="Texture2D" uid="uid://dilsx081bf1co" path="res://sprites/Insetos/Inseto_4_Fly/Inseto_4_Fly_2.png" id="72_upjbo"]
+[ext_resource type="Texture2D" uid="uid://ly0tmouyo2vn" path="res://sprites/Insetos/Inseto_4_Fly/Inseto_4_Fly_3.png" id="73_ks4h1"]
+[ext_resource type="Texture2D" uid="uid://bv8j57nr7jv67" path="res://sprites/Insetos/Inseto_4_Fly/Inseto_4_Fly_4.png" id="74_6keew"]
+[ext_resource type="Texture2D" uid="uid://idm22q1hf73x" path="res://sprites/Insetos/Inseto_4_Fly/Inseto_4_Fly_5.png" id="75_05ij5"]
+[ext_resource type="Texture2D" uid="uid://dq1cak6ycevx6" path="res://sprites/Insetos/Inseto_4_Fly/Inseto_4_Fly_6.png" id="76_krlnm"]
+[ext_resource type="Texture2D" uid="uid://c6y8hmjykydsx" path="res://sprites/Insetos/Inseto_4_Perspectiva_Descer/Inseto_4_Perspectiva_Descer_1.png" id="78_ma06j"]
+[ext_resource type="Texture2D" uid="uid://bmjov175byvji" path="res://sprites/Insetos/Inseto_4_Perspectiva_Descer/Inseto_4_Perspectiva_Descer_2.png" id="79_uvx14"]
+[ext_resource type="Texture2D" uid="uid://cjlhd2rd2cqhw" path="res://sprites/Insetos/Inseto_4_Perspectiva_Descer/Inseto_4_Perspectiva_Descer_3.png" id="80_cfik6"]
+[ext_resource type="Texture2D" uid="uid://8epgrg25m7nc" path="res://sprites/Insetos/Inseto_4_Perspectiva_Descer/Inseto_4_Perspectiva_Descer_4.png" id="81_axjjw"]
+[ext_resource type="Texture2D" uid="uid://dd7gfldqpc4wj" path="res://sprites/Insetos/Inseto_4_Perspectiva_Subir/Inseto_4_Perspectiva_Subir_1.png" id="82_y16ng"]
+[ext_resource type="Texture2D" uid="uid://c0s6spm44mu6k" path="res://sprites/Insetos/Inseto_4_Walk_Horizontal/Inseto_4_Walk_Horizontal_1.png" id="83_05ij5"]
+[ext_resource type="Texture2D" uid="uid://bv5f1t0pkg1m2" path="res://sprites/Insetos/Inseto_4_Perspectiva_Subir/Inseto_4_Perspectiva_Subir_2.png" id="83_hmomc"]
+[ext_resource type="Texture2D" uid="uid://tuaxt4un4btq" path="res://sprites/Insetos/Inseto_4_Walk_Horizontal/Inseto_4_Walk_Horizontal_2.png" id="84_krlnm"]
+[ext_resource type="Texture2D" uid="uid://bcomsgto37qn4" path="res://sprites/Insetos/Inseto_4_Perspectiva_Subir/Inseto_4_Perspectiva_Subir_3.png" id="84_p6xho"]
+[ext_resource type="Texture2D" uid="uid://cc46vdb53psch" path="res://sprites/Insetos/Inseto_4_Perspectiva_Subir/Inseto_4_Perspectiva_Subir_4.png" id="85_dp1w7"]
+[ext_resource type="Texture2D" uid="uid://r4wo40lr260u" path="res://sprites/Insetos/Inseto_4_Walk_Horizontal/Inseto_4_Walk_Horizontal_3.png" id="85_sisna"]
+[ext_resource type="Texture2D" uid="uid://dkny5ywrgdukf" path="res://sprites/Insetos/Inseto_4_Walk_Horizontal/Inseto_4_Walk_Horizontal_4.png" id="86_mw47k"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6sl1v"]
 animations = [{
@@ -88,7 +130,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Inseto_1_Perspectiva_Descer",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -111,7 +153,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Inseto_1_Perspectiva_Subir",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -158,15 +200,51 @@ animations = [{
 "name": &"Inseto_2_Idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_c4eo6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_eupi7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_k8mlo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_dpyuo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_bubsy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_n3yhx")
+}],
 "loop": false,
 "name": &"Inseto_2_Perspectiva_Descer",
-"speed": 10.0
+"speed": 12.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_l3l0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_b30y7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_4gtmp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_35equ")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_pafmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_y37pe")
+}],
 "loop": false,
 "name": &"Inseto_2_Perspectiva_Subir",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -202,11 +280,6 @@ animations = [{
 "name": &"Inseto_2_Walk_Vertical",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"Inseto_3_Fly",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_hsluc")
@@ -215,15 +288,51 @@ animations = [{
 "name": &"Inseto_3_Idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("46_bef03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_erbq3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_lpkvm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_44vtl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_58uou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_oansn")
+}],
 "loop": false,
 "name": &"Inseto_3_Perspectiva_Descer",
-"speed": 10.0
+"speed": 12.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("52_8bkck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_upjbo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_ks4h1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_6keew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_05ij5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_krlnm")
+}],
 "loop": false,
 "name": &"Inseto_3_Perspectiva_Subir",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -279,7 +388,25 @@ animations = [{
 "name": &"Inseto_3_Walk_Vertical",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("71_8bkck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_upjbo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_ks4h1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_6keew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_05ij5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_krlnm")
+}],
 "loop": true,
 "name": &"Inseto_4_Fly",
 "speed": 5.0
@@ -292,15 +419,39 @@ animations = [{
 "name": &"Inseto_4_Idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("78_ma06j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_uvx14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_cfik6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_axjjw")
+}],
 "loop": false,
 "name": &"Inseto_4_Perspectiva_Descer",
-"speed": 10.0
+"speed": 12.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("82_y16ng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_hmomc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_p6xho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_dp1w7")
+}],
 "loop": false,
 "name": &"Inseto_4_Perspectiva_Subir",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -322,7 +473,19 @@ animations = [{
 "name": &"Inseto_4_String",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("83_05ij5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_krlnm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_sisna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_mw47k")
+}],
 "loop": true,
 "name": &"Inseto_4_Walk_Horizontal",
 "speed": 5.0

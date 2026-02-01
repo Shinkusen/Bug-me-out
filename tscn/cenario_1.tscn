@@ -6,9 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ct3y651ehxbg5" path="res://sprites/Black.png" id="4_a4twe"]
 [ext_resource type="Script" uid="uid://dqe31iawldfam" path="res://scripts/transicao_up.gd" id="5_lhw36"]
 [ext_resource type="Script" uid="uid://ceqvpphv5tssd" path="res://scripts/barra_cair_die.gd" id="9_a2yow"]
-[ext_resource type="PackedScene" uid="uid://csstd0twl0uiq" path="res://tscn/bloco.tscn" id="10_pxtd2"]
 [ext_resource type="Texture2D" uid="uid://ddtdwhv7dqrxw" path="res://sprites/TileSet/M1/ChaoCentral_M1_1.png" id="10_rc30b"]
-[ext_resource type="PackedScene" uid="uid://bu3lavvyof164" path="res://tscn/ventilador.tscn" id="11_2xfxx"]
 [ext_resource type="Texture2D" uid="uid://dlgs3lum2tvjc" path="res://sprites/TileSet/M1/ChaoBaixo_M1.png" id="11_blvl7"]
 [ext_resource type="Texture2D" uid="uid://b8yahx75xh8yy" path="res://sprites/TileSet/M1/ChaoCentral_M1_2.png" id="11_pgog6"]
 [ext_resource type="Texture2D" uid="uid://ctmscco7m5gkq" path="res://sprites/TileSet/M1/ChaoEsquerda_M1_3.png" id="12_jprey"]
@@ -22,8 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://cua1ctoneaotg" path="res://sprites/TileSet/M1/ChaoDireita_M1_4.png" id="19_x2ttl"]
 [ext_resource type="Texture2D" uid="uid://m4jhav46ina0" path="res://sprites/TileSet/M1/ChaoEsquerda_M1_1.png" id="20_3atri"]
 [ext_resource type="Texture2D" uid="uid://bkijwkebnarrs" path="res://sprites/TileSet/M1/ChaoEsquerda_M1_2.png" id="21_mxpcp"]
-[ext_resource type="Texture2D" uid="uid://bqfbmmmrt12s6" path="res://sprites/BugMeOut_Fan1-removebg-preview_2.png" id="23_wtb85"]
-[ext_resource type="Texture2D" uid="uid://cg2pchx2p2qjq" path="res://sprites/BugMeOut_Fan2-removebg-preview_2.png" id="24_ccai2"]
 [ext_resource type="Texture2D" uid="uid://mktdiocf2ttf" path="res://sprites/Mascara_Animacao_Inicial.png" id="25_ccai2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4twe"]
@@ -241,28 +237,8 @@ scale_min = 2.0
 scale_max = 3.0
 color = Color(1, 1, 0.57254905, 1)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_rc30b"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("23_wtb85")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_ccai2")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Cenario_1" type="Node2D" unique_id=2106832681]
 script = ExtResource("1_5yugu")
-
-[node name="Bloco_1" parent="." unique_id=130143305 instance=ExtResource("10_pxtd2")]
-position = Vector2(1610, 828)
-
-[node name="Ventilador_1" parent="." unique_id=638374821 instance=ExtResource("11_2xfxx")]
-position = Vector2(378, 977)
 
 [node name="Background" type="TextureRect" parent="." unique_id=521637942]
 offset_right = 1200.0
@@ -284,7 +260,7 @@ shape = SubResource("RectangleShape2D_a4twe")
 position = Vector2(600, 450)
 
 [node name="ChaoColisores_M1" type="TileMapLayer" parent="." unique_id=1398710203]
-tile_map_data = PackedByteArray("AAAQAAwACAAAAAAAAAARAAwAAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAQAAwACAAAAAAAAAARAAwAAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAsAAwAAAAAAAAAUAAoAAwAAAAAAAAAUAAkAAwAAAAAAAAAUAAgAAwAAAAAAAAAUAAcAAwAAAAAAAAAUAAYAAwAAAAAAAAAUAAUAAwAAAAAAAAAUAAQAAwAAAAAAAAAUAAMAAwAAAAAAAAAUAAIAAwAAAAAAAAAUAAEAAwAAAAAAAAAUAAAAAwAAAAAAAAA=")
 tile_set = SubResource("TileSet_y5k1f")
 
 [node name="ChaoBaixo_M1" type="TileMapLayer" parent="." unique_id=504395214]
@@ -349,11 +325,6 @@ shape = SubResource("RectangleShape2D_rc30b")
 position = Vector2(1170, 97)
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_pgog6")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=775141026]
-position = Vector2(1641, 454)
-sprite_frames = SubResource("SpriteFrames_rc30b")
-frame_progress = 0.8138836
 
 [connection signal="body_entered" from="Area_Die" to="Area_Die" method="_on_body_entered"]
 [connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]

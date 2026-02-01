@@ -3,7 +3,7 @@ extends Area2D
 # --- REFERÊNCIAS VISUAIS ---
 @export var sprites_visuais: Array[Node2D]
 @export var bloqueadores_fisicos: Array[CollisionObject2D]
-@onready var barra = $ProgressBar
+@onready var barra = $CanvasLayer/ProgressBar
 
 # --- REFERÊNCIAS DE ÁUDIO (NOVO) ---
 @onready var audio_scanner = $Audio_Scanner

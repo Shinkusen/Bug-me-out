@@ -186,6 +186,12 @@ tile_size = Vector2i(60, 60)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_f1ea0")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kt4cq"]
+size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4uo3"]
+size = Vector2(120, 120)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_so2o8"]
 size = Vector2(120, 4)
 
@@ -201,14 +207,8 @@ scale_min = 2.0
 scale_max = 3.0
 color = Color(1, 1, 0.57254905, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kt4cq"]
-size = Vector2(60, 60)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4uo3"]
-size = Vector2(120, 120)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ea0"]
-size = Vector2(60, 4)
+size = Vector2(120, 4)
 
 [node name="Cenario_6" type="Node2D" unique_id=659214951]
 script = ExtResource("1_kt4cq")
@@ -235,12 +235,18 @@ position = Vector2(510, 834)
 rotation = -3.1415925
 texture = ExtResource("4_f1ea0")
 
+[node name="Estalactite_Semi_Invisivel2" type="Sprite2D" parent="." unique_id=178524762]
+modulate = Color(1, 1, 1, 0.49019608)
+position = Vector2(570, 834)
+rotation = -3.1415925
+texture = ExtResource("4_f1ea0")
+
 [node name="ChaoColisores_M1" type="TileMapLayer" parent="." unique_id=1557546725]
-tile_map_data = PackedByteArray("AAABAA4AAAAAAAAAAAACAA4ABAAAAAAAAAAOAA4AAAAAAAAAAAAPAA4AAAAAAAAAAAAQAA4AAAAAAAAAAAARAA4AAAAAAAAAAAASAA4AAAAAAAAAAAATAA4ABAAAAAAAAAAAAA4ACAAAAAAAAAD//w0AAQAAAAAAAAD//wwAAQAAAAAAAAD//wsAAQAAAAAAAAD//woAAQAAAAAAAAD//wkAAQAAAAAAAAD//wgAAQAAAAAAAAD//wcAAQAAAAAAAAD//wYAAQAAAAAAAAD//wUAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAAAAAAAAD//wAAAQAAAAAAAAAUAA0AAwAAAAAAAAAUAAwAAwAAAAAAAAAUAAsAAwAAAAAAAAAUAAoAAwAAAAAAAAAUAAkAAwAAAAAAAAAUAAgAAwAAAAAAAAAUAAcAAwAAAAAAAAAUAAYAAwAAAAAAAAAUAAUAAwAAAAAAAAAUAAQAAwAAAAAAAAAUAAMAAwAAAAAAAAAUAAIAAwAAAAAAAAAUAAEAAwAAAAAAAAAUAAAAAwAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgABAAAAAAAAAAIAAgAAAAAAAAAAAADAA0ACAAAAAAAAAAEAA0AAAAAAAAAAAAFAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAHAA0ABAAAAAAAAAAKAA0AAAAAAAAAAAALAA0AAAAAAAAAAAAJAA0ACAAAAAAAAAAIAA4AAAAAAAAAAAAMAAwACAAAAAAAAAANAAwABAAAAAAAAAAQAAUAAAAAAAAAAAARAAUAAAAAAAAAAAASAAUABAAAAAAAAAAPAAUACAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAALAAIABAAAAAAAAAAGAAIACAAAAAAAAAAHAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkABAAAAAAAAAAHAAsAAwAAAAAAAAANAA0AAAAAAAAAAAANAAoAAQAAAAAAAAANAAkAAQAAAAAAAAAHAAwAAwAAAAAAAAAHAAoAAwAAAAAAAAAGAAgAAAAAAAAAAAAFAAgACAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAA4AAAAAAAAAAAACAA4ABAAAAAAAAAAOAA4AAAAAAAAAAAAPAA4AAAAAAAAAAAAQAA4AAAAAAAAAAAARAA4AAAAAAAAAAAASAA4AAAAAAAAAAAATAA4ABAAAAAAAAAAAAA4ACAAAAAAAAAD//w0AAQAAAAAAAAD//wwAAQAAAAAAAAD//wsAAQAAAAAAAAD//woAAQAAAAAAAAD//wkAAQAAAAAAAAD//wgAAQAAAAAAAAD//wcAAQAAAAAAAAD//wYAAQAAAAAAAAD//wUAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAAAAAAAAD//wAAAQAAAAAAAAAUAA0AAwAAAAAAAAAUAAwAAwAAAAAAAAAUAAsAAwAAAAAAAAAUAAoAAwAAAAAAAAAUAAkAAwAAAAAAAAAUAAgAAwAAAAAAAAAUAAcAAwAAAAAAAAAUAAYAAwAAAAAAAAAUAAUAAwAAAAAAAAAUAAQAAwAAAAAAAAAUAAMAAwAAAAAAAAAUAAIAAwAAAAAAAAAUAAEAAwAAAAAAAAAUAAAAAwAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgABAAAAAAAAAAIAAgAAAAAAAAAAAADAA0ACAAAAAAAAAAEAA0AAAAAAAAAAAAFAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAHAA0ABAAAAAAAAAAKAA0AAAAAAAAAAAALAA0AAAAAAAAAAAAIAA4ACAAAAAAAAAAMAAwACAAAAAAAAAANAAwABAAAAAAAAAAQAAUAAAAAAAAAAAARAAUAAAAAAAAAAAASAAUABAAAAAAAAAAPAAUACAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAALAAIABAAAAAAAAAAGAAIACAAAAAAAAAAHAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkABAAAAAAAAAAHAAsAAwAAAAAAAAANAA0AAAAAAAAAAAANAAoAAQAAAAAAAAANAAkAAQAAAAAAAAAHAAwAAwAAAAAAAAAHAAoAAwAAAAAAAAAGAAgAAAAAAAAAAAAFAAgACAAAAAAAAAAJAA4ABAAAAAAAAAA=")
 tile_set = SubResource("TileSet_5r2p1")
 
 [node name="ChaoSemColisores_Baixo" type="TileMapLayer" parent="." unique_id=1568102665]
-tile_map_data = PackedByteArray("AAADAA4AAAAAAAAAAAAEAA4AAAAAAAAAAAAFAA4AAQAAAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAA4AAQAAAAAAAAALAA4AAAAAAAAAAAANAA4AAAAAAAAAAAAMAA0AAQAAAAAAAAANAA0AAAAAAAAAAAAMAA4AAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAADAA4AAAAAAAAAAAAEAA4AAAAAAAAAAAAFAA4AAQAAAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAKAA4AAQAAAAAAAAALAA4AAAAAAAAAAAANAA4AAAAAAAAAAAAMAA0AAQAAAAAAAAANAA0AAAAAAAAAAAAMAA4AAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_u1vth")
 
 [node name="ChaoColisores_M2" type="TileMapLayer" parent="." unique_id=1953463454]
@@ -272,22 +278,6 @@ numero_da_cena = 6
 position = Vector2(988, 821)
 id_corpo = 1
 
-[node name="Player" parent="." unique_id=2115506010 instance=ExtResource("23_ijsh2")]
-position = Vector2(90, 808)
-
-[node name="Area_Transition_Black" type="Area2D" parent="." unique_id=441314668]
-script = ExtResource("22_7xj3q")
-numero_proxima_cena = 7
-
-[node name="Transicao_Up" type="CollisionShape2D" parent="Area_Transition_Black" unique_id=1206525684]
-position = Vector2(420, 2)
-shape = SubResource("RectangleShape2D_so2o8")
-
-[node name="Faiscas" type="GPUParticles2D" parent="Area_Transition_Black" unique_id=1210254363]
-position = Vector2(422, 97)
-amount = 10
-process_material = SubResource("ParticleProcessMaterial_483au")
-
 [node name="Carregamento_Bloqueador" type="Area2D" parent="." unique_id=172265959 node_paths=PackedStringArray("sprites_visuais", "bloqueadores_fisicos")]
 position = Vector2(0, 2)
 script = ExtResource("25_pikr6")
@@ -313,22 +303,22 @@ texture = ExtResource("26_p65qq")
 shape = SubResource("RectangleShape2D_kt4cq")
 
 [node name="Sprite2D_1" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=1007014620]
-modulate = Color(0, 0.53333336, 1, 0.29411766)
+modulate = Color(0, 0.53333336, 1, 1)
 position = Vector2(630, 390)
 texture = ExtResource("20_s0vqw")
 
 [node name="Sprite2D_2" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=1192597467]
-modulate = Color(0, 0.53333336, 1, 0.29411766)
+modulate = Color(0, 0.53333336, 1, 1)
 position = Vector2(690, 390)
 texture = ExtResource("20_s0vqw")
 
 [node name="Sprite2D_3" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=594386180]
-modulate = Color(0, 0.53333336, 1, 0.29411766)
+modulate = Color(0, 0.53333336, 1, 1)
 position = Vector2(630, 450)
 texture = ExtResource("20_s0vqw")
 
 [node name="Sprite2D_4" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=32792389]
-modulate = Color(0, 0.53333336, 1, 0.29411766)
+modulate = Color(0, 0.53333336, 1, 1)
 position = Vector2(690, 450)
 texture = ExtResource("20_s0vqw")
 
@@ -336,12 +326,13 @@ texture = ExtResource("20_s0vqw")
 position = Vector2(660, 420)
 shape = SubResource("RectangleShape2D_a4uo3")
 
-[node name="ProgressBar" type="ProgressBar" parent="Carregamento_Bloqueador" unique_id=1945361938]
-visible = false
-offset_left = 838.0
-offset_top = 136.0
-offset_right = 842.0
-offset_bottom = 163.0
+[node name="CanvasLayer" type="CanvasLayer" parent="Carregamento_Bloqueador" unique_id=1019338998]
+
+[node name="ProgressBar" type="ProgressBar" parent="Carregamento_Bloqueador/CanvasLayer" unique_id=1945361938]
+offset_left = 635.0
+offset_top = 348.0
+offset_right = 685.0
+offset_bottom = 355.0
 show_percentage = false
 
 [node name="Audio_Scanner" type="AudioStreamPlayer2D" parent="Carregamento_Bloqueador" unique_id=1652249924]
@@ -353,8 +344,24 @@ stream = ExtResource("31_c5vxg")
 [node name="Audio_Access_Denied" type="AudioStreamPlayer2D" parent="Carregamento_Bloqueador" unique_id=573711915]
 stream = ExtResource("32_clwql")
 
+[node name="Player" parent="." unique_id=2115506010 instance=ExtResource("23_ijsh2")]
+position = Vector2(90, 808)
+
+[node name="Area_Transition_Black" type="Area2D" parent="." unique_id=441314668]
+script = ExtResource("22_7xj3q")
+numero_proxima_cena = 7
+
+[node name="Transicao_Up" type="CollisionShape2D" parent="Area_Transition_Black" unique_id=1206525684]
+position = Vector2(420, 2)
+shape = SubResource("RectangleShape2D_so2o8")
+
+[node name="Faiscas" type="GPUParticles2D" parent="Area_Transition_Black" unique_id=1210254363]
+position = Vector2(422, 97)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_483au")
+
 [node name="SecurityCamera" parent="." unique_id=1006889508 instance=ExtResource("25_5sji1")]
-position = Vector2(1158, 32)
+position = Vector2(1160, 32)
 target_point = Vector2(-540, 420)
 end_width = 180.0
 
@@ -362,10 +369,10 @@ end_width = 180.0
 script = ExtResource("30_a4uo3")
 
 [node name="Barra_Cair" type="CollisionShape2D" parent="Area_Die" unique_id=799748477]
-position = Vector2(510, 813)
+position = Vector2(540, 813)
 shape = SubResource("RectangleShape2D_f1ea0")
 
-[connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]
 [connection signal="body_entered" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_entered"]
 [connection signal="body_exited" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_exited"]
+[connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]
 [connection signal="body_entered" from="Area_Die" to="Area_Die" method="_on_body_entered"]

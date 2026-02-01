@@ -172,6 +172,12 @@ custom_data_layer_0/name = "can_climb"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_lm0vh")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fln6u"]
+size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t20ku"]
+size = Vector2(120, 60)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_so2o8"]
 size = Vector2(120, 4)
 
@@ -186,12 +192,6 @@ gravity = Vector3(0, 30, 0)
 scale_min = 2.0
 scale_max = 3.0
 color = Color(1, 1, 0.57254905, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fln6u"]
-size = Vector2(60, 60)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t20ku"]
-size = Vector2(120, 60)
 
 [node name="Cenario_5" type="Node2D" unique_id=659214951 node_paths=PackedStringArray("sprites_visuais", "bloqueadores_fisicos")]
 script = ExtResource("1_55gj2")
@@ -236,22 +236,6 @@ numero_da_cena = 5
 [node name="Eatable" parent="." unique_id=1679141243 instance=ExtResource("24_fln6u")]
 position = Vector2(1077, 286)
 
-[node name="Player" parent="." unique_id=2115506010 instance=ExtResource("23_18wrb")]
-position = Vector2(181, 806)
-
-[node name="Area_Transition_Black" type="Area2D" parent="." unique_id=441314668]
-script = ExtResource("2_s3h74")
-numero_proxima_cena = 6
-
-[node name="Transicao_Up" type="CollisionShape2D" parent="Area_Transition_Black" unique_id=1206525684]
-position = Vector2(480, 2)
-shape = SubResource("RectangleShape2D_so2o8")
-
-[node name="Faiscas" type="GPUParticles2D" parent="Area_Transition_Black" unique_id=1210254363]
-position = Vector2(480, 97)
-amount = 10
-process_material = SubResource("ParticleProcessMaterial_483au")
-
 [node name="Carregamento_Bloqueador" type="Area2D" parent="." unique_id=69039250 node_paths=PackedStringArray("sprites_visuais", "bloqueadores_fisicos")]
 script = ExtResource("25_p05lg")
 sprites_visuais = [NodePath("Sprite2D_1"), NodePath("Sprite2D_2")]
@@ -277,12 +261,12 @@ texture = ExtResource("24_x3iht")
 shape = SubResource("RectangleShape2D_fln6u")
 
 [node name="Sprite2D_1" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=277448545]
-modulate = Color(0, 0.53333336, 1, 0.29411766)
+modulate = Color(0, 0.53333336, 1, 1)
 position = Vector2(810, 210)
 texture = ExtResource("20_3tq0j")
 
 [node name="Sprite2D_2" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=1112651765]
-modulate = Color(0, 0.53333336, 1, 0.29411766)
+modulate = Color(0, 0.53333336, 1, 1)
 position = Vector2(870, 210)
 texture = ExtResource("20_3tq0j")
 
@@ -290,12 +274,13 @@ texture = ExtResource("20_3tq0j")
 position = Vector2(840, 210)
 shape = SubResource("RectangleShape2D_t20ku")
 
-[node name="ProgressBar" type="ProgressBar" parent="Carregamento_Bloqueador" unique_id=142703348]
-visible = false
-offset_left = 838.0
-offset_top = 136.0
-offset_right = 842.0
-offset_bottom = 163.0
+[node name="CanvasLayer" type="CanvasLayer" parent="Carregamento_Bloqueador" unique_id=1696818395]
+
+[node name="ProgressBar" type="ProgressBar" parent="Carregamento_Bloqueador/CanvasLayer" unique_id=142703348]
+offset_left = 816.0
+offset_top = 165.0
+offset_right = 866.0
+offset_bottom = 172.0
 show_percentage = false
 
 [node name="Audio_Scanner" type="AudioStreamPlayer2D" parent="Carregamento_Bloqueador" unique_id=334459908]
@@ -307,11 +292,27 @@ stream = ExtResource("29_db1tc")
 [node name="Audio_Access_Denied" type="AudioStreamPlayer2D" parent="Carregamento_Bloqueador" unique_id=1115424682]
 stream = ExtResource("30_dp0hi")
 
+[node name="Player" parent="." unique_id=2115506010 instance=ExtResource("23_18wrb")]
+position = Vector2(181, 806)
+
+[node name="Area_Transition_Black" type="Area2D" parent="." unique_id=441314668]
+script = ExtResource("2_s3h74")
+numero_proxima_cena = 6
+
+[node name="Transicao_Up" type="CollisionShape2D" parent="Area_Transition_Black" unique_id=1206525684]
+position = Vector2(480, 2)
+shape = SubResource("RectangleShape2D_so2o8")
+
+[node name="Faiscas" type="GPUParticles2D" parent="Area_Transition_Black" unique_id=1210254363]
+position = Vector2(480, 97)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_483au")
+
 [node name="SecurityCamera" parent="." unique_id=1006889508 instance=ExtResource("25_t20ku")]
-position = Vector2(1158, 32)
+position = Vector2(1159, 41)
 target_point = Vector2(-350, 208)
 end_width = 128.0
 
-[connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]
 [connection signal="body_entered" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_entered"]
 [connection signal="body_exited" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_exited"]
+[connection signal="body_entered" from="Area_Transition_Black" to="Area_Transition_Black" method="_on_body_entered"]

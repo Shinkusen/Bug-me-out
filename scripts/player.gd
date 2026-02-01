@@ -112,6 +112,8 @@ func _physics_process(delta):
 	if dead:
 		dead = false
 		audio_death.play()
+		$ExplosaoSparks.emitting = true
+		sprite.play("Empty")
 		await get_tree().create_timer(0.86).timeout
 		GameController.reload_scene()
 		return
@@ -444,9 +446,9 @@ func start_shooting_web():
 
 func process_web_shooting(delta):
 	current_web_length += WEB_SPEED * delta
-	web_ray.target_position = Vector2(0, current_web_length)
+	web_ray.target_position = Vector2(0, current_web_length + 25)
 	web_ray.force_raycast_update()
-	web_line.points[1] = Vector2(0, current_web_length)
+	web_line.points[1] = Vector2(0, current_web_length + 25)
 	
 	if web_ray.is_colliding():
 		var collider = web_ray.get_collider()
@@ -455,18 +457,18 @@ func process_web_shooting(delta):
 			current_web_state = WebState.PULLING_BLOCK
 		else:
 			current_web_state = WebState.RETRACTING
-	elif current_web_length >= MAX_WEB_LENGTH:
+	elif (current_web_length + 25) >= MAX_WEB_LENGTH:
 		current_web_state = WebState.RETRACTING
 
 func process_web_retracting(delta):
 	current_web_length -= WEB_SPEED * delta
 	
-	if current_web_length <= 0:
+	if (current_web_length + 25) <= 0:
 		current_web_length = 0
 		current_web_state = WebState.IDLE
 		web_line.visible = false
 	else:
-		web_line.points[1] = Vector2(0, current_web_length)
+		web_line.points[1] = Vector2(0, current_web_length + 25)
 
 func process_pulling_block(_delta):
 	if hooked_object == null:

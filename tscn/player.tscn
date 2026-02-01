@@ -105,6 +105,11 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6sl1v"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"Empty",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_udxxx")
@@ -518,13 +523,23 @@ size = Vector2(54, 54)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4c7w"]
 size = Vector2(54, 54)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t62tu"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 200.0
+initial_velocity_max = 350.0
+gravity = Vector3(0, 98, 0)
+scale_min = 3.0
+scale_max = 4.0
+color = Color(1, 0, 0, 1)
+
 [node name="Player" type="CharacterBody2D" unique_id=2115506010]
 script = ExtResource("1_7j80i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=264484940]
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_6sl1v")
-animation = &"Inseto_1_Idle"
+animation = &"Empty"
 autoplay = "Inseto_1_Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156716506]
@@ -541,11 +556,13 @@ shape = SubResource("RectangleShape2D_u4c7w")
 target_position = Vector2(0, 0)
 
 [node name="WebLine" type="Line2D" parent="." unique_id=1459631425]
+position = Vector2(0, 25)
 points = PackedVector2Array(0, 0, 0, 0)
 width = 4.0
 default_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
 
 [node name="WebJoint" type="DampedSpringJoint2D" parent="." unique_id=674932605]
+position = Vector2(0, 25)
 disable_collision = false
 length = 120.0
 rest_length = 120.0
@@ -572,3 +589,11 @@ volume_db = 24.0
 
 [node name="Audio_Flying" type="AudioStreamPlayer2D" parent="." unique_id=1622029802]
 volume_db = 24.0
+
+[node name="ExplosaoSparks" type="GPUParticles2D" parent="." unique_id=1907328230]
+emitting = false
+amount = 50
+lifetime = 0.86
+one_shot = true
+explosiveness = 0.95
+process_material = SubResource("ParticleProcessMaterial_t62tu")

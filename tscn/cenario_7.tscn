@@ -225,7 +225,7 @@ tile_map_data = PackedByteArray("AAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAA
 tile_set = SubResource("TileSet_scili")
 
 [node name="Checkpoint" parent="." unique_id=629245070 instance=ExtResource("21_welny")]
-position = Vector2(150, 750)
+position = Vector2(150, 758)
 numero_da_cena = 7
 
 [node name="Eatable" parent="." unique_id=1679141243 instance=ExtResource("25_hgyca")]
@@ -294,7 +294,7 @@ position = Vector2(270, 270)
 texture = ExtResource("20_87rkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Carregamento_Bloqueador" unique_id=79159936]
-position = Vector2(660, 420)
+position = Vector2(240, 238)
 shape = SubResource("RectangleShape2D_oba5j")
 
 [node name="ProgressBar" type="ProgressBar" parent="Carregamento_Bloqueador" unique_id=2117765964]

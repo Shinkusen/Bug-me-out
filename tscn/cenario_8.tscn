@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://i3huutshohcp"]
 
 [ext_resource type="Texture2D" uid="uid://be3vajgva8do0" path="res://sprites/Background/BugMeOut_Finale.png" id="1_jefuy"]
+[ext_resource type="Script" uid="uid://cib3je0vio2wp" path="res://scripts/cenario_8.gd" id="1_wrrw1"]
 [ext_resource type="Texture2D" uid="uid://ct3y651ehxbg5" path="res://sprites/Black.png" id="2_b840w"]
 [ext_resource type="Texture2D" uid="uid://ni1esjdafr5e" path="res://sprites/TileSet/M4/ChaoCentral_M4.png" id="3_xiekp"]
 [ext_resource type="Texture2D" uid="uid://byp5n2chxvmtn" path="res://sprites/TileSet/M4/ChaoDireita_M4.png" id="4_r6ck6"]
@@ -54,12 +55,37 @@ custom_data_layer_0/name = "can_climb"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_wlvlw")
 
-[node name="Cenario_3" type="Node2D" unique_id=659214951]
+[node name="Cenario_8" type="Node2D" unique_id=659214951]
+script = ExtResource("1_wrrw1")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1728573793]
+[node name="Background" type="TextureRect" parent="." unique_id=1728573793]
 offset_right = 1200.0
 offset_bottom = 900.0
 texture = ExtResource("1_jefuy")
+
+[node name="Titulo_Final" type="TextureRect" parent="." unique_id=56048679]
+offset_left = 162.5
+offset_top = 83.0
+offset_right = 1037.5
+offset_bottom = 300.0
+texture = ExtResource("9_r6ck6")
+
+[node name="Label" type="Label" parent="." unique_id=1736685616]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 525.0
+offset_top = 360.0
+offset_right = 675.0
+offset_bottom = 383.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Thanks for playing!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1584913155]
 position = Vector2(600, 450)
@@ -78,10 +104,3 @@ tile_set = SubResource("TileSet_ikxe7")
 
 [node name="Player" parent="." unique_id=2115506010 instance=ExtResource("23_4gqlu")]
 position = Vector2(599, 869)
-
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=56048679]
-offset_left = 166.0
-offset_top = 83.0
-offset_right = 1041.0
-offset_bottom = 300.0
-texture = ExtResource("9_r6ck6")

@@ -47,7 +47,9 @@ scale_min = 0.29999998
 scale_max = 0.9
 color_ramp = SubResource("GradientTexture1D_00so2")
 
-[node name="Ventilador" type="Node2D" unique_id=638374821]
+[node name="Ventilador" type="RigidBody2D" unique_id=1467498680]
+lock_rotation = true
+freeze = true
 script = ExtResource("1_im8bh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1922331344]
@@ -56,9 +58,7 @@ sprite_frames = SubResource("SpriteFrames_n560r")
 autoplay = "default"
 frame_progress = 0.96615237
 
-[node name="Area2D" type="Area2D" parent="." unique_id=2045978169]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1386675624]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1386675624]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_bbypo")
 

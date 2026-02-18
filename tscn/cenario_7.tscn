@@ -307,7 +307,7 @@ stream = ExtResource("29_iq4sg")
 stream = ExtResource("30_uex0h")
 
 [node name="Player" parent="." unique_id=2115506010 instance=ExtResource("23_ueirp")]
-position = Vector2(270, 809)
+position = Vector2(275, 820)
 
 [node name="Area_Transition_Black" type="Area2D" parent="." unique_id=441314668]
 script = ExtResource("22_lcksk")

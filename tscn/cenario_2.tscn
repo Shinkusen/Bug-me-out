@@ -233,13 +233,13 @@ position = Vector2(150, 450)
 position = Vector2(270, 330)
 is_area = true
 is_killable = true
-distance = 6
+distance = 9
 
 [node name="Estalactite_3" parent="." unique_id=1010238880 instance=ExtResource("25_xcrbb")]
 position = Vector2(510, 330)
 is_area = true
 is_killable = true
-distance = 7
+distance = 9
 
 [node name="Estalactite_4" parent="." unique_id=641820179 instance=ExtResource("25_xcrbb")]
 position = Vector2(1170, 570)
@@ -252,7 +252,7 @@ rotation = 3.1415927
 position = Vector2(1050, 330)
 is_area = true
 is_killable = true
-distance = 5
+distance = 7
 
 [node name="Ventilador_1" parent="." unique_id=638374821 instance=ExtResource("24_g77qk")]
 position = Vector2(870, 750)
@@ -265,7 +265,7 @@ position = Vector2(270, 88)
 position = Vector2(270, 148)
 
 [node name="Player" parent="." unique_id=2115506010 instance=ExtResource("4_l8h6f")]
-position = Vector2(60, 688)
+position = Vector2(60, 700)
 
 [node name="Area_Transition_Black" type="Area2D" parent="." unique_id=620985426]
 script = ExtResource("3_6iwao")

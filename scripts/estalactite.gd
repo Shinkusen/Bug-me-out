@@ -7,7 +7,9 @@ extends RigidBody2D
 func _ready():
 	gravity_scale = 0
 	
-	$Area2D.position.y = 54 + distance * 64
+	if distance != 0:
+		$Area2D.position.y = distance / 2 * 60
+		$Area2D/CollisionShape2D.shape.size.y = distance * 60
 	$Faiscas.emitting = is_killable
 
 # --- SINAL DO FILHO (Area2D) ---

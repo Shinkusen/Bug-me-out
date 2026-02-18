@@ -62,6 +62,28 @@ var wind_source_position: Vector2 = Vector2.ZERO
 
 var insect_level: int = 1
 
+# --- Colisão dinâmica ---
+@onready var collision_shape_externo = $CollisionShape2D
+@onready var collision_shape_interno = $Area2D/CollisionShape2D
+
+var collision_data = { # [Size_X, Size_Y, Offset_X, Offset_Y]
+	"Inseto_1_Idle": [36.0, 62.0, 0.0, 7.0],
+	"Inseto_1_Walk_Vertical": [36.0, 62.0, 0.0, 7.0],
+	"Inseto_1_Walk_Horizontal": [58.0, 22.0, -3.0, 4.0],
+	"Inseto_2_Idle": [32.0, 56.0, -2.0, -1.0],
+	"Inseto_2_Walk_Vertical": [33.0, 56.0, -0.5, -1.0],
+	"Inseto_2_Walk_Horizontal": [58.0, 22.0, -3.0, 4.0],
+	"Inseto_3_Idle": [29.0, 54.0, -2.5, -2.0],
+	"Inseto_3_Walk_Vertical": [30.0, 54.0, 0.0, -2.0],
+	"Inseto_3_Walk_Horizontal": [58.0, 22.0, -3.0, 4.0],
+	"Inseto_3_String": [29.0, 55.0, 0.5, -2.5],
+	"Inseto_4_Idle": [30.0, 55.0, 1.5, -2.5],
+	"Inseto_4_Walk_Vertical": [31.0, 54.0, 0.5, -2.0],
+	"Inseto_4_Walk_Horizontal": [58.0, 22.0, -3.0, 4.0],
+	"Inseto_4_String": [31.0, 54.0, 0.5, -3.0],
+	"Inseto_4_Fly": [77.0, 24.0, -4.5, 1.0],
+}
+
 func _init() -> void:
 	GameController.player = self
 
@@ -74,6 +96,8 @@ func _ready():
 	
 	# Conecta o sinal para saber quando a animação "Perspectiva" acabou
 	sprite.animation_finished.connect(_on_animation_finished)
+	
+	sprite.frame_changed.connect(_on_sprite_frame_changed)
 	
 	if GameController.is_respawning:
 		global_position = GameController.checkpoint_position
@@ -373,11 +397,13 @@ func update_animations():
 	# 1. Prioridade Máxima: Dash (Fly) - Só Nível 4
 	if dashing:
 		_try_play_animation(prefix + "Fly")
+		_on_sprite_frame_changed()
 		return
 
 	# 2. Prioridade: String (Carregando bloco) - Só Nível 3+
 	if current_web_state == WebState.CARRYING:
 		_try_play_animation(prefix + "String")
+		_on_sprite_frame_changed()
 		return
 
 	# 3. Lógica de Movimento
@@ -388,12 +414,12 @@ func update_animations():
 			_try_play_animation(prefix + "Walk_Vertical")
 		else:
 			_try_play_animation(prefix + "Idle")
+		_on_sprite_frame_changed()
 	else:
 		# --- NO CHÃO (HORIZONTAL) ---
-		# CORREÇÃO: Você pediu para usar o Walk Horizontal como se fosse o Idle.
-		# Então removemos a checagem de velocidade (velocity.x > 10) e o "else: Idle".
 		# Ele vai tocar Walk_Horizontal o tempo todo enquanto estiver no chão.
 		_try_play_animation(prefix + "Walk_Horizontal")
+		_on_sprite_frame_changed()
 
 # Função auxiliar segura para tocar animação (evita erro se faltar assets)
 func _try_play_animation(anim_name: String):
@@ -438,16 +464,58 @@ func _on_animation_finished():
 		execute_climb_switch()
 		is_changing_perspective = false # Destrava o player
 
+# Chamado automaticamente pelo sinal 'frame_changed' do AnimatedSprite
+func _on_sprite_frame_changed():
+	var anim_atual = sprite.animation
+	
+	if collision_data.has(anim_atual):
+		var data = collision_data[anim_atual]
+		var base_size = Vector2(data[0], data[1])
+		var base_pos = Vector2(data[2], data[3])
+		
+		# Rotação para size
+		var final_size = base_size
+		
+		# O cosseno de 0° ou 180° é 1 ou -1 (Totalmente Vertical)
+		# O cosseno de 90° ou 270° é 0 (Totalmente Horizontal)
+		# Se o valor absoluto do cosseno for menor que 0.707 (45°), 
+		# significa que o inseto está mais "deitado" que "em pé".
+		var cos_rot = abs(cos(sprite.rotation))
+		
+		if cos_rot < 0.707: 
+			# Inseto está mais para a Horizontal (Leste/Oeste ou Diagonais horizontais)
+			final_size = Vector2(base_size.y, base_size.x)
+		else:
+			# Inseto está mais para a Vertical (Norte/Sul ou Diagonais verticais)
+			final_size = Vector2(base_size.x, base_size.y)
+		
+		# Rotação para posição
+		var final_pos = base_pos.rotated(sprite.rotation)
+		
+		# Flip (Walk Horizontal)
+		if not climbing:
+			if sprite.flip_h:
+				final_pos.x = -final_pos.x
+			if sprite.flip_v:
+				final_pos.y = -final_pos.y
+		
+		_update_shape(collision_shape_externo, final_size, final_pos)
+		_update_shape(collision_shape_interno, final_size, final_pos)
+
+func _update_shape(col_shape: CollisionShape2D, s: Vector2, p: Vector2):
+	if col_shape and col_shape.shape is RectangleShape2D:
+		col_shape.shape.set_deferred("size", s)
+		col_shape.set_deferred("position", p)
+
 # A lógica real de trocar o booleano 'climbing'
 func execute_climb_switch():
 	climbing = !climbing
 	
-	if climbing:
-		# Acabou de subir
-		pass
-	else:
-		# Acabou de descer
+	if not climbing:
 		sprite.rotation = 0
+	
+	# Garantir que o colisor resete antes do próximo frame do sprite
+	_on_sprite_frame_changed()
 
 # ==========================================================
 # LÓGICA DA GRADE (TILEMAP)

@@ -7,6 +7,7 @@
 size = Vector2(32, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmbfg"]
+resource_local_to_scene = true
 size = Vector2(60, 60)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c0cry"]

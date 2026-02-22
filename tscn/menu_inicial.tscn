@@ -1,10 +1,26 @@
 [gd_scene format=3 uid="uid://da0i4no15nq8d"]
 
-[ext_resource type="Texture2D" uid="uid://c673r38wrs0qu" path="res://sprites/Menu Inicial.png" id="1_n8gae"]
 [ext_resource type="Script" uid="uid://dcptgw2xstj0s" path="res://scripts/menu_inicial.gd" id="1_nryl7"]
-[ext_resource type="Texture2D" uid="uid://coxgu5iia4x4l" path="res://sprites/BugMeOut_Title.png" id="3_usw2c"]
+[ext_resource type="Texture2D" uid="uid://baqogijniaw6f" path="res://sprites/Menu Inicial/Background_Vazio.png" id="2_rv0ss"]
+[ext_resource type="Texture2D" uid="uid://8clnd4df12g3" path="res://sprites/Menu Inicial/Logo.png" id="3_3jas2"]
+[ext_resource type="Texture2D" uid="uid://gxbyoim5wi4e" path="res://sprites/Menu Inicial/Jogar.png" id="4_yd206"]
+[ext_resource type="Texture2D" uid="uid://c25710h5mhlly" path="res://sprites/Menu Inicial/Sair.png" id="5_0tg6h"]
 
-[sub_resource type="SystemFont" id="SystemFont_usw2c"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rv0ss"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -100.19, 0)
+emission_shape = 3
+emission_box_extents = Vector3(325.44, 1, 1)
+angle_min = -179.99998
+angle_max = 180.00002
+direction = Vector3(0, 1, 0)
+spread = 10.0
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 98, 0)
+scale_min = 2.0
+scale_max = 3.0
+color = Color(1, 1, 0.57254905, 1)
 
 [node name="Menu_Inicial" type="Control" unique_id=2026256637]
 layout_mode = 3
@@ -15,42 +31,45 @@ script = ExtResource("1_nryl7")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_n8gae")
+texture = ExtResource("2_rv0ss")
 
 [node name="Titulo" type="TextureRect" parent="." unique_id=139767232]
-layout_mode = 0
-offset_left = 209.0
-offset_top = 77.0
-offset_right = 1084.0
-offset_bottom = 294.0
-texture = ExtResource("3_usw2c")
-
-[node name="Jogar" type="Button" parent="." unique_id=335920441]
 layout_mode = 1
-offset_left = 229.0
-offset_top = 671.0
-offset_right = 469.0
-offset_bottom = 731.0
-theme_override_colors/font_color = Color(0.6431373, 0.4862745, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.6431373, 0.4862745, 0, 1)
-theme_override_colors/font_hover_color = Color(0.40784314, 0.3019608, 0, 1)
-theme_override_font_sizes/font_size = 36
-text = "Jogar"
-flat = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 210.0
+offset_top = 75.0
+offset_right = 1042.0
+offset_bottom = 283.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(416, 104)
+texture = ExtResource("3_3jas2")
 
-[node name="Sair" type="Button" parent="." unique_id=307072225]
+[node name="Jogar" type="TextureButton" parent="." unique_id=1396897874]
 layout_mode = 0
-offset_left = 727.0
-offset_top = 705.0
-offset_right = 967.0
-offset_bottom = 765.0
-theme_override_colors/font_color = Color(0.6431373, 0.4862745, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.6431373, 0.4862745, 0, 1)
-theme_override_colors/font_hover_color = Color(0.40784314, 0.3019608, 0, 1)
-theme_override_fonts/font = SubResource("SystemFont_usw2c")
-theme_override_font_sizes/font_size = 36
-text = "Sair"
-flat = true
+offset_left = 495.0
+offset_top = 305.0
+offset_right = 772.0
+offset_bottom = 416.0
+texture_normal = ExtResource("4_yd206")
+
+[node name="Sair" type="TextureButton" parent="." unique_id=1531025269]
+layout_mode = 0
+offset_left = 545.0
+offset_top = 418.0
+offset_right = 718.0
+offset_bottom = 498.0
+texture_normal = ExtResource("5_0tg6h")
+
+[node name="Faiscas" type="GPUParticles2D" parent="." unique_id=1215437565]
+position = Vector2(632, 100)
+amount = 30
+lifetime = 1.8
+process_material = SubResource("ParticleProcessMaterial_rv0ss")
 
 [connection signal="pressed" from="Jogar" to="." method="_on_jogar_pressed"]
 [connection signal="pressed" from="Sair" to="." method="_on_sair_pressed"]

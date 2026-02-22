@@ -45,6 +45,7 @@ shape = SubResource("RectangleShape2D_gmbfg")
 [node name="Faiscas" type="GPUParticles2D" parent="." unique_id=1694804421]
 position = Vector2(0, 70)
 amount = 10
+lifetime = 5.0
 process_material = SubResource("ParticleProcessMaterial_c0cry")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

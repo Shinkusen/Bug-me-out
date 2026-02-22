@@ -137,11 +137,13 @@ custom_data_layer_0/name = "can_climb"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_i5n5q")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0gjsy"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b417i"]
 particle_flag_disable_z = true
 emission_shape_offset = Vector3(0, -100.19, 0)
 emission_shape = 3
 emission_box_extents = Vector3(200, 1, 1)
+angle_min = -179.99998
+angle_max = 180.00002
 direction = Vector3(0, 1, 0)
 spread = 10.0
 initial_velocity_min = 100.0
@@ -236,7 +238,7 @@ spread = 0.0
 gravity = Vector3(0, 30, 0)
 scale_min = 2.0
 scale_max = 3.0
-color = Color(1, 1, 0.57254905, 1)
+color = Color(1, 0.9137255, 0.16862746, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsiwh"]
 size = Vector2(90, 90)
@@ -275,12 +277,11 @@ tile_set = SubResource("TileSet_tjqbj")
 tile_map_data = PackedByteArray("AAATAAsAAAAAAAAAAAATAAoAAAAAAAAAAAATAAYAAAAAAAAAAAATAAUAAAAAAAAAAAATAAQAAAAAAAAAAAATAAMAAAAAAAAAAAATAAIAAAAAAAAAAAATAAEAAAAAAAAAAAATAAAAAAAAAAAAAAATAAkAAAAAAAAAAAATAAgAAAAAAAAAAAATAAcAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_pb3yv")
 
-[node name="Faiscas" type="GPUParticles2D" parent="." unique_id=294531443]
+[node name="Faiscas" type="GPUParticles2D" parent="." unique_id=2023685558]
 position = Vector2(632, 100)
-emitting = false
 amount = 30
-lifetime = 1.7
-process_material = SubResource("ParticleProcessMaterial_0gjsy")
+lifetime = 1.8
+process_material = SubResource("ParticleProcessMaterial_b417i")
 
 [node name="GrupoExplosao" type="Node2D" parent="." unique_id=291497826]
 
@@ -328,12 +329,12 @@ shape = SubResource("RectangleShape2D_rc30b")
 [node name="Faiscas" type="GPUParticles2D" parent="Area_Transition_Black" unique_id=1673136360]
 position = Vector2(1170, 97)
 amount = 10
+lifetime = 1.4000000000000001
 process_material = SubResource("ParticleProcessMaterial_pgog6")
 
 [node name="Area_Texto_Flutuante_1" type="Area2D" parent="." unique_id=1712965385]
 script = ExtResource("22_b417i")
 texto_export = "Aperte WASD para movimentação"
-tipo = "WASD"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Texto_Flutuante_1" unique_id=2021960956]
 position = Vector2(1005, 675)
@@ -342,7 +343,6 @@ shape = SubResource("RectangleShape2D_tsiwh")
 [node name="Area_Texto_Flutuante_2" type="Area2D" parent="." unique_id=861282136]
 script = ExtResource("22_b417i")
 texto_export = "Aperte Espaço para escalar"
-tipo = "Espaco"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Texto_Flutuante_2" unique_id=1290274731]
 position = Vector2(1155, 675)

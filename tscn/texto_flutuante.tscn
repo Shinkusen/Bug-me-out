@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c0udhjsyn2ouc"]
 
 [ext_resource type="Script" uid="uid://cqgdliwc7pt2h" path="res://scripts/texto_flutuante.gd" id="1_sdnmc"]
+[ext_resource type="FontFile" uid="uid://daa0mlijim0ya" path="res://fonts/Baskervville-SemiBold.ttf" id="2_bwgxk"]
 
 [node name="Texto_Flutuante" type="Control" unique_id=902033248]
 layout_mode = 3
@@ -12,15 +13,20 @@ grow_vertical = 2
 script = ExtResource("1_sdnmc")
 
 [node name="Label" type="Label" parent="." unique_id=732569455]
+modulate = Color(0.92156965, 0.61134, 0, 1)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -200.0
-offset_top = 100.0
-offset_right = 200.0
-offset_bottom = 180.0
+offset_left = -600.0
+offset_top = 80.0
+offset_right = 600.0
+offset_bottom = 200.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 28
+pivot_offset = Vector2(600, 60)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bwgxk")
+theme_override_font_sizes/font_size = 32
+text = "FONTE TESTE"
 horizontal_alignment = 1
 vertical_alignment = 1

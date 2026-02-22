@@ -1,30 +1,32 @@
 extends Control
 
+@onready var titulo = $Titulo
 @onready var btn_jogar = $Jogar
 @onready var btn_sair = $Sair
 
 func _ready():
-	animar_botao(btn_jogar)
-	animar_botao(btn_sair)
+	animar_titulo_sutil()
+	configurar_botoes_imagem(btn_jogar)
+	configurar_botoes_imagem(btn_sair)
 
-func animar_botao(botao: Button):
-	# --- 1. CONFIGURAÇÃO INICIAL ---
-	botao.add_theme_font_size_override("font_size", 36)
-	botao.modulate.a = 0.3
-
-	# --- 2. ANIMAÇÃO DA FONTE (Oscilar Tamanho) ---
-	var tween_fonte = create_tween().set_loops() # set_loops() faz repetir para sempre
-	tween_fonte.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT) # Deixa o movimento suave
+func animar_titulo_sutil():
+	var tween = create_tween().set_loops().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
-	tween_fonte.tween_property(botao, "theme_override_font_sizes/font_size", 39, 0.75)
-	tween_fonte.tween_property(botao, "theme_override_font_sizes/font_size", 36, 0.75)
+	tween.tween_property(titulo, "scale", Vector2(1.015, 1.015), 1.0)
+	tween.tween_property(titulo, "scale", Vector2(1.0, 1.0), 1.0)
 
-	# --- 3. ANIMAÇÃO DA TRANSPARÊNCIA (Oscilar Fundo) ---
-	var tween_alpha = create_tween().set_loops()
-	tween_alpha.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+func configurar_botoes_imagem(botao: Control):
+	botao.modulate = Color(0.7, 0.7, 0.7, 1.0)
 	
-	tween_alpha.tween_property(botao, "modulate:a", 0.6, 1.0)
-	tween_alpha.tween_property(botao, "modulate:a", 0.7, 1.0)
+	botao.mouse_entered.connect(func():
+		var t = create_tween()
+		t.tween_property(botao, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.1)
+	)
+	
+	botao.mouse_exited.connect(func():
+		var t = create_tween()
+		t.tween_property(botao, "modulate", Color(0.7, 0.7, 0.7, 1.0), 0.1)
+	)
 
 func _on_jogar_pressed() -> void:
 	get_tree().change_scene_to_file("res://tscn/cenario_1.tscn")

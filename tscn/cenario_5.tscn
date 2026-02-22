@@ -192,10 +192,10 @@ spread = 0.0
 gravity = Vector3(0, 30, 0)
 scale_min = 2.0
 scale_max = 3.0
-color = Color(1, 1, 0.57254905, 1)
+color = Color(1, 0.9137255, 0.16862746, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dp0hi"]
-size = Vector2(180, 180)
+size = Vector2(180, 120)
 
 [node name="Cenario_5" type="Node2D" unique_id=659214951 node_paths=PackedStringArray("sprites_visuais", "bloqueadores_fisicos")]
 script = ExtResource("1_55gj2")
@@ -310,6 +310,7 @@ shape = SubResource("RectangleShape2D_so2o8")
 [node name="Faiscas" type="GPUParticles2D" parent="Area_Transition_Black" unique_id=1210254363]
 position = Vector2(480, 97)
 amount = 10
+lifetime = 1.4000000000000001
 process_material = SubResource("ParticleProcessMaterial_483au")
 
 [node name="SecurityCamera" parent="." unique_id=1006889508 instance=ExtResource("25_t20ku")]
@@ -319,17 +320,15 @@ end_width = 128.0
 
 [node name="Area_Texto_Flutuante_1" type="Area2D" parent="." unique_id=911370956]
 script = ExtResource("32_db1tc")
-texto_export = "Aperte E para consumir"
-tipo = "Eat"
+texto_export = "Aperte E para consumir corpos"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Texto_Flutuante_1" unique_id=264421220]
-position = Vector2(570, 330)
+position = Vector2(1077, 240)
 shape = SubResource("RectangleShape2D_dp0hi")
 
 [node name="Area_Texto_Flutuante_2" type="Area2D" parent="." unique_id=1726001551]
 script = ExtResource("32_db1tc")
 texto_export = "Mantenha-se no scanner após consumir"
-tipo = "Scanner"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Texto_Flutuante_2" unique_id=1143980588]
 position = Vector2(840, 210)

@@ -180,7 +180,7 @@ spread = 0.0
 gravity = Vector3(0, 30, 0)
 scale_min = 2.0
 scale_max = 3.0
-color = Color(1, 1, 0.57254905, 1)
+color = Color(1, 0.9137255, 0.16862746, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qce4h"]
 size = Vector2(1200, 4)
@@ -229,24 +229,28 @@ position = Vector2(1170, 390)
 is_area = true
 is_killable = true
 distance = 9
+life_time_particulas = 4.5
 
 [node name="Estalactite_2" parent="." unique_id=62621985 instance=ExtResource("24_scili")]
 position = Vector2(1110, 390)
 is_area = true
 is_killable = true
 distance = 9
+life_time_particulas = 4.5
 
 [node name="Estalactite_3" parent="." unique_id=576271874 instance=ExtResource("24_scili")]
 position = Vector2(1050, 390)
 is_area = true
 is_killable = true
 distance = 9
+life_time_particulas = 4.5
 
 [node name="Estalactite_4" parent="." unique_id=165201248 instance=ExtResource("24_scili")]
 position = Vector2(450, 30)
 is_area = true
 is_killable = true
 distance = 5
+life_time_particulas = 3.0
 
 [node name="Estalactite_5" parent="." unique_id=1390965096 instance=ExtResource("24_scili")]
 position = Vector2(30, 90)
@@ -259,6 +263,7 @@ position = Vector2(210, 450)
 is_area = true
 is_killable = true
 distance = 7
+life_time_particulas = 4.0
 
 [node name="Estalactite_8" parent="." unique_id=373296330 instance=ExtResource("24_scili")]
 position = Vector2(390, 450)
@@ -274,6 +279,7 @@ shape = SubResource("RectangleShape2D_so2o8")
 [node name="Faiscas" type="GPUParticles2D" parent="Area_Transition_Black" unique_id=1210254363]
 position = Vector2(360, 97)
 amount = 10
+lifetime = 1.4000000000000001
 process_material = SubResource("ParticleProcessMaterial_483au")
 
 [node name="Area_Die" type="Area2D" parent="." unique_id=1407396242]

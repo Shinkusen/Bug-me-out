@@ -206,7 +206,7 @@ spread = 0.0
 gravity = Vector3(0, 30, 0)
 scale_min = 2.0
 scale_max = 3.0
-color = Color(1, 1, 0.57254905, 1)
+color = Color(1, 0.9137255, 0.16862746, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ea0"]
 size = Vector2(240, 4)
@@ -371,6 +371,7 @@ shape = SubResource("RectangleShape2D_so2o8")
 [node name="Faiscas" type="GPUParticles2D" parent="Area_Transition_Black" unique_id=1210254363]
 position = Vector2(422, 97)
 amount = 10
+lifetime = 1.4000000000000001
 process_material = SubResource("ParticleProcessMaterial_483au")
 
 [node name="SecurityCamera" parent="." unique_id=1006889508 instance=ExtResource("25_5sji1")]
@@ -388,10 +389,9 @@ shape = SubResource("RectangleShape2D_f1ea0")
 [node name="Area_Texto_Flutuante_1" type="Area2D" parent="." unique_id=1499094824]
 script = ExtResource("35_c5vxg")
 texto_export = "Aperte Q para usar teia"
-tipo = "String"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Texto_Flutuante_1" unique_id=1044382723]
-position = Vector2(1110, 658)
+position = Vector2(1110, 599)
 shape = SubResource("RectangleShape2D_clwql")
 
 [connection signal="body_entered" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_entered"]

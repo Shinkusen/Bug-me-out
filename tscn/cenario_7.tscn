@@ -192,10 +192,10 @@ spread = 0.0
 gravity = Vector3(0, 30, 0)
 scale_min = 2.0
 scale_max = 3.0
-color = Color(1, 1, 0.57254905, 1)
+color = Color(1, 0.9137255, 0.16862746, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uex0h"]
-size = Vector2(300, 120)
+size = Vector2(120, 60)
 
 [node name="Cenario_7" type="Node2D" unique_id=659214951]
 script = ExtResource("1_vocnn")
@@ -320,6 +320,7 @@ shape = SubResource("RectangleShape2D_so2o8")
 [node name="Faiscas" type="GPUParticles2D" parent="Area_Transition_Black" unique_id=1210254363]
 position = Vector2(600, 97)
 amount = 10
+lifetime = 1.4
 process_material = SubResource("ParticleProcessMaterial_483au")
 
 [node name="SecurityCamera" parent="." unique_id=1006889508 instance=ExtResource("26_rpdp6")]
@@ -330,10 +331,9 @@ end_width = 128.0
 [node name="Area_Texto_Flutuante_1" type="Area2D" parent="." unique_id=1045423643]
 script = ExtResource("32_iq4sg")
 texto_export = "Pressione Shift para voar"
-tipo = "Fly"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Texto_Flutuante_1" unique_id=1804660638]
-position = Vector2(930, 780)
+position = Vector2(1080, 630)
 shape = SubResource("RectangleShape2D_uex0h")
 
 [connection signal="body_entered" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_entered"]

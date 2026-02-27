@@ -23,15 +23,28 @@
 [ext_resource type="Texture2D" uid="uid://d30myo88gj62t" path="res://sprites/TileSet/M2/ChaoEsquerda_M2.png" id="19_23an4"]
 [ext_resource type="Texture2D" uid="uid://3xh2f8824jfb" path="res://sprites/TileSet/Grade.png" id="20_3tq0j"]
 [ext_resource type="PackedScene" uid="uid://b2rsc10sv6eji" path="res://tscn/checkpoint.tscn" id="21_btclj"]
+[ext_resource type="Texture2D" uid="uid://bk25svqnk3ji3" path="res://sprites/TileSet/Cano/Cano_Interseção.png" id="22_gd60s"]
 [ext_resource type="PackedScene" uid="uid://cljk0xq12son8" path="res://tscn/player.tscn" id="23_18wrb"]
+[ext_resource type="Texture2D" uid="uid://c7dtbkyxp3pn7" path="res://sprites/TileSet/Cano/Cano_End_Up_v1.png" id="23_sp3mb"]
 [ext_resource type="PackedScene" uid="uid://dxir6k7kamspi" path="res://tscn/eatable.tscn" id="24_fln6u"]
+[ext_resource type="Texture2D" uid="uid://dlmi2bj8neet6" path="res://sprites/TileSet/Cano/Cano_End_Left_v2.png" id="24_i0b01"]
 [ext_resource type="Texture2D" uid="uid://b6mdgpguf6tak" path="res://sprites/TileSet/Bloqueador_Passagem.png" id="24_x3iht"]
+[ext_resource type="Texture2D" uid="uid://rhwhhl7s347k" path="res://sprites/TileSet/Cano/Cano_End_Right_v2.png" id="25_ld5vy"]
 [ext_resource type="Script" uid="uid://drmjft4e3lcrk" path="res://scripts/carregamento_bloqueador.gd" id="25_p05lg"]
 [ext_resource type="PackedScene" uid="uid://0kmek7shcteb" path="res://tscn/security_camera.tscn" id="25_t20ku"]
+[ext_resource type="Texture2D" uid="uid://bm6pnbd6781ec" path="res://sprites/TileSet/Cano/Cano_End_Up_v2.png" id="26_ka8m8"]
+[ext_resource type="Texture2D" uid="uid://b5vj86nruomq8" path="res://sprites/TileSet/Cano/Cano_Reto_Up.png" id="27_ky48m"]
+[ext_resource type="Texture2D" uid="uid://db8xbjimtc6e4" path="res://sprites/TileSet/Cano/Cano_End_Down_v1.png" id="28_rd5nu"]
 [ext_resource type="AudioStream" uid="uid://buwxkugb0fw51" path="res://sounds/Objetos/Scanner.mp3" id="28_tqlj1"]
+[ext_resource type="Texture2D" uid="uid://t5ujrrg5jr6q" path="res://sprites/TileSet/Cano/Cano_Reto_Left.png" id="29_1na6x"]
 [ext_resource type="AudioStream" uid="uid://bq5116v6nte7g" path="res://sounds/Objetos/Acesso Permitido.mp3" id="29_db1tc"]
 [ext_resource type="AudioStream" uid="uid://cmgo7twbijhef" path="res://sounds/Objetos/Acesso negado.mp3" id="30_dp0hi"]
+[ext_resource type="Texture2D" uid="uid://c4xuyqnocw6ib" path="res://sprites/TileSet/Cano/Cano_Reto_Right.png" id="30_grn3w"]
+[ext_resource type="Texture2D" uid="uid://cjbdq1s7qt40r" path="res://sprites/TileSet/Cano/Cano_Reto_Down.png" id="31_kaq70"]
+[ext_resource type="Texture2D" uid="uid://clksot0mc6xcd" path="res://sprites/TileSet/Cano/Cano_End_Down_v2.png" id="32_32mnk"]
 [ext_resource type="Script" uid="uid://dqjnq46ebej5v" path="res://scripts/area_texto_flutuante.gd" id="32_db1tc"]
+[ext_resource type="Texture2D" uid="uid://cs0rlfqi8upvu" path="res://sprites/TileSet/Cano/Cano_End_Left_v1.png" id="33_tq0y3"]
+[ext_resource type="Texture2D" uid="uid://cfwng8rf3paow" path="res://sprites/TileSet/Cano/Cano_End_Right_v1.png" id="34_x367n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxo5x"]
 texture = ExtResource("3_x3iht")
@@ -161,17 +174,108 @@ sources/0 = SubResource("TileSetAtlasSource_m1gm4")
 sources/1 = SubResource("TileSetAtlasSource_jsmb4")
 sources/2 = SubResource("TileSetAtlasSource_wse2v")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lm0vh"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vdtd7"]
 texture = ExtResource("20_3tq0j")
 texture_region_size = Vector2i(60, 60)
 0:0/0 = 0
 0:0/0/custom_data_0 = true
 
-[sub_resource type="TileSet" id="TileSet_scili"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y1iey"]
+texture = ExtResource("22_gd60s")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_flhnu"]
+texture = ExtResource("23_sp3mb")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qjbpl"]
+texture = ExtResource("24_i0b01")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uuanw"]
+texture = ExtResource("25_ld5vy")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4gjbg"]
+texture = ExtResource("26_ka8m8")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vo3ie"]
+texture = ExtResource("27_ky48m")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0axn4"]
+texture = ExtResource("28_rd5nu")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fbtmx"]
+texture = ExtResource("29_1na6x")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gwgqy"]
+texture = ExtResource("30_grn3w")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lvtnl"]
+texture = ExtResource("31_kaq70")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ddbgn"]
+texture = ExtResource("32_32mnk")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q62gc"]
+texture = ExtResource("33_tq0y3")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lodpe"]
+texture = ExtResource("34_x367n")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSet" id="TileSet_07lsp"]
 tile_size = Vector2i(60, 60)
 custom_data_layer_0/name = "can_climb"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_lm0vh")
+sources/0 = SubResource("TileSetAtlasSource_vdtd7")
+sources/1 = SubResource("TileSetAtlasSource_y1iey")
+sources/2 = SubResource("TileSetAtlasSource_vo3ie")
+sources/3 = SubResource("TileSetAtlasSource_0axn4")
+sources/4 = SubResource("TileSetAtlasSource_fbtmx")
+sources/5 = SubResource("TileSetAtlasSource_gwgqy")
+sources/6 = SubResource("TileSetAtlasSource_lvtnl")
+sources/8 = SubResource("TileSetAtlasSource_q62gc")
+sources/9 = SubResource("TileSetAtlasSource_lodpe")
+sources/10 = SubResource("TileSetAtlasSource_flhnu")
+sources/11 = SubResource("TileSetAtlasSource_qjbpl")
+sources/12 = SubResource("TileSetAtlasSource_uuanw")
+sources/7 = SubResource("TileSetAtlasSource_ddbgn")
+sources/13 = SubResource("TileSetAtlasSource_4gjbg")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fln6u"]
 size = Vector2(60, 60)
@@ -207,20 +311,12 @@ offset_right = 1200.0
 offset_bottom = 900.0
 texture = ExtResource("1_kjk7n")
 
-[node name="Black_Screen_Down" type="Sprite2D" parent="." unique_id=1096268543]
-position = Vector2(600, 1350)
-texture = ExtResource("1_jip4m")
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1584913155]
 position = Vector2(600, 450)
 
 [node name="ChaoColisores_M1" type="TileMapLayer" parent="." unique_id=1557546725]
 tile_map_data = PackedByteArray("AAACAA4AAAAAAAAAAAADAA4AAAAAAAAAAAAEAAwACAAAAAAAAAAFAAwAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAABAA0ABAAAAAAAAAALAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAD//wwAAQAAAAAAAAD//woAAQAAAAAAAAD//wkAAQAAAAAAAAD//wgAAQAAAAAAAAD//wcAAQAAAAAAAAD//wYAAQAAAAAAAAD//wUAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAAAAAAAAD//wAAAQAAAAAAAAAEAAAAAgAAAAAAAAAFAAAAAgAAAAAAAAADAAAABgAAAAAAAAAGAAAACgAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAFAAMACAAAAAAAAAAJAAAAAwAAAAAAAAAJAAEAAwAAAAAAAAAJAAIAAwAAAAAAAAAJAAMACwAAAAAAAAAKAAMABQAAAAAAAAAKAAIAAQAAAAAAAAAKAAEAAQAAAAAAAAAKAAAAAQAAAAAAAAANAAsAAwAAAAAAAAANAAoAAwAAAAAAAAANAAkAAwAAAAAAAAAMAAgAAgAAAAAAAAALAAgABgAAAAAAAAANAAUACAAAAAAAAAAOAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAARAAUAAAAAAAAAAAASAAUAAAAAAAAAAAATAAUAAAAAAAAAAAALAAYACAAAAAAAAAAHAAsAAwAAAAAAAAAHAAoAAwAAAAAAAAAHAAkAAwAAAAAAAAAHAAgAAwAAAAAAAAAHAAcACAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAAUAAQAAwAAAAAAAAAUAAMAAwAAAAAAAAAUAAIAAwAAAAAAAAAUAAEAAwAAAAAAAAAUAAAAAwAAAAAAAAACAP//AgAAAAAAAAABAP//AgAAAAAAAAAAAP//AgAAAAAAAAALAP//AgAAAAAAAAAMAP//AgAAAAAAAAANAP//AgAAAAAAAAAOAP//AgAAAAAAAAAPAP//AgAAAAAAAAAQAP//AgAAAAAAAAARAP//AgAAAAAAAAASAP//AgAAAAAAAAATAP//AgAAAAAAAAAMAAYAAAAAAAAAAAD//wsAAQAAAAAAAAAAAAoAAAAAAAAAAAABAAoABAAAAAAAAAAEAA0AAwAAAAAAAAA=")
 tile_set = SubResource("TileSet_5r2p1")
-
-[node name="Black_Screen_Up" type="Sprite2D" parent="." unique_id=2042709844]
-position = Vector2(600, -450)
-texture = ExtResource("1_jip4m")
 
 [node name="ChaoSemColisores_Baixo" type="TileMapLayer" parent="." unique_id=1568102665]
 tile_map_data = PackedByteArray("AAAFAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAHAA0AAAAAAAAAAAAIAA0AAAAAAAAAAAAJAA0AAAAAAAAAAAAKAA0AAAAAAAAAAAAKAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAHAA4AAQAAAAAAAAAGAA4AAAAAAAAAAAAFAA4AAAAAAAAAAAALAA0AAQAAAAAAAAAMAA0AAAAAAAAAAAANAA0AAAAAAAAAAAAOAA0AAAAAAAAAAAAPAA0AAAAAAAAAAAAQAA0AAAAAAAAAAAARAA0AAAAAAAAAAAASAA0AAAAAAAAAAAATAA0AAAAAAAAAAAATAA4AAAAAAAAAAAASAA4AAAAAAAAAAAARAA4AAAAAAAAAAAAQAA4AAAAAAAAAAAAPAA4AAQAAAAAAAAAOAA4AAAAAAAAAAAANAA4AAAAAAAAAAAAMAA4AAAAAAAAAAAALAA4AAAAAAAAAAAAOAAwAAAAAAAAAAAAPAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAARAAwAAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAATAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAOAAoAAAAAAAAAAAAOAAkAAAAAAAAAAAAOAAgAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAgAAQAAAAAAAAAQAAcAAAAAAAAAAAAQAAgAAAAAAAAAAAAQAAsAAAAAAAAAAAAQAAoAAAAAAAAAAAAQAAkAAAAAAAAAAAAPAAcAAAAAAAAAAAARAAsAAQAAAAAAAAARAAoAAAAAAAAAAAARAAkAAAAAAAAAAAARAAgAAAAAAAAAAAASAAgAAAAAAAAAAAASAAkAAAAAAAAAAAASAAoAAAAAAAAAAAASAAsAAAAAAAAAAAATAAgAAAAAAAAAAAATAAkAAAAAAAAAAAATAAoAAAAAAAAAAAASAAcAAAAAAAAAAAASAAYAAQAAAAAAAAAOAAcAAAAAAAAAAAATAAYAAAAAAAAAAAATAAcAAAAAAAAAAAARAAcAAAAAAAAAAAARAAYAAAAAAAAAAAAQAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAcAAAAAAAAAAAABAA4AAAAAAAAAAAAAAA4AAQAAAAAAAAAEAA0AAAAAAAAAAAAEAA4AAAAAAAAAAAANAAwAAAAAAAAAAAANAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAAAAAAJAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAAMAAoAAAAAAAAAAAAMAAkAAQAAAAAAAAALAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAAJAAoAAQAAAAAAAAALAAoAAAAAAAAAAAALAAcAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAA=")
@@ -229,9 +325,9 @@ tile_set = SubResource("TileSet_u1vth")
 [node name="ChaoColisores_M2" type="TileMapLayer" parent="." unique_id=1953463454]
 tile_set = SubResource("TileSet_15syn")
 
-[node name="Grade" type="TileMapLayer" parent="." unique_id=440401883 groups=["layer_grade"]]
-tile_map_data = PackedByteArray("AAADAA0AAAAAAAAAAAACAA0AAAAAAAAAAAACAAwAAAAAAAAAAAACAAsAAAAAAAAAAAACAAoAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAsAAAAAAAAAAAAEAAoAAAAAAAAAAAAEAAkAAAAAAAAAAAAEAAgAAAAAAAAAAAADAAgAAAAAAAAAAAADAAkAAAAAAAAAAAADAAcAAAAAAAAAAAACAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAkAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAcAAAAAAAAAAAABAAcAAAAAAAAAAAABAAYAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAADAAUAAAAAAAAAAAADAAQAAAAAAAAAAAADAAYAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAUAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAACAAgAAAAAAAAAAAABAAgAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAQAAMAAAAAAAAAAAAPAAMAAAAAAAAAAAANAAIAAAAAAAAAAAAOAAIAAAAAAAAAAAAPAAIAAAAAAAAAAAAQAAIAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAAPAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAMAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAIAAAAAAAAAAAALAAUAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_scili")
+[node name="Grade" type="TileMapLayer" parent="." unique_id=315728474 groups=["layer_grade"]]
+tile_map_data = PackedByteArray("AAADAAwAAQAAAAAAAAADAA0AAwAAAAAAAAACAAwACwAAAAAAAAADAAoAAQAAAAAAAAAEAAcABAAAAAAAAAABAAUAAQAAAAAAAAADAAMAAQAAAAAAAAAFAAEAAQAAAAAAAAAIAAUAAQAAAAAAAAADAAsAAgAAAAAAAAACAAoABAAAAAAAAAAFAAoABAAAAAAAAAAGAAoABAAAAAAAAAAEAAoABAAAAAAAAAADAAkAAgAAAAAAAAADAAgADQAAAAAAAAAAAAUABAAAAAAAAAACAAMABAAAAAAAAAABAAMABAAAAAAAAAAAAAMABAAAAAAAAAAEAAEABAAAAAAAAAADAAEACwAAAAAAAAADAAIADQAAAAAAAAABAAQADQAAAAAAAAABAAYAAwAAAAAAAAADAAcABAAAAAAAAAACAAcABAAAAAAAAAABAAcABAAAAAAAAAADAAQAAwAAAAAAAAAFAAIAAwAAAAAAAAAGAAEACQAAAAAAAAAIAAIAAgAAAAAAAAAIAAEAAgAAAAAAAAAHAAEAAgAAAAAAAAAHAAIAAgAAAAAAAAAHAAAAAgAAAAAAAAAIAAAAAgAAAAAAAAAIAAYAAgAAAAAAAAAIAAQAAgAAAAAAAAAHAAUABAAAAAAAAAAGAAUABAAAAAAAAAAFAAUACwAAAAAAAAAJAAUABAAAAAAAAAAKAAUACQAAAAAAAAANAAMAAQAAAAAAAAAOAAMAAQAAAAAAAAANAAQAAgAAAAAAAAAOAAQAAgAAAAAAAAANAAIADQAAAAAAAAAOAAIADQAAAAAAAAAMAAMABAAAAAAAAAAPAAMACQAAAAAAAAALAAMAAQAAAAAAAAALAAQAAgAAAAAAAAALAAUAAgAAAAAAAAALAAIADQAAAAAAAAAFAAcAAQAAAAAAAAAGAAcABAAAAAAAAAAAAAcABAAAAAAAAAAFAAgAAwAAAAAAAAAFAAYADQAAAAAAAAA=")
+tile_set = SubResource("TileSet_07lsp")
 
 [node name="Checkpoint" parent="." unique_id=629245070 instance=ExtResource("21_btclj")]
 position = Vector2(60, 758)
@@ -265,14 +361,14 @@ texture = ExtResource("24_x3iht")
 shape = SubResource("RectangleShape2D_fln6u")
 
 [node name="Sprite2D_1" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=277448545]
-modulate = Color(0, 0.53333336, 1, 1)
+modulate = Color(0.5882353, 0.77254903, 1, 1)
 position = Vector2(810, 210)
-texture = ExtResource("20_3tq0j")
+texture = ExtResource("22_gd60s")
 
 [node name="Sprite2D_2" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=1112651765]
-modulate = Color(0, 0.53333336, 1, 1)
+modulate = Color(0.5882353, 0.77254903, 1, 1)
 position = Vector2(870, 210)
-texture = ExtResource("20_3tq0j")
+texture = ExtResource("22_gd60s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Carregamento_Bloqueador" unique_id=626689788]
 position = Vector2(840, 210)
@@ -310,13 +406,13 @@ shape = SubResource("RectangleShape2D_so2o8")
 [node name="Faiscas" type="GPUParticles2D" parent="Area_Transition_Black" unique_id=1210254363]
 position = Vector2(480, 97)
 amount = 10
-lifetime = 1.4000000000000001
+lifetime = 1.4
 process_material = SubResource("ParticleProcessMaterial_483au")
 
 [node name="SecurityCamera" parent="." unique_id=1006889508 instance=ExtResource("25_t20ku")]
 position = Vector2(1159, 41)
-target_point = Vector2(-350, 208)
-end_width = 128.0
+target_point = Vector2(-375, 205)
+end_width = 120.0
 
 [node name="Area_Texto_Flutuante_1" type="Area2D" parent="." unique_id=911370956]
 script = ExtResource("32_db1tc")
@@ -333,6 +429,24 @@ texto_export = "Mantenha-se no scanner após consumir"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Texto_Flutuante_2" unique_id=1143980588]
 position = Vector2(840, 210)
 shape = SubResource("RectangleShape2D_dp0hi")
+
+[node name="Black_Screen_Down" type="Sprite2D" parent="." unique_id=1936100832]
+position = Vector2(600, 1350)
+texture = ExtResource("1_jip4m")
+
+[node name="Black_Screen_Up" type="Sprite2D" parent="." unique_id=1999607584]
+position = Vector2(600, -450)
+texture = ExtResource("1_jip4m")
+
+[node name="Black_Screen_Right" type="Sprite2D" parent="." unique_id=1434228055]
+position = Vector2(1800, 450)
+scale = Vector2(1, 3)
+texture = ExtResource("1_jip4m")
+
+[node name="Black_Screen_Left" type="Sprite2D" parent="." unique_id=2019800125]
+position = Vector2(-600, 450)
+scale = Vector2(1, 3)
+texture = ExtResource("1_jip4m")
 
 [connection signal="body_entered" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_entered"]
 [connection signal="body_exited" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_exited"]

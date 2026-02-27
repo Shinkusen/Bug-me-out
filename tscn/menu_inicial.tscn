@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://8clnd4df12g3" path="res://sprites/Menu Inicial/Logo.png" id="3_3jas2"]
 [ext_resource type="Texture2D" uid="uid://gxbyoim5wi4e" path="res://sprites/Menu Inicial/Jogar.png" id="4_yd206"]
 [ext_resource type="Texture2D" uid="uid://c25710h5mhlly" path="res://sprites/Menu Inicial/Sair.png" id="5_0tg6h"]
+[ext_resource type="Texture2D" uid="uid://ct3y651ehxbg5" path="res://sprites/Black.png" id="6_3jas2"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rv0ss"]
 particle_flag_disable_z = true
@@ -70,6 +71,24 @@ position = Vector2(632, 100)
 amount = 30
 lifetime = 1.8
 process_material = SubResource("ParticleProcessMaterial_rv0ss")
+
+[node name="Black_Screen_Down" type="Sprite2D" parent="." unique_id=1643660386]
+position = Vector2(600, 1350)
+texture = ExtResource("6_3jas2")
+
+[node name="Black_Screen_Up" type="Sprite2D" parent="." unique_id=1413079785]
+position = Vector2(600, -450)
+texture = ExtResource("6_3jas2")
+
+[node name="Black_Screen_Right" type="Sprite2D" parent="." unique_id=1515216445]
+position = Vector2(1800, 450)
+scale = Vector2(1, 3)
+texture = ExtResource("6_3jas2")
+
+[node name="Black_Screen_Left" type="Sprite2D" parent="." unique_id=658676916]
+position = Vector2(-600, 450)
+scale = Vector2(1, 3)
+texture = ExtResource("6_3jas2")
 
 [connection signal="pressed" from="Jogar" to="." method="_on_jogar_pressed"]
 [connection signal="pressed" from="Sair" to="." method="_on_sair_pressed"]

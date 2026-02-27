@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8w2n7jed0mww"
-path="res://.godot/imported/Estalactite.png-0200cb9e8dda9a4004163063e41c4019.ctex"
+uid="uid://rhwhhl7s347k"
+path="res://.godot/imported/Cano_End_Right_v2.png-656cd5bbb11adf09a96bfac1ef4a29bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Estalactite/Estalactite.png"
-dest_files=["res://.godot/imported/Estalactite.png-0200cb9e8dda9a4004163063e41c4019.ctex"]
+source_file="res://sprites/TileSet/Cano/Cano_End_Right_v2.png"
+dest_files=["res://.godot/imported/Cano_End_Right_v2.png-656cd5bbb11adf09a96bfac1ef4a29bc.ctex"]
 
 [params]
 

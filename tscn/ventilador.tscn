@@ -1,24 +1,9 @@
 [gd_scene format=3 uid="uid://bu3lavvyof164"]
 
 [ext_resource type="Script" uid="uid://mo47tiumw1cm" path="res://scripts/ventilador.gd" id="1_im8bh"]
-[ext_resource type="Texture2D" uid="uid://bqfbmmmrt12s6" path="res://sprites/Ventilador/Ventilador_1.png" id="2_bbypo"]
-[ext_resource type="Texture2D" uid="uid://cg2pchx2p2qjq" path="res://sprites/Ventilador/Ventilador_2.png" id="3_00so2"]
+[ext_resource type="Texture2D" uid="uid://yt4erpu5swex" path="res://sprites/Ventilador/Ventilador_v2.png" id="2_bbypo"]
 [ext_resource type="Texture2D" uid="uid://ciosp87y62ofp" path="res://resources/risco_vento.tres" id="3_au78i"]
 [ext_resource type="AudioStream" uid="uid://cguwuq0183jp2" path="res://sounds/Objetos/Ventilador.mp3" id="5_00so2"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_n560r"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_bbypo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_00so2")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbypo"]
 size = Vector2(62, 60)
@@ -52,11 +37,9 @@ lock_rotation = true
 freeze = true
 script = ExtResource("1_im8bh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1922331344]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=467243642]
 rotation = 1.5707964
-sprite_frames = SubResource("SpriteFrames_n560r")
-autoplay = "default"
-frame_progress = 0.96615237
+texture = ExtResource("2_bbypo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1386675624]
 position = Vector2(1, 0)

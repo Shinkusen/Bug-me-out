@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://b5lmx3d88ae8s"]
 
 [ext_resource type="Script" uid="uid://c85ep1n7mjskw" path="res://scripts/estalactite.gd" id="1_yvf3t"]
-[ext_resource type="Texture2D" uid="uid://c8w2n7jed0mww" path="res://sprites/Estalactite/Estalactite.png" id="2_c0cry"]
+[ext_resource type="Texture2D" uid="uid://5lh0disjernw" path="res://sprites/Estalactite/Estalactite_v2.png" id="2_c0cry"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xtnje"]
-size = Vector2(32, 52)
+size = Vector2(35, 54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmbfg"]
 resource_local_to_scene = true
@@ -12,9 +12,9 @@ size = Vector2(60, 60)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c0cry"]
 particle_flag_disable_z = true
-emission_shape_offset = Vector3(0, -55, 0)
+emission_shape_offset = Vector3(-1.52, -55, 0)
 emission_shape = 3
-emission_box_extents = Vector3(15, 1, 1)
+emission_box_extents = Vector3(17.535, 1, 1)
 direction = Vector3(0, 1, 0)
 spread = 0.0
 gravity = Vector3(0, 45, 0)
@@ -34,7 +34,7 @@ script = ExtResource("1_yvf3t")
 texture = ExtResource("2_c0cry")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1214528656]
-position = Vector2(0, -4)
+position = Vector2(-1.5, -3)
 shape = SubResource("RectangleShape2D_xtnje")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1066455581]

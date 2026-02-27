@@ -17,11 +17,24 @@
 [ext_resource type="Texture2D" uid="uid://btaegbjkwxqpe" path="res://sprites/TileSet/M1/ChaoDireita_M1_2.png" id="17_go806"]
 [ext_resource type="Texture2D" uid="uid://dsp5q4lpb35q2" path="res://sprites/TileSet/M1/ChaoDireita_M1_3.png" id="18_3nwkr"]
 [ext_resource type="Texture2D" uid="uid://3xh2f8824jfb" path="res://sprites/TileSet/Grade.png" id="18_qg7ph"]
+[ext_resource type="Texture2D" uid="uid://bk25svqnk3ji3" path="res://sprites/TileSet/Cano/Cano_Interseção.png" id="19_ccai2"]
 [ext_resource type="Texture2D" uid="uid://cua1ctoneaotg" path="res://sprites/TileSet/M1/ChaoDireita_M1_4.png" id="19_x2ttl"]
 [ext_resource type="Texture2D" uid="uid://m4jhav46ina0" path="res://sprites/TileSet/M1/ChaoEsquerda_M1_1.png" id="20_3atri"]
+[ext_resource type="Texture2D" uid="uid://b5vj86nruomq8" path="res://sprites/TileSet/Cano/Cano_Reto_Up.png" id="20_rc30b"]
+[ext_resource type="Texture2D" uid="uid://c7dtbkyxp3pn7" path="res://sprites/TileSet/Cano/Cano_End_Up_v1.png" id="20_xnwc4"]
+[ext_resource type="Texture2D" uid="uid://dlmi2bj8neet6" path="res://sprites/TileSet/Cano/Cano_End_Left_v2.png" id="21_go806"]
 [ext_resource type="Texture2D" uid="uid://bkijwkebnarrs" path="res://sprites/TileSet/M1/ChaoEsquerda_M1_2.png" id="21_mxpcp"]
+[ext_resource type="Texture2D" uid="uid://db8xbjimtc6e4" path="res://sprites/TileSet/Cano/Cano_End_Down_v1.png" id="21_pgog6"]
+[ext_resource type="Texture2D" uid="uid://rhwhhl7s347k" path="res://sprites/TileSet/Cano/Cano_End_Right_v2.png" id="22_3nwkr"]
 [ext_resource type="Script" uid="uid://dqjnq46ebej5v" path="res://scripts/area_texto_flutuante.gd" id="22_b417i"]
+[ext_resource type="Texture2D" uid="uid://t5ujrrg5jr6q" path="res://sprites/TileSet/Cano/Cano_Reto_Left.png" id="22_pgog6"]
+[ext_resource type="Texture2D" uid="uid://c4xuyqnocw6ib" path="res://sprites/TileSet/Cano/Cano_Reto_Right.png" id="23_jprey"]
+[ext_resource type="Texture2D" uid="uid://clksot0mc6xcd" path="res://sprites/TileSet/Cano/Cano_End_Down_v2.png" id="23_x2ttl"]
+[ext_resource type="Texture2D" uid="uid://bm6pnbd6781ec" path="res://sprites/TileSet/Cano/Cano_End_Up_v2.png" id="24_3atri"]
+[ext_resource type="Texture2D" uid="uid://cjbdq1s7qt40r" path="res://sprites/TileSet/Cano/Cano_Reto_Down.png" id="24_jprey"]
 [ext_resource type="Texture2D" uid="uid://mktdiocf2ttf" path="res://sprites/Mascara_Animacao_Inicial.png" id="25_ccai2"]
+[ext_resource type="Texture2D" uid="uid://cs0rlfqi8upvu" path="res://sprites/TileSet/Cano/Cano_End_Left_v1.png" id="26_8ub5s"]
+[ext_resource type="Texture2D" uid="uid://cfwng8rf3paow" path="res://sprites/TileSet/Cano/Cano_End_Right_v1.png" id="27_go806"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4twe"]
 size = Vector2(1200, 4)
@@ -125,8 +138,86 @@ tile_size = Vector2i(60, 60)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_qg7ph")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5n5q"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_go806"]
 texture = ExtResource("18_qg7ph")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3nwkr"]
+texture = ExtResource("19_ccai2")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x2ttl"]
+texture = ExtResource("20_xnwc4")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3atri"]
+texture = ExtResource("21_go806")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mxpcp"]
+texture = ExtResource("22_3nwkr")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ertrg"]
+texture = ExtResource("23_x2ttl")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ifsrl"]
+texture = ExtResource("24_3atri")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y5k1f"]
+texture = ExtResource("20_rc30b")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i3pmq"]
+texture = ExtResource("21_pgog6")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b31sr"]
+texture = ExtResource("22_pgog6")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cnqqy"]
+texture = ExtResource("23_jprey")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2lksl"]
+texture = ExtResource("24_jprey")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xda52"]
+texture = ExtResource("26_8ub5s")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_glv2v"]
+texture = ExtResource("27_go806")
 texture_region_size = Vector2i(60, 60)
 0:0/0 = 0
 0:0/0/custom_data_0 = true
@@ -135,7 +226,20 @@ texture_region_size = Vector2i(60, 60)
 tile_size = Vector2i(60, 60)
 custom_data_layer_0/name = "can_climb"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_i5n5q")
+sources/0 = SubResource("TileSetAtlasSource_go806")
+sources/1 = SubResource("TileSetAtlasSource_3nwkr")
+sources/2 = SubResource("TileSetAtlasSource_y5k1f")
+sources/3 = SubResource("TileSetAtlasSource_i3pmq")
+sources/4 = SubResource("TileSetAtlasSource_b31sr")
+sources/5 = SubResource("TileSetAtlasSource_cnqqy")
+sources/6 = SubResource("TileSetAtlasSource_2lksl")
+sources/8 = SubResource("TileSetAtlasSource_xda52")
+sources/9 = SubResource("TileSetAtlasSource_glv2v")
+sources/10 = SubResource("TileSetAtlasSource_x2ttl")
+sources/11 = SubResource("TileSetAtlasSource_3atri")
+sources/12 = SubResource("TileSetAtlasSource_mxpcp")
+sources/13 = SubResource("TileSetAtlasSource_ertrg")
+sources/14 = SubResource("TileSetAtlasSource_ifsrl")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b417i"]
 particle_flag_disable_z = true
@@ -274,7 +378,7 @@ tile_map_data = PackedByteArray("AAAQAA0AAAAAAAAAAAAQAA4AAAAAAAAAAAARAA4AAAAAAAA
 tile_set = SubResource("TileSet_tjqbj")
 
 [node name="Grade" type="TileMapLayer" parent="." unique_id=1404271764 groups=["layer_grade"]]
-tile_map_data = PackedByteArray("AAATAAsAAAAAAAAAAAATAAoAAAAAAAAAAAATAAYAAAAAAAAAAAATAAUAAAAAAAAAAAATAAQAAAAAAAAAAAATAAMAAAAAAAAAAAATAAIAAAAAAAAAAAATAAEAAAAAAAAAAAATAAAAAAAAAAAAAAATAAkAAAAAAAAAAAATAAgAAAAAAAAAAAATAAcAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAATAAsAAgAAAAAAAAATAAoAAgAAAAAAAAATAAYAAgAAAAAAAAATAAUAAgAAAAAAAAATAAQAAgAAAAAAAAATAAIAAgAAAAAAAAATAAEAAgAAAAAAAAATAAkAAgAAAAAAAAATAAgAAQAAAAAAAAATAAcAAgAAAAAAAAATAAAAAgAAAAAAAAASAAgABAAAAAAAAAARAAgACwAAAAAAAAATAAMAAQAAAAAAAAASAAMABAAAAAAAAAARAAMABAAAAAAAAAAQAAMABAAAAAAAAAAPAAMACwAAAAAAAAA=")
 tile_set = SubResource("TileSet_pb3yv")
 
 [node name="Faiscas" type="GPUParticles2D" parent="." unique_id=2023685558]
@@ -329,7 +433,7 @@ shape = SubResource("RectangleShape2D_rc30b")
 [node name="Faiscas" type="GPUParticles2D" parent="Area_Transition_Black" unique_id=1673136360]
 position = Vector2(1170, 97)
 amount = 10
-lifetime = 1.4000000000000001
+lifetime = 1.4
 process_material = SubResource("ParticleProcessMaterial_pgog6")
 
 [node name="Area_Texto_Flutuante_1" type="Area2D" parent="." unique_id=1712965385]

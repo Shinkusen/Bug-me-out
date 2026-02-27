@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://4wm3xkpr2xmw" path="res://sprites/Background/Background_Cor.png" id="1_tyle3"]
 [ext_resource type="Texture2D" uid="uid://ct3y651ehxbg5" path="res://sprites/Black.png" id="2_6us2c"]
 [ext_resource type="Texture2D" uid="uid://ddtdwhv7dqrxw" path="res://sprites/TileSet/M1/ChaoCentral_M1_1.png" id="3_5sji1"]
-[ext_resource type="Texture2D" uid="uid://c8w2n7jed0mww" path="res://sprites/Estalactite/Estalactite.png" id="4_f1ea0"]
+[ext_resource type="Texture2D" uid="uid://c8w2n7jed0mww" path="res://sprites/Estalactite/Estalactite_v1.png" id="4_f1ea0"]
 [ext_resource type="Texture2D" uid="uid://b8yahx75xh8yy" path="res://sprites/TileSet/M1/ChaoCentral_M1_2.png" id="4_o3y7g"]
 [ext_resource type="Texture2D" uid="uid://ctmscco7m5gkq" path="res://sprites/TileSet/M1/ChaoEsquerda_M1_3.png" id="5_pikr6"]
 [ext_resource type="Texture2D" uid="uid://bae3oqxo1ef80" path="res://sprites/TileSet/M1/ChaoEsquerda_M1_4.png" id="6_p65qq"]
@@ -26,14 +26,27 @@
 [ext_resource type="PackedScene" uid="uid://b2rsc10sv6eji" path="res://tscn/checkpoint.tscn" id="21_y0glr"]
 [ext_resource type="Script" uid="uid://dqe31iawldfam" path="res://scripts/transicao_up.gd" id="22_7xj3q"]
 [ext_resource type="PackedScene" uid="uid://cljk0xq12son8" path="res://tscn/player.tscn" id="23_ijsh2"]
+[ext_resource type="Texture2D" uid="uid://bk25svqnk3ji3" path="res://sprites/TileSet/Cano/Cano_Interseção.png" id="23_u6mkn"]
+[ext_resource type="Texture2D" uid="uid://c7dtbkyxp3pn7" path="res://sprites/TileSet/Cano/Cano_End_Up_v1.png" id="24_iar84"]
 [ext_resource type="PackedScene" uid="uid://dxir6k7kamspi" path="res://tscn/eatable.tscn" id="24_p65qq"]
 [ext_resource type="PackedScene" uid="uid://0kmek7shcteb" path="res://tscn/security_camera.tscn" id="25_5sji1"]
+[ext_resource type="Texture2D" uid="uid://dlmi2bj8neet6" path="res://sprites/TileSet/Cano/Cano_End_Left_v2.png" id="25_k86o4"]
 [ext_resource type="Script" uid="uid://drmjft4e3lcrk" path="res://scripts/carregamento_bloqueador.gd" id="25_pikr6"]
 [ext_resource type="Texture2D" uid="uid://b6mdgpguf6tak" path="res://sprites/TileSet/Bloqueador_Passagem.png" id="26_p65qq"]
+[ext_resource type="Texture2D" uid="uid://rhwhhl7s347k" path="res://sprites/TileSet/Cano/Cano_End_Right_v2.png" id="26_v0pf4"]
+[ext_resource type="Texture2D" uid="uid://bm6pnbd6781ec" path="res://sprites/TileSet/Cano/Cano_End_Up_v2.png" id="27_3s22q"]
+[ext_resource type="Texture2D" uid="uid://b5vj86nruomq8" path="res://sprites/TileSet/Cano/Cano_Reto_Up.png" id="28_eay21"]
+[ext_resource type="Texture2D" uid="uid://db8xbjimtc6e4" path="res://sprites/TileSet/Cano/Cano_End_Down_v1.png" id="29_ychgl"]
+[ext_resource type="Texture2D" uid="uid://t5ujrrg5jr6q" path="res://sprites/TileSet/Cano/Cano_Reto_Left.png" id="30_3shiy"]
 [ext_resource type="Script" uid="uid://ceqvpphv5tssd" path="res://scripts/barra_cair_die.gd" id="30_a4uo3"]
 [ext_resource type="AudioStream" uid="uid://buwxkugb0fw51" path="res://sounds/Objetos/Scanner.mp3" id="30_xdvdt"]
+[ext_resource type="Texture2D" uid="uid://c4xuyqnocw6ib" path="res://sprites/TileSet/Cano/Cano_Reto_Right.png" id="31_4m7ln"]
 [ext_resource type="AudioStream" uid="uid://bq5116v6nte7g" path="res://sounds/Objetos/Acesso Permitido.mp3" id="31_c5vxg"]
 [ext_resource type="AudioStream" uid="uid://cmgo7twbijhef" path="res://sounds/Objetos/Acesso negado.mp3" id="32_clwql"]
+[ext_resource type="Texture2D" uid="uid://cjbdq1s7qt40r" path="res://sprites/TileSet/Cano/Cano_Reto_Down.png" id="32_fou8o"]
+[ext_resource type="Texture2D" uid="uid://clksot0mc6xcd" path="res://sprites/TileSet/Cano/Cano_End_Down_v2.png" id="33_5yrec"]
+[ext_resource type="Texture2D" uid="uid://cs0rlfqi8upvu" path="res://sprites/TileSet/Cano/Cano_End_Left_v1.png" id="34_p6n7f"]
+[ext_resource type="Texture2D" uid="uid://cfwng8rf3paow" path="res://sprites/TileSet/Cano/Cano_End_Right_v1.png" id="35_a786k"]
 [ext_resource type="Script" uid="uid://dqjnq46ebej5v" path="res://scripts/area_texto_flutuante.gd" id="35_c5vxg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxo5x"]
@@ -164,17 +177,108 @@ sources/0 = SubResource("TileSetAtlasSource_m1gm4")
 sources/1 = SubResource("TileSetAtlasSource_jsmb4")
 sources/2 = SubResource("TileSetAtlasSource_wse2v")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lm0vh"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r1om1"]
 texture = ExtResource("20_s0vqw")
 texture_region_size = Vector2i(60, 60)
 0:0/0 = 0
 0:0/0/custom_data_0 = true
 
-[sub_resource type="TileSet" id="TileSet_scili"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gypnr"]
+texture = ExtResource("23_u6mkn")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l88sa"]
+texture = ExtResource("24_iar84")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7dcvn"]
+texture = ExtResource("25_k86o4")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8slxr"]
+texture = ExtResource("26_v0pf4")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_irfyo"]
+texture = ExtResource("27_3s22q")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7wvv"]
+texture = ExtResource("28_eay21")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2r681"]
+texture = ExtResource("29_ychgl")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cuv3m"]
+texture = ExtResource("30_3shiy")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fxfvd"]
+texture = ExtResource("31_4m7ln")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ai6s"]
+texture = ExtResource("32_fou8o")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8t7im"]
+texture = ExtResource("33_5yrec")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k7iui"]
+texture = ExtResource("34_p6n7f")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_awo5c"]
+texture = ExtResource("35_a786k")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSet" id="TileSet_fh8gr"]
 tile_size = Vector2i(60, 60)
 custom_data_layer_0/name = "can_climb"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_lm0vh")
+sources/0 = SubResource("TileSetAtlasSource_r1om1")
+sources/1 = SubResource("TileSetAtlasSource_gypnr")
+sources/2 = SubResource("TileSetAtlasSource_h7wvv")
+sources/3 = SubResource("TileSetAtlasSource_2r681")
+sources/4 = SubResource("TileSetAtlasSource_cuv3m")
+sources/5 = SubResource("TileSetAtlasSource_fxfvd")
+sources/6 = SubResource("TileSetAtlasSource_8ai6s")
+sources/8 = SubResource("TileSetAtlasSource_k7iui")
+sources/9 = SubResource("TileSetAtlasSource_awo5c")
+sources/10 = SubResource("TileSetAtlasSource_l88sa")
+sources/11 = SubResource("TileSetAtlasSource_7dcvn")
+sources/12 = SubResource("TileSetAtlasSource_8slxr")
+sources/7 = SubResource("TileSetAtlasSource_8t7im")
+sources/13 = SubResource("TileSetAtlasSource_irfyo")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f1ea0"]
 texture = ExtResource("3_5sji1")
@@ -212,7 +316,7 @@ color = Color(1, 0.9137255, 0.16862746, 1)
 size = Vector2(240, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_clwql"]
-size = Vector2(140, 120)
+size = Vector2(180, 120)
 
 [node name="Cenario_6" type="Node2D" unique_id=659214951]
 script = ExtResource("1_kt4cq")
@@ -221,14 +325,6 @@ script = ExtResource("1_kt4cq")
 offset_right = 1200.0
 offset_bottom = 900.0
 texture = ExtResource("1_tyle3")
-
-[node name="Black_Screen_Up" type="Sprite2D" parent="." unique_id=2042709844]
-position = Vector2(600, -450)
-texture = ExtResource("2_6us2c")
-
-[node name="Black_Screen_Down" type="Sprite2D" parent="." unique_id=1096268543]
-position = Vector2(600, 1350)
-texture = ExtResource("2_6us2c")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1584913155]
 position = Vector2(600, 450)
@@ -258,7 +354,7 @@ rotation = -3.1415925
 texture = ExtResource("4_f1ea0")
 
 [node name="ChaoColisores_M1" type="TileMapLayer" parent="." unique_id=1557546725]
-tile_map_data = PackedByteArray("AAABAA4AAAAAAAAAAAACAA4ABAAAAAAAAAAPAA4ACAAAAAAAAAAQAA4AAAAAAAAAAAARAA4AAAAAAAAAAAASAA4AAAAAAAAAAAATAA4ABAAAAAAAAAAAAA4ACAAAAAAAAAD//w0AAQAAAAAAAAD//wwAAQAAAAAAAAD//wsAAQAAAAAAAAD//woAAQAAAAAAAAD//wkAAQAAAAAAAAD//wgAAQAAAAAAAAD//wcAAQAAAAAAAAD//wYAAQAAAAAAAAD//wUAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAAAAAAAAD//wAAAQAAAAAAAAAUAA0AAwAAAAAAAAAUAAwAAwAAAAAAAAAUAAsAAwAAAAAAAAAUAAoAAwAAAAAAAAAUAAkAAwAAAAAAAAAUAAgAAwAAAAAAAAAUAAcAAwAAAAAAAAAUAAYAAwAAAAAAAAAUAAUAAwAAAAAAAAAUAAQAAwAAAAAAAAAUAAMAAwAAAAAAAAAUAAIAAwAAAAAAAAAUAAEAAwAAAAAAAAAUAAAAAwAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgABAAAAAAAAAAIAAgAAAAAAAAAAAADAA0ACAAAAAAAAAAEAA0AAAAAAAAAAAAFAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAHAA0ABAAAAAAAAAAIAA4ACAAAAAAAAAAQAAUAAAAAAAAAAAARAAUAAAAAAAAAAAASAAUABAAAAAAAAAAPAAUACAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAALAAIABAAAAAAAAAAGAAIACAAAAAAAAAAHAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkABAAAAAAAAAAHAAsAAwAAAAAAAAANAA0AAAAAAAAAAAANAAoABQAAAAAAAAANAAkACQAAAAAAAAAHAAwAAwAAAAAAAAAHAAoABwAAAAAAAAAGAAgAAAAAAAAAAAAFAAgACAAAAAAAAAAJAA4AAAAAAAAAAAAMAA0ACAAAAAAAAAAKAA4AAAAAAAAAAAALAA4ABAAAAAAAAAAOAA0ABAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAA4AAAAAAAAAAAACAA4ABAAAAAAAAAAPAA4ACAAAAAAAAAAQAA4AAAAAAAAAAAARAA4AAAAAAAAAAAASAA4AAAAAAAAAAAATAA4ABAAAAAAAAAAAAA4ACAAAAAAAAAD//w0AAQAAAAAAAAD//wwAAQAAAAAAAAD//wsAAQAAAAAAAAD//woAAQAAAAAAAAD//wkAAQAAAAAAAAD//wgAAQAAAAAAAAD//wcAAQAAAAAAAAD//wYAAQAAAAAAAAD//wUAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAAAAAAAAD//wAAAQAAAAAAAAAUAA0AAwAAAAAAAAAUAAwAAwAAAAAAAAAUAAsAAwAAAAAAAAAUAAoAAwAAAAAAAAAUAAkAAwAAAAAAAAAUAAgAAwAAAAAAAAAUAAcAAwAAAAAAAAAUAAYAAwAAAAAAAAAUAAUAAwAAAAAAAAAUAAQAAwAAAAAAAAAUAAMAAwAAAAAAAAAUAAIAAwAAAAAAAAAUAAEAAwAAAAAAAAAUAAAAAwAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgABAAAAAAAAAAIAAgAAAAAAAAAAAADAA0ACAAAAAAAAAAEAA0AAAAAAAAAAAAFAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAHAA0ABAAAAAAAAAAIAA4ACAAAAAAAAAAQAAUAAAAAAAAAAAARAAUAAAAAAAAAAAASAAUABAAAAAAAAAAPAAUACAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAALAAIABAAAAAAAAAAGAAIACAAAAAAAAAAHAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkABAAAAAAAAAAHAAsAAwAAAAAAAAANAA0AAAAAAAAAAAANAAoAAQAAAAAAAAANAAkACQAAAAAAAAAHAAwAAwAAAAAAAAAHAAoABwAAAAAAAAAGAAgAAAAAAAAAAAAFAAgACAAAAAAAAAAJAA4AAAAAAAAAAAAMAA0ACAAAAAAAAAAKAA4AAAAAAAAAAAALAA4ABAAAAAAAAAAOAA0ABAAAAAAAAAANAAsABQAAAAAAAAAIAP//AgAAAAAAAAAJAP//AgAAAAAAAAAKAP//AgAAAAAAAAALAP//AgAAAAAAAAAMAP//AgAAAAAAAAANAP//AgAAAAAAAAAOAP//AgAAAAAAAAAPAP//AgAAAAAAAAAQAP//AgAAAAAAAAARAP//AgAAAAAAAAASAP//AgAAAAAAAAATAP//AgAAAAAAAAAFAP//AgAAAAAAAAAEAP//AgAAAAAAAAADAP//AgAAAAAAAAACAP//AgAAAAAAAAABAP//AgAAAAAAAAAAAP//AgAAAAAAAAA=")
 tile_set = SubResource("TileSet_5r2p1")
 
 [node name="ChaoSemColisores_Baixo" type="TileMapLayer" parent="." unique_id=1568102665]
@@ -268,9 +364,9 @@ tile_set = SubResource("TileSet_u1vth")
 [node name="ChaoColisores_M2" type="TileMapLayer" parent="." unique_id=1953463454]
 tile_set = SubResource("TileSet_15syn")
 
-[node name="Grade" type="TileMapLayer" parent="." unique_id=440401883 groups=["layer_grade"]]
-tile_map_data = PackedByteArray("AAABAA0AAAAAAAAAAAABAAwAAAAAAAAAAAACAAwAAAAAAAAAAAACAA0AAAAAAAAAAAADAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAEAAsAAAAAAAAAAAAEAAoAAAAAAAAAAAAEAAkAAAAAAAAAAAAEAAgAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAQAAAAAAAAAAAAPAAQAAAAAAAAAAAASAAQAAAAAAAAAAAASAAMAAAAAAAAAAAASAAIAAAAAAAAAAAASAAEAAAAAAAAAAAARAAEAAAAAAAAAAAAQAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAOAAkAAAAAAAAAAAAPAAkAAAAAAAAAAAAQAAkAAAAAAAAAAAARAAkAAAAAAAAAAAASAAkAAAAAAAAAAAATAAkAAAAAAAAAAAATAAoAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAALAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAAJAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAMAAkAAAAAAAAAAAATAAsAAAAAAAAAAAATAAwAAAAAAAAAAAATAA0AAAAAAAAAAAAOAAwAAAAAAAAAAAAOAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAAMAAoAAAAAAAAAAAAHAAkAAAAAAAAAAAAEAAcAAAAAAAAAAAASAA0AAAAAAAAAAAASAAwAAAAAAAAAAAASAAsAAAAAAAAAAAARAAsAAAAAAAAAAAARAAwAAAAAAAAAAAARAA0AAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAAMAAwAAAAAAAAAAAANAAwAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_scili")
+[node name="Grade" type="TileMapLayer" parent="." unique_id=1631442860 groups=["layer_grade"]]
+tile_map_data = PackedByteArray("AAACAA0AAQAAAAAAAAABAA0ACwAAAAAAAAACAAwADQAAAAAAAAAEAAwAAgAAAAAAAAAEAAsAAgAAAAAAAAAEAAoAAgAAAAAAAAAEAAkAAgAAAAAAAAAEAAgAAgAAAAAAAAAEAAcADQAAAAAAAAAKAAcAAgAAAAAAAAALAAcAAgAAAAAAAAALAAYAAQAAAAAAAAAKAAYAAQAAAAAAAAALAAQADQAAAAAAAAAKAAUADQAAAAAAAAALAAUAAgAAAAAAAAAMAAYACQAAAAAAAAAJAAYACwAAAAAAAAAOAAUAAQAAAAAAAAANAAUACwAAAAAAAAAOAAQADQAAAAAAAAAOAAYAAwAAAAAAAAASAAQAAgAAAAAAAAASAAMAAgAAAAAAAAASAAIAAgAAAAAAAAASAAEAAQAAAAAAAAATAAEABAAAAAAAAAARAAEABAAAAAAAAAAQAAEABAAAAAAAAAAPAAEAAQAAAAAAAAAOAAEABAAAAAAAAAANAAEABAAAAAAAAAAMAAEABAAAAAAAAAALAAEACwAAAAAAAAAPAAIAAwAAAAAAAAAPAAAAAgAAAAAAAAASAAAADQAAAAAAAAAOAAkABAAAAAAAAAAPAAkABAAAAAAAAAAQAAkABAAAAAAAAAARAAkAAQAAAAAAAAASAAkABAAAAAAAAAATAAkABAAAAAAAAAARAAgADQAAAAAAAAARAAoAAwAAAAAAAAASAA0AAgAAAAAAAAASAAwAAQAAAAAAAAATAAwABAAAAAAAAAASAAsAAgAAAAAAAAARAAwACwAAAAAAAAAMAAkAAQAAAAAAAAAMAAoAAgAAAAAAAAAMAAsAAgAAAAAAAAAMAAwAAgAAAAAAAAALAAkABAAAAAAAAAAKAAkABAAAAAAAAAAJAAkABAAAAAAAAAAIAAkABAAAAAAAAAAHAAkACwAAAAAAAAAHAAEAAgAAAAAAAAAHAAAAAgAAAAAAAAAGAAAAAgAAAAAAAAAGAAEAAgAAAAAAAAASAAoADQAAAAAAAAA=")
+tile_set = SubResource("TileSet_fh8gr")
 
 [node name="Bloco_unico" type="TileMapLayer" parent="." unique_id=1863961491]
 visible = false
@@ -279,9 +375,6 @@ tile_set = SubResource("TileSet_f1ea0")
 
 [node name="Bloco_1" parent="." unique_id=153559802 instance=ExtResource("21_6us2c")]
 position = Vector2(870, 751)
-
-[node name="Bloco_2" parent="." unique_id=1819330992 instance=ExtResource("21_6us2c")]
-position = Vector2(870, 691)
 
 [node name="Checkpoint" parent="." unique_id=629245070 instance=ExtResource("21_y0glr")]
 position = Vector2(90, 518)
@@ -316,27 +409,27 @@ texture = ExtResource("26_p65qq")
 shape = SubResource("RectangleShape2D_kt4cq")
 
 [node name="Sprite2D_1" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=1007014620]
-modulate = Color(0, 0.53333336, 1, 1)
-position = Vector2(630, 390)
-texture = ExtResource("20_s0vqw")
+modulate = Color(0.5882353, 0.77254903, 1, 1)
+position = Vector2(630, 388)
+texture = ExtResource("23_u6mkn")
 
 [node name="Sprite2D_2" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=1192597467]
-modulate = Color(0, 0.53333336, 1, 1)
-position = Vector2(690, 390)
-texture = ExtResource("20_s0vqw")
+modulate = Color(0.5882353, 0.77254903, 1, 1)
+position = Vector2(690, 388)
+texture = ExtResource("23_u6mkn")
 
 [node name="Sprite2D_3" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=594386180]
-modulate = Color(0, 0.53333336, 1, 1)
-position = Vector2(630, 450)
-texture = ExtResource("20_s0vqw")
+modulate = Color(0.5882353, 0.77254903, 1, 1)
+position = Vector2(630, 448)
+texture = ExtResource("28_eay21")
 
 [node name="Sprite2D_4" type="Sprite2D" parent="Carregamento_Bloqueador" unique_id=32792389]
-modulate = Color(0, 0.53333336, 1, 1)
-position = Vector2(690, 450)
-texture = ExtResource("20_s0vqw")
+modulate = Color(0.5882353, 0.77254903, 1, 1)
+position = Vector2(690, 448)
+texture = ExtResource("28_eay21")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Carregamento_Bloqueador" unique_id=420620052]
-position = Vector2(660, 420)
+position = Vector2(660, 418)
 shape = SubResource("RectangleShape2D_a4uo3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Carregamento_Bloqueador" unique_id=1019338998]
@@ -371,7 +464,7 @@ shape = SubResource("RectangleShape2D_so2o8")
 [node name="Faiscas" type="GPUParticles2D" parent="Area_Transition_Black" unique_id=1210254363]
 position = Vector2(422, 97)
 amount = 10
-lifetime = 1.4000000000000001
+lifetime = 1.4
 process_material = SubResource("ParticleProcessMaterial_483au")
 
 [node name="SecurityCamera" parent="." unique_id=1006889508 instance=ExtResource("25_5sji1")]
@@ -391,8 +484,26 @@ script = ExtResource("35_c5vxg")
 texto_export = "Aperte Q para usar teia"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Texto_Flutuante_1" unique_id=1044382723]
-position = Vector2(1110, 599)
+position = Vector2(1110, 566)
 shape = SubResource("RectangleShape2D_clwql")
+
+[node name="Black_Screen_Down" type="Sprite2D" parent="." unique_id=1576277176]
+position = Vector2(600, 1350)
+texture = ExtResource("2_6us2c")
+
+[node name="Black_Screen_Up" type="Sprite2D" parent="." unique_id=1630402817]
+position = Vector2(600, -450)
+texture = ExtResource("2_6us2c")
+
+[node name="Black_Screen_Right" type="Sprite2D" parent="." unique_id=1455758872]
+position = Vector2(1800, 450)
+scale = Vector2(1, 3)
+texture = ExtResource("2_6us2c")
+
+[node name="Black_Screen_Left" type="Sprite2D" parent="." unique_id=777581596]
+position = Vector2(-600, 450)
+scale = Vector2(1, 3)
+texture = ExtResource("2_6us2c")
 
 [connection signal="body_entered" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_entered"]
 [connection signal="body_exited" from="Carregamento_Bloqueador" to="Carregamento_Bloqueador" method="_on_body_exited"]

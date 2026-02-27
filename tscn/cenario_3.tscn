@@ -317,7 +317,7 @@ tile_map_data = PackedByteArray("AAAFAA0AAgAAAAAAAAAFAAwAAgAAAAAAAAAFAAsAAgAAAAA
 tile_set = SubResource("TileSet_jiu4c")
 
 [node name="Checkpoint" parent="." unique_id=629245070 instance=ExtResource("21_lm0vh")]
-position = Vector2(390, 638)
+position = Vector2(210, 818)
 numero_da_cena = 3
 
 [node name="Estalactite_1" parent="." unique_id=1893595741 instance=ExtResource("24_scili")]
@@ -355,14 +355,16 @@ position = Vector2(30, 90)
 position = Vector2(150, 90)
 
 [node name="Estalactite_7" parent="." unique_id=848041496 instance=ExtResource("24_scili")]
-position = Vector2(210, 450)
+position = Vector2(300, 450)
 is_area = true
 is_killable = true
 distance = 7
 life_time_particulas = 4.0
 
 [node name="Estalactite_8" parent="." unique_id=373296330 instance=ExtResource("24_scili")]
-position = Vector2(390, 450)
+position = Vector2(510, 450)
+is_area = true
+is_killable = true
 
 [node name="Area_Transition_Black" type="Area2D" parent="." unique_id=441314668]
 script = ExtResource("2_tnkw5")

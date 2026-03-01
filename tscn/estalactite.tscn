@@ -18,8 +18,8 @@ emission_box_extents = Vector3(17.535, 1, 1)
 direction = Vector3(0, 1, 0)
 spread = 0.0
 gravity = Vector3(0, 45, 0)
-scale_min = 1.5
-scale_max = 2.5
+scale_min = 2.5
+scale_max = 3.5
 color = Color(0.49433076, 0.49433076, 0.4943307, 1)
 
 [node name="Estalactite" type="RigidBody2D" unique_id=1893595741]

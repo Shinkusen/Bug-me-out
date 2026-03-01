@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b6do13nfhg1xv"]
+
+[ext_resource type="Shader" uid="uid://ch5gqmgq43xl2" path="res://shaders/FiltroLuz.gdshader" id="1_ef3fh"]
+[ext_resource type="Script" uid="uid://ipkoa807mfx2" path="res://scripts/filtro_luz.gd" id="1_wtrp0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rhds7"]
+shader = ExtResource("1_ef3fh")
+shader_parameter/player_position = Vector2(0, 0)
+shader_parameter/light_radius = 0.2
+shader_parameter/light_softness = 0.5
+
+[node name="FiltroLuz" type="ColorRect" unique_id=1073047535]
+material = SubResource("ShaderMaterial_rhds7")
+offset_right = 1200.0
+offset_bottom = 900.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_wtrp0")

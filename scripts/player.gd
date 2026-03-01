@@ -118,8 +118,12 @@ func _process(delta):
 	# --- INPUT CLIMBING (ATUALIZADO PARA PERSPECTIVA) ---
 	# Só aceita input se não estiver no meio de uma transição de perspectiva
 	if (GameController.can_climb) and (Input.is_action_just_pressed("climb")) and not is_changing_perspective:
+		# NOVO: Se estiver voando ou carregando, cancela tudo antes de subir na grade
+		if dashing or charging:
+			cancelar_voo_imediatamente()
+		
 		try_change_perspective()
-			
+	
 	# --- INPUT DA TEIA (Nível 3+) ---
 	if Input.is_action_just_pressed("string"):
 		if insect_level >= 3: # Validação de Nível
@@ -314,6 +318,16 @@ func physics_movement_logic(delta):
 			fly_bar.value = 0
 		
 		if charging and not dashing:
+			# Se clicar para o lado oposto do que começou a carregar, cancela
+			if input_direction.x != 0 and input_direction.x != dash_dir:
+				charging = false
+				charge_timer = 0.0
+				fly_bar.visible = false
+				audio_takeoff.stop()
+				# O player vira para o novo lado, mas o carregamento parou
+				facing = input_direction.x
+				return # Interrompe para não processar o resto do frame como carregamento
+			
 			charge_timer += delta
 			fly_bar.value = charge_timer
 			velocity.x = move_toward(velocity.x, 0, speed) + final_wind_velocity.x
@@ -331,10 +345,18 @@ func physics_movement_logic(delta):
 			
 			move_and_slide()
 			return 
-
+		
 		if Input.is_action_just_released("fly") and dashing: dashing = false
-
+		
 		if dashing:
+			# Se tentar virar para o lado oposto durante o voo, cancela o voo
+			if input_direction.x != 0 and input_direction.x != dash_dir:
+				dashing = false
+				audio_flying.stop()
+				# O player vira para o novo lado, mas o voo para
+				facing = input_direction.x
+				return
+			
 			velocity.x = dash_dir * DASH_SPEED
 			velocity.y = 0.0 
 			move_and_slide()
@@ -384,6 +406,23 @@ func launch_to_position(target_pos: Vector2, flight_time: float):
 	
 	velocity = launch_velocity
 
+func cancelar_voo_imediatamente():
+	dashing = false
+	charging = false
+	charge_timer = 0.0
+	
+	# Para os áudios
+	audio_takeoff.stop()
+	audio_flying.stop()
+	
+	# Reseta a interface
+	if fly_bar:
+		fly_bar.visible = false
+		fly_bar.value = 0
+	
+	# IMPORTANTE: Zera a velocidade para não "deslizar" na grade com velocidade de voo
+	velocity = Vector2.ZERO
+
 # ==========================================================
 # NOVA LÓGICA DE ANIMAÇÃO CENTRALIZADA (ATUALIZADA)
 # ==========================================================
@@ -391,21 +430,22 @@ func update_animations():
 	# Se estiver mudando de perspectiva, não atrapalha a animação One Shot
 	if is_changing_perspective:
 		return
-
+	
 	var prefix = "Inseto_" + str(insect_level) + "_"
 	
 	# 1. Prioridade Máxima: Dash (Fly) - Só Nível 4
-	if dashing:
+	# Se estiver escalando, a animação de voo NUNCA deve tocar
+	if dashing and not climbing:
 		_try_play_animation(prefix + "Fly")
 		_on_sprite_frame_changed()
 		return
-
+	
 	# 2. Prioridade: String (Carregando bloco) - Só Nível 3+
 	if current_web_state == WebState.CARRYING:
 		_try_play_animation(prefix + "String")
 		_on_sprite_frame_changed()
 		return
-
+	
 	# 3. Lógica de Movimento
 	if climbing:
 		# --- NA GRADE (VERTICAL) ---

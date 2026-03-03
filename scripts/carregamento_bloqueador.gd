@@ -14,7 +14,7 @@ extends Area2D
 
 var tempo_total: float = 5.0
 var tempo_atual: float = 0.0
-var is_canalizando: bool = false
+var pode_canalizar: bool = false
 var completou: bool = false
 
 func _ready():
@@ -24,12 +24,12 @@ func _ready():
 
 func _process(delta):
 	if completou: return
-
-	if is_canalizando:
+	
+	if GameController.player.facing_y == 1 and pode_canalizar:
 		tempo_atual += delta
+		barra.visible = true
 		barra.value = tempo_atual
 		
-		# (NOVO) Toca o scanner se não estiver tocando
 		if not audio_scanner.playing:
 			audio_scanner.play()
 		
@@ -39,21 +39,20 @@ func _process(delta):
 		if tempo_atual > 0:
 			tempo_atual = 0
 			barra.value = 0
-			# (NOVO) Parou de canalizar, para o scanner
+			barra.visible = false
 			audio_scanner.stop()
 
 func completar_objetivo():
 	completou = true
-	is_canalizando = false
+	pode_canalizar = false
 	barra.visible = false
 	
-	# (NOVO) Para o scanner e toca o som de sucesso
 	audio_scanner.stop()
 	audio_granted.play()
 	
 	for sprite in sprites_visuais:
 		if sprite: sprite.visible = false
-			
+	
 	for bloqueador in bloqueadores_fisicos:
 		if bloqueador:
 			bloqueador.visible = false
@@ -66,16 +65,12 @@ func _on_body_entered(body):
 	
 	if body.name == "Player":
 		if GameController.corpos[id_corpo_necessario] == 1:
-			is_canalizando = true
-			barra.visible = true
+			pode_canalizar = true
 		else:
-			print("Acesso Negado!")
-			# (NOVO) Toca som de erro imediatamente
 			audio_denied.play()
 
 func _on_body_exited(body):
 	if body.name == "Player":
-		is_canalizando = false
+		pode_canalizar = false
 		barra.visible = false
-		# (NOVO) Garante que o scanner pare se o player sair no meio
 		audio_scanner.stop()

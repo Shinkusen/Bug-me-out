@@ -26,14 +26,15 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 const DASH_SPEED = 800.0
 const CHARGE_TIME = 1.5 
 
-var charging = false
-var charge_timer = 0.0
+var charging: bool = false
+var charge_timer: float = 0.0
 
-var dashing = false
-var dash_dir = 1 
-var facing = 1 
+var dashing: bool = false
+var dash_dir: int = 1
+var facing_x: int = 1
+var facing_y: int = 1
 
-var edibles = 0
+var edibles: int = 0
 
 # --- VARIÁVEIS DE CONTROLE DE CENA ---
 var in_cutscene: bool = false
@@ -209,11 +210,20 @@ func physics_movement_logic(delta):
 	
 	# --- ATUALIZAÇÃO DA DIREÇÃO E OLHAR (FLIP) ---
 	if input_direction.x > 0: 
-		facing = 1
+		facing_x = 1
+		facing_y = -1
 		if not climbing: sprite.flip_h = false 
 	elif input_direction.x < 0: 
-		facing = -1
+		facing_x = -1
+		facing_y = -1
 		if not climbing: sprite.flip_h = true 
+	
+	# Facing Y só é usado para scanner, então mover o X deve resetar ele 
+	# também pois a leitura da máscara só deve ocorrer olhando para baixo.
+	if input_direction.y > 0:
+		facing_y = 1
+	elif input_direction.y < 0:
+		facing_y = -1
 	
 	# -----------------------------------------------------------
 	# 1. CÁLCULO DO VENTO (MOVIDO PARA O TOPO)
@@ -301,7 +311,7 @@ func physics_movement_logic(delta):
 		if Input.is_action_just_pressed("fly") and not dashing and not climbing:
 			charging = true
 			charge_timer = 0.0
-			dash_dir = facing
+			dash_dir = facing_x
 			
 			audio_takeoff.play()
 			
@@ -325,7 +335,7 @@ func physics_movement_logic(delta):
 				fly_bar.visible = false
 				audio_takeoff.stop()
 				# O player vira para o novo lado, mas o carregamento parou
-				facing = input_direction.x
+				facing_x = input_direction.x
 				return # Interrompe para não processar o resto do frame como carregamento
 			
 			charge_timer += delta
@@ -346,7 +356,9 @@ func physics_movement_logic(delta):
 			move_and_slide()
 			return 
 		
-		if Input.is_action_just_released("fly") and dashing: dashing = false
+		if Input.is_action_just_released("fly") and dashing: 
+			dashing = false
+			audio_flying.stop()
 		
 		if dashing:
 			# Se tentar virar para o lado oposto durante o voo, cancela o voo
@@ -354,7 +366,7 @@ func physics_movement_logic(delta):
 				dashing = false
 				audio_flying.stop()
 				# O player vira para o novo lado, mas o voo para
-				facing = input_direction.x
+				facing_x = input_direction.x
 				return
 			
 			velocity.x = dash_dir * DASH_SPEED
@@ -364,6 +376,7 @@ func physics_movement_logic(delta):
 				var c = get_slide_collision(i)
 				if abs(c.get_normal().x) > 0.7:
 					dashing = false
+					audio_flying.stop()
 					velocity.x = 0
 					break
 			return 

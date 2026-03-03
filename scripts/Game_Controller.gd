@@ -49,7 +49,8 @@ func _iniciar_musica_ambiente():
 	music_player = AudioStreamPlayer.new()
 	
 	# 2. Carrega o arquivo MP3
-	var stream_musica = load("res://sounds/Música ambiente (precisa botar credito na descrição)/Aylex - Tension Rising (freetouse.com).mp3") 
+	# var stream_musica = load("res://sounds/Música ambiente/Aylex - Tension Rising (freetouse.com).mp3") 
+	var stream_musica = load("res://sounds/Música ambiente/Bug me Music.mp3")
 	music_player.stream = stream_musica
 	
 	# 3. Configurações

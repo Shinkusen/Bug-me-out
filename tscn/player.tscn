@@ -102,6 +102,8 @@
 [ext_resource type="AudioStream" uid="uid://ykhrdj6qe4wb" path="res://sounds/Barulhos da Barata/Inseto Escalando.mp3" id="100_c0o37"]
 [ext_resource type="AudioStream" uid="uid://rvvul5p2tkeg" path="res://sounds/Barulhos da Barata/Som de Morte.mp3" id="101_1huc3"]
 [ext_resource type="AudioStream" uid="uid://dmfwhlyu7rqdq" path="res://sounds/Barulhos da Barata/respawn+ovoquebrando.mp3" id="102_t62tu"]
+[ext_resource type="AudioStream" uid="uid://coc0dykoqxdff" path="res://sounds/Barulhos da Barata/Levantando voo.mp3" id="103_1huc3"]
+[ext_resource type="AudioStream" uid="uid://d2h570sc1f4w6" path="res://sounds/Barulhos da Barata/Voando.mp3" id="104_t62tu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6sl1v"]
 animations = [{
@@ -582,10 +584,10 @@ stream = ExtResource("102_t62tu")
 volume_db = 7.5
 
 [node name="Audio_TakeOff" type="AudioStreamPlayer2D" parent="." unique_id=2096630295]
-volume_db = 24.0
+stream = ExtResource("103_1huc3")
 
 [node name="Audio_Flying" type="AudioStreamPlayer2D" parent="." unique_id=1622029802]
-volume_db = 24.0
+stream = ExtResource("104_t62tu")
 
 [node name="ExplosaoSparks" type="GPUParticles2D" parent="." unique_id=1907328230]
 emitting = false

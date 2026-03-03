@@ -612,7 +612,7 @@ shape = SubResource("RectangleShape2D_dp0hi")
 
 [node name="Area_Texto_Flutuante_2" type="Area2D" parent="." unique_id=1726001551]
 script = ExtResource("32_db1tc")
-texto_export = "Mantenha-se no scanner após consumir"
+texto_export = "Após consumir mantenha-se no scanner corretamente para leitura da máscara"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Texto_Flutuante_2" unique_id=1143980588]
 position = Vector2(840, 210)

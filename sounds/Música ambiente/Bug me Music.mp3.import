@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cikkyuapk1ii8"
+path="res://.godot/imported/Bug me Music.mp3-d54612f4beed6845d9519b08b0788310.mp3str"
+
+[deps]
+
+source_file="res://sounds/Música ambiente/Bug me Music.mp3"
+dest_files=["res://.godot/imported/Bug me Music.mp3-d54612f4beed6845d9519b08b0788310.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
